@@ -76,7 +76,11 @@ class _StartPageState extends State<StartPage> with SingleTickerProviderStateMix
               ),
             )
         ),
-        body: Center(
+        body: WillPopScope(
+            onWillPop: () {
+              return Future(() => false);
+            },
+        child:Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -2350,7 +2354,7 @@ class _StartPageState extends State<StartPage> with SingleTickerProviderStateMix
           ),
         )
 
-
+        )
     );
   }
 

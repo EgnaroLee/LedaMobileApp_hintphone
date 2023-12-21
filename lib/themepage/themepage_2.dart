@@ -199,6 +199,7 @@ class _ThemeScreen2State extends State<ThemeScreen2> with SingleTickerProviderSt
             child:Container(
               child: AppBar(
                 //centerTitle: true,
+                  automaticallyImplyLeading: false, // 좌측 탭에 뒤로가기 버튼 삭제
                   backgroundColor: Color(skyblue),
                   flexibleSpace: Container(
                     margin: const EdgeInsets.fromLTRB(80, 0, 0, 0),
@@ -209,7 +210,11 @@ class _ThemeScreen2State extends State<ThemeScreen2> with SingleTickerProviderSt
             ),
           )
       ),
-      body: Center(
+      body: WillPopScope(
+        onWillPop: () {
+          return Future(() => false);
+        },
+    child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -745,6 +750,7 @@ class _ThemeScreen2State extends State<ThemeScreen2> with SingleTickerProviderSt
           ],
         ),
       ),
+    )
     );
   }
 

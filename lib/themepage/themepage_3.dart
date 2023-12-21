@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:hint_app_7/startpage.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 
@@ -132,6 +133,7 @@ class _ThemeScreen3State extends State<ThemeScreen3> with SingleTickerProviderSt
   var _hintcode2 = "두번째 힌트";
   var _hintcode3 = "세번째 힌트";
   var _hintcode4 = "네번째 힌트";
+  var _homecode = "#0000";  // 홈으로 돌아가는 코드
 
   //퍼센트
   var _percentwords = "0";
@@ -194,6 +196,7 @@ class _ThemeScreen3State extends State<ThemeScreen3> with SingleTickerProviderSt
             child:Container(
               child: AppBar(
                 //centerTitle: true,
+                  automaticallyImplyLeading: false, // 좌측 탭에 뒤로가기 버튼 삭제
                   backgroundColor: Color(skyblue),
                   flexibleSpace: Container(
                     margin: const EdgeInsets.fromLTRB(80, 0, 0, 0),
@@ -204,7 +207,11 @@ class _ThemeScreen3State extends State<ThemeScreen3> with SingleTickerProviderSt
             ),
           )
       ),
-      body: Center(
+      body: WillPopScope(
+        onWillPop: () {
+          return Future(() => false);
+        },
+        child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -455,6 +462,15 @@ class _ThemeScreen3State extends State<ThemeScreen3> with SingleTickerProviderSt
                                       ),
                                     );
                                   });
+                                }
+
+                                // 특정 코드 입력시 테마 선택 창으로 이동
+                                else if(_hintText.text == _homecode){
+                                  Navigator.push(
+                                      context, MaterialPageRoute(
+                                      builder: (context) => StartPage())
+                                  );
+                                  _timer.cancel();
                                 }
 
                                 else {
@@ -729,6 +745,7 @@ class _ThemeScreen3State extends State<ThemeScreen3> with SingleTickerProviderSt
           ],
         ),
       ),
+      )
     );
   }
 

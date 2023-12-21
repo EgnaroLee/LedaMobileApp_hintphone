@@ -203,6 +203,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
             child:Container(
               child: AppBar(
                 //centerTitle: true,
+                  automaticallyImplyLeading: false, // 좌측 탭에 뒤로가기 버튼 삭제
                   backgroundColor: Color(skyblue),
                   flexibleSpace: Container(
                     margin: const EdgeInsets.fromLTRB(80, 0, 0, 0),
@@ -213,548 +214,554 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
             ),
           )
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                  width: 380,
-                  height: 150,
-                  color: Color(skyblue),
-                  child: Center(
-                    child: Container(
-                      width: 360,
-                      height: 70,
-                      child: Text(
-                        '${_currentMinutes.toString().padLeft(2, '0')} : ${_currentSeconds.toString().padLeft(2, '0')}',
-                        style: TextStyle(
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold
+      body: WillPopScope(
+        onWillPop: () {
+          return Future(() => false);
+        },
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    width: 380,
+                    height: 150,
+                    color: Color(skyblue),
+                    child: Center(
+                      child: Container(
+                        width: 360,
+                        height: 70,
+                        child: Text(
+                          '${_currentMinutes.toString().padLeft(2, '0')} : ${_currentSeconds.toString().padLeft(2, '0')}',
+                          style: TextStyle(
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  child: Stack(
-                    children: [
-                      GridView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              childAspectRatio: 1.5,
-                              mainAxisSpacing: 0,
-                              crossAxisSpacing: 0
-                          ),
-                          itemCount: 3,
-                          itemBuilder: (context, index){
-                            if(index == 0){
-                              return GestureDetector(
+                  Container(
+                    child: Stack(
+                      children: [
+                        GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                childAspectRatio: 1.5,
+                                mainAxisSpacing: 0,
+                                crossAxisSpacing: 0
+                            ),
+                            itemCount: 3,
+                            itemBuilder: (context, index){
+                              if(index == 0){
+                                return GestureDetector(
 
-                                  onTap: (){
-                                    _tabController.animateTo(index);
+                                    onTap: (){
+                                      _tabController.animateTo(index);
 
-                                  },
-                                  child: Center(
+                                    },
+                                    child: Center(
 
-                                    child: Container(
-                                      margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
-                                      width: 120,
-                                      height: 100,
-                                      color: Color(0x99ADD8E6),
+                                      child: Container(
+                                        margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+                                        width: 120,
+                                        height: 100,
+                                        color: Color(0x99ADD8E6),
 
-                                      child: Center(
-                                        child: Text(
-                                          "힌트",
-                                          style: TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
+                                        child: Center(
+                                          child: Text(
+                                            "힌트",
+                                            style: TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                            textAlign: TextAlign.center,
+
                                           ),
-                                          textAlign: TextAlign.center,
-
                                         ),
                                       ),
-                                    ),
 
-                                  )
+                                    )
 
-                              );
-                            }
-                            if(index == 1){
-                              return GestureDetector(
-                                  onTap: (){
-                                    FocusScope.of(context).unfocus();
-                                    _tabController.animateTo(index);
-                                  },
+                                );
+                              }
+                              if(index == 1){
+                                return GestureDetector(
+                                    onTap: (){
+                                      FocusScope.of(context).unfocus();
+                                      _tabController.animateTo(index);
+                                    },
 
-                                  child: Center(
+                                    child: Center(
 
-                                    child: Container(
-                                      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                      child: Container(
+                                        margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
 
-                                      width: 120,
-                                      height: 100,
-                                      color: Color(0x99ADD8E6),
+                                        width: 120,
+                                        height: 100,
+                                        color: Color(0x99ADD8E6),
 
-                                      child: Center(
-                                        child: Text(
-                                          "진행률",
-                                          style: TextStyle(
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold,
+                                        child: Center(
+                                          child: Text(
+                                            "진행률",
+                                            style: TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                            textAlign: TextAlign.center,
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
                                       ),
-                                    ),
 
-                                  )
-                              );
+                                    )
+                                );
+                              }
                             }
-                          }
-                      ),
+                        ),
 
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(276, 20, 0, 0),
-                        width: 120,
-                        height: 70,
-                        color: Color(skyblue),
-                        child: Center(
-                          child: Container(
-                            child: InkWell(
-                              onTap: (){
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context){
-                                      return _showPaint(p: p);
-                                    });
-                              },
-                              child: Center(
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(276, 20, 0, 0),
+                          width: 120,
+                          height: 70,
+                          color: Color(skyblue),
+                          child: Center(
+                            child: Container(
+                              child: InkWell(
+                                onTap: (){
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context){
+                                        return _showPaint(p: p);
+                                      });
+                                },
+                                child: Center(
 
-                                child: Text(
-                                  "메모",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                                  textAlign: TextAlign.center,
+                                  child: Text(
+                                    "메모",
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-
-              ],
-            ),
-            Expanded(
-                child: TabBarView(
-                  controller: _tabController,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: [
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Stack(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
-                            width: 390,
-                            height: 440,
-                            color: Color(skyblue),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(30, 40, 0, 0),
-                            child: Text(
-                              "Hint",
-                              style: TextStyle(fontSize: 30),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          SingleChildScrollView(
-                            child: Container(
-                                margin: EdgeInsets.fromLTRB(20, 80, 0, 0),
-                                width: 260,
-                                height: 80,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Container(
-                                    color: Colors.white,
-                                    child: Container(
-                                      margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                      child: TextField(
-                                        controller: _hintText,
-                                        decoration: InputDecoration(
-                                          border: InputBorder.none,
-                                          hintText: '입력',
-                                        ),
-                                        style: TextStyle(fontSize: 25),
-                                        onChanged: (text) {
-                                          setState(() {});
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                )
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(280, 90, 0, 0),
-                            width: 100,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                color: Colors.black54,
-                                borderRadius: BorderRadius.circular(20)
-                            ),
-                            child: InkWell(
-                              onTap: ()async{
-                                FocusScope.of(context).unfocus();
-
-                                // 힌트 코드 입력
-                                if (_hintText.text == 'hi') {
-                                  setState(() {
-                                    _word = _hintcode1;
-                                    _hintText.text = '';
-                                  });
-                                }
-
-                                else if (_hintText.text == '2') {
-                                  setState(() {
-                                    _word = _hintcode2;
-                                    _hintText.text = '';
-                                  });
-                                }
-
-                                else if (_hintText.text == '3') {
-                                  setState(() {
-                                    _word = _hintcode3;
-                                    _hintText.text = '';
-                                  });
-                                }
-
-                                else if (_hintText.text == '4') {
-                                  setState(() {
-                                    _word = _hintcode4;
-                                    _hintText.text = '';
-                                  });
-                                }
-                                else if (_hintText.text == "") {
-                                  setState(() {
-                                    _word = '';
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        title: const Text(''),
-                                        content: Text(
-                                          "암호를 입력해주세요!",
-                                          style: TextStyle(fontSize: 20),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('확인'))
-                                        ],
-                                      ),
-                                    );
-                                  });
-                                }
-
-                                // 특정 코드 입력시 테마 선택 창으로 이동
-                                else if(_hintText.text == _homecode){
-                                  Navigator.push(
-                                      context, MaterialPageRoute(
-                                      builder: (context) => StartPage())
-                                  );
-                                  _timer.cancel();
-                                }
-
-                                else {
-                                  setState(() {
-                                    _hintText.text = '';
-                                    _word = '';
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        title: const Text(''),
-                                        content: Text(
-                                          "옳바른 암호를 입력해주세요!",
-                                          style: TextStyle(fontSize: 20),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('확인'))
-                                        ],
-                                      ),
-                                    );
-                                  });
-                                }
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Center(
-                                    child: Text(
-                                      "확인",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-
-
-                          Container(
-                            margin: EdgeInsets.fromLTRB(30, 170, 0, 0),
-                            width: 350,
-                            height: 270,
-                            color: Colors.white,
-                            child: Center(
-                              child: Text(
-                                _word,
-                                style: TextStyle(fontSize: 40),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                      ],
                     ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Stack(
-                        children: [
-                          Container(
+                  )
+
+                ],
+              ),
+              Expanded(
+                  child: TabBarView(
+                    controller: _tabController,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: Stack(
+                          children: [
+                            Container(
                               margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
                               width: 390,
                               height: 440,
-                              color: Color(skyblue)
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(30, 120, 0, 0),
-                            child: Text(
-                              "진행률",
-                              style: TextStyle(fontSize: 28),
-                              textAlign: TextAlign.center,
+                              color: Color(skyblue),
                             ),
-                          ),
-                          SingleChildScrollView(
-                            child: Container(
-                                margin: EdgeInsets.fromLTRB(20, 35, 0, 0),
-                                width: 260,
-                                height: 80,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Container(
-                                    color: Colors.white,
+                            Container(
+                              margin: EdgeInsets.fromLTRB(30, 40, 0, 0),
+                              child: Text(
+                                "Hint",
+                                style: TextStyle(fontSize: 30),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            SingleChildScrollView(
+                              child: Container(
+                                  margin: EdgeInsets.fromLTRB(20, 80, 0, 0),
+                                  width: 260,
+                                  height: 80,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
                                     child: Container(
-                                      margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                      child: TextField(
-                                        controller: _percentText,
-                                        decoration: InputDecoration(
-                                          border: InputBorder.none,
-                                          hintText: '입력',
+                                      color: Colors.white,
+                                      child: Container(
+                                        margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                        child: TextField(
+                                          controller: _hintText,
+                                          decoration: InputDecoration(
+                                            border: InputBorder.none,
+                                            hintText: '입력',
+                                          ),
+                                          style: TextStyle(fontSize: 25),
+                                          onChanged: (text) {
+                                            setState(() {});
+                                          },
                                         ),
-                                        style: TextStyle(fontSize: 23),
-                                        onChanged: (text) {
-                                          setState(() {});
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                )
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(280, 45, 0, 0),
-                            width: 100,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                color: Colors.black54,
-                                borderRadius: BorderRadius.circular(20)
-                            ),
-                            child: InkWell(
-                              onTap: () async{
-                                FocusScope.of(context).unfocus();
-                                if (_percentText.text == 'hi') {
-                                  setState(() {
-                                    _percent = 0.25;
-                                    _percentwords = '25';
-                                    _percentText.text = '';
-
-                                  }
-                                  );
-
-                                }
-
-                                else if (_percentText.text == "2") {
-                                  setState(() {
-                                    _percent = 0.5;
-                                    _percentwords = '50';
-                                    _percentText.text = '';
-                                  }
-                                  );
-                                }
-
-                                else if (_percentText.text == "3") {
-                                  setState(() {
-                                    _percent = 0.75;
-                                    _percentwords = "75";
-                                    _percentText.text = '';
-                                  }
-                                  );
-                                }
-
-                                else if (_percentText.text == "4") {
-                                  setState(() {
-                                    _percent = 0.9;
-                                    _percentwords = "90";
-                                    _percentText.text = '';
-                                  }
-                                  );
-                                }
-
-                                else if (_percentText.text == "") {
-                                  setState(() {
-                                    _percent = 0;
-                                    _percentwords = "0";
-
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        title: const Text(''),
-                                        content: Text(
-                                          "암호를 입력해주세요!",
-                                          style: TextStyle(fontSize: 20),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('확인'))
-                                        ],
-                                      ),
-                                    );
-                                  }
-                                  );
-                                }
-
-                                else {
-                                  setState(() {
-                                    _percentText.text = '';
-                                    _percent = 0;
-                                    _percentwords = "0";
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        title: const Text(''),
-                                        content: Text(
-                                          "옳바른 암호를 입력해주세요!",
-                                          style: TextStyle(fontSize: 20),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('확인'))
-                                        ],
-                                      ),
-                                    );
-                                  }
-                                  );
-                                }
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Center(
-                                    child: Text(
-                                      "확인",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold
                                       ),
                                     ),
                                   )
-                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(280, 90, 0, 0),
+                              width: 100,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(20)
+                              ),
+                              child: InkWell(
+                                onTap: ()async{
+                                  FocusScope.of(context).unfocus();
+
+                                  // 힌트 코드 입력
+                                  if (_hintText.text == 'hi') {
+                                    setState(() {
+                                      _word = _hintcode1;
+                                      _hintText.text = '';
+                                    });
+                                  }
+
+                                  else if (_hintText.text == '2') {
+                                    setState(() {
+                                      _word = _hintcode2;
+                                      _hintText.text = '';
+                                    });
+                                  }
+
+                                  else if (_hintText.text == '3') {
+                                    setState(() {
+                                      _word = _hintcode3;
+                                      _hintText.text = '';
+                                    });
+                                  }
+
+                                  else if (_hintText.text == '4') {
+                                    setState(() {
+                                      _word = _hintcode4;
+                                      _hintText.text = '';
+                                    });
+                                  }
+                                  else if (_hintText.text == "") {
+                                    setState(() {
+                                      _word = '';
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          title: const Text(''),
+                                          content: Text(
+                                            "암호를 입력해주세요!",
+                                            style: TextStyle(fontSize: 20),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('확인'))
+                                          ],
+                                        ),
+                                      );
+                                    });
+                                  }
+
+                                  // 특정 코드 입력시 테마 선택 창으로 이동
+                                  else if(_hintText.text == _homecode){
+                                    Navigator.push(
+                                        context, MaterialPageRoute(
+                                        builder: (context) => StartPage())
+                                    );
+                                    _timer.cancel();
+                                  }
+
+                                  else {
+                                    setState(() {
+                                      _hintText.text = '';
+                                      _word = '';
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          title: const Text(''),
+                                          content: Text(
+                                            "옳바른 암호를 입력해주세요!",
+                                            style: TextStyle(fontSize: 20),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('확인'))
+                                          ],
+                                        ),
+                                      );
+                                    });
+                                  }
+                                },
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        "확인",
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
 
-                          ),
 
-                          Container(
-                            margin: EdgeInsets.fromLTRB(20, 120, 0, 0),
-                            width: 370,
-                            height: 130,
-                            // color: Colors.white,
-                            child: Center(
-                              child: Container(
-                                  child: LinearPercentIndicator(
-                                    alignment: MainAxisAlignment.center,
-                                    width: 370, // 바 넓이
-
-                                    animation: true,
-                                    animationDuration: 1200, // 애니메이션 지속 시간
-                                    lineHeight: 40,
-                                    percent: _percent,
-                                    center: Text(
-                                      '$_percentwords%',
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    barRadius: Radius.circular(13),
-                                    progressColor: Colors.black54,
-                                  )),
-                            ),
-
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(30, 230, 0, 0),
-                            width: 350,
-                            height: 40,
-                            // color: Colors.white,
-                            child: Text(
-                              "힌트 사용 목록",
-                              style: TextStyle(fontSize: 23),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(30, 270, 0, 0),
-                            width: 350,
-                            height: 170,
-                            color: Colors.white,
-                            child: Text(
-                              "",
-                              style: TextStyle(fontSize: 28),
-                              textAlign: TextAlign.center,
-                            ),
-                          )
-                        ],
+                            Container(
+                              margin: EdgeInsets.fromLTRB(30, 170, 0, 0),
+                              width: 350,
+                              height: 270,
+                              color: Colors.white,
+                              child: Center(
+                                child: Text(
+                                  _word,
+                                  style: TextStyle(fontSize: 40),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    )
-                  ],
-                ))
-          ],
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: Stack(
+                          children: [
+                            Container(
+                                margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+                                width: 390,
+                                height: 440,
+                                color: Color(skyblue)
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(30, 120, 0, 0),
+                              child: Text(
+                                "진행률",
+                                style: TextStyle(fontSize: 28),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            SingleChildScrollView(
+                              child: Container(
+                                  margin: EdgeInsets.fromLTRB(20, 35, 0, 0),
+                                  width: 260,
+                                  height: 80,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Container(
+                                      color: Colors.white,
+                                      child: Container(
+                                        margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                        child: TextField(
+                                          controller: _percentText,
+                                          decoration: InputDecoration(
+                                            border: InputBorder.none,
+                                            hintText: '입력',
+                                          ),
+                                          style: TextStyle(fontSize: 23),
+                                          onChanged: (text) {
+                                            setState(() {});
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(280, 45, 0, 0),
+                              width: 100,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(20)
+                              ),
+                              child: InkWell(
+                                onTap: () async{
+                                  FocusScope.of(context).unfocus();
+                                  if (_percentText.text == 'hi') {
+                                    setState(() {
+                                      _percent = 0.25;
+                                      _percentwords = '25';
+                                      _percentText.text = '';
+
+                                    }
+                                    );
+
+                                  }
+
+                                  else if (_percentText.text == "2") {
+                                    setState(() {
+                                      _percent = 0.5;
+                                      _percentwords = '50';
+                                      _percentText.text = '';
+                                    }
+                                    );
+                                  }
+
+                                  else if (_percentText.text == "3") {
+                                    setState(() {
+                                      _percent = 0.75;
+                                      _percentwords = "75";
+                                      _percentText.text = '';
+                                    }
+                                    );
+                                  }
+
+                                  else if (_percentText.text == "4") {
+                                    setState(() {
+                                      _percent = 0.9;
+                                      _percentwords = "90";
+                                      _percentText.text = '';
+                                    }
+                                    );
+                                  }
+
+                                  else if (_percentText.text == "") {
+                                    setState(() {
+                                      _percent = 0;
+                                      _percentwords = "0";
+
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          title: const Text(''),
+                                          content: Text(
+                                            "암호를 입력해주세요!",
+                                            style: TextStyle(fontSize: 20),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('확인'))
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                    );
+                                  }
+
+                                  else {
+                                    setState(() {
+                                      _percentText.text = '';
+                                      _percent = 0;
+                                      _percentwords = "0";
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          title: const Text(''),
+                                          content: Text(
+                                            "옳바른 암호를 입력해주세요!",
+                                            style: TextStyle(fontSize: 20),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('확인'))
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                    );
+                                  }
+                                },
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        "확인",
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                            ),
+
+                            Container(
+                              margin: EdgeInsets.fromLTRB(20, 120, 0, 0),
+                              width: 370,
+                              height: 130,
+                              // color: Colors.white,
+                              child: Center(
+                                child: Container(
+                                    child: LinearPercentIndicator(
+                                      alignment: MainAxisAlignment.center,
+                                      width: 370, // 바 넓이
+
+                                      animation: true,
+                                      animationDuration: 1200, // 애니메이션 지속 시간
+                                      lineHeight: 40,
+                                      percent: _percent,
+                                      center: Text(
+                                        '$_percentwords%',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      barRadius: Radius.circular(13),
+                                      progressColor: Colors.black54,
+                                    )),
+                              ),
+
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(30, 230, 0, 0),
+                              width: 350,
+                              height: 40,
+                              // color: Colors.white,
+                              child: Text(
+                                "힌트 사용 목록",
+                                style: TextStyle(fontSize: 23),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(30, 270, 0, 0),
+                              width: 350,
+                              height: 170,
+                              color: Colors.white,
+                              child: Text(
+                                "",
+                                style: TextStyle(fontSize: 28),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ))
+            ],
+          ),
         ),
       ),
+
     );
   }
 
