@@ -11,6 +11,7 @@ import 'package:hint_app_7/tutorialpage/themetutorial_6.dart';
 
 final skyblue = 0x99add8e6;
 final darkblue = 0x99778899;
+final a = 0x991234;
 
 class StartPage extends StatefulWidget {
   @override
