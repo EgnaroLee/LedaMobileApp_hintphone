@@ -11,7 +11,6 @@ import 'package:hint_app_7/tutorialpage/themetutorial_6.dart';
 
 final skyblue = 0x99add8e6;
 final darkblue = 0x99778899;
-final a = 0x991234;
 
 class StartPage extends StatefulWidget {
   @override
@@ -171,15 +170,15 @@ class _StartPageState extends State<StartPage>
                               // 테마 1번
                               Expanded(
                                 child: Container(
-                                  alignment: Alignment.topLeft,
-                                  child: Stack(
+                                  alignment: Alignment.center,
+                                  child: Column(
                                     children: [
                                       // 테마 이름 Contaier
                                       Center(
                                         child:  Container(
                                           margin:
-                                          const EdgeInsets.fromLTRB(0, 5, 0, 340),
-                                          padding: EdgeInsets.only(top:0, bottom: 0),
+                                          const EdgeInsets.fromLTRB(0, 15, 0, 10),
+
                                           //width: 390,
                                           //height: 35,
                                           //color: Colors.grey[300],
@@ -194,11 +193,12 @@ class _StartPageState extends State<StartPage>
                                       // 테마 1번 전체 Container
                                       Expanded(
                                         child: Container(
-                                          margin: EdgeInsets.only(top: 40, bottom:10),
+                                          margin: EdgeInsets.only(top: 10, bottom:10),
                                           // width: 390,
                                           //height: 300,
                                           color: Color(skyblue),
                                           child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Container(
                                                 child: Row(
@@ -210,7 +210,7 @@ class _StartPageState extends State<StartPage>
                                                         //height: 120,
                                                         margin: EdgeInsets.only(
                                                             left: 10,
-                                                            top: 10),
+                                                            top: 0),
                                                         color: Color(darkblue),
                                                         child: Center(
                                                           child: Column(
@@ -231,12 +231,13 @@ class _StartPageState extends State<StartPage>
 
                                                               // 1번 테마 기본 시간 표시 container
                                                               Container(
+                                                                margin: EdgeInsets.only( bottom: 15),
                                                                 child: Center(
                                                                   child: Container(
                                                                     margin: EdgeInsets.only(top:15),
                                                                     child: Text("60:00",
                                                                       style: TextStyle(
-                                                                          fontSize:35,
+                                                                          fontSize:38,
                                                                           fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
@@ -274,6 +275,7 @@ class _StartPageState extends State<StartPage>
 
                                                             // 인원 수 container
                                                             Container(
+                                                              margin: EdgeInsets.only(bottom: 10, right: 15, top: 10),
                                                               child: Row(
                                                                 children: [
                                                                   // 인원 수 증가 container
@@ -282,7 +284,7 @@ class _StartPageState extends State<StartPage>
                                                                     height: 40,
 
                                                                     margin: EdgeInsets.only(
-                                                                        top: 15,
+
                                                                         left: 15
                                                                     ),
                                                                     color: Color(0x99778899),
@@ -308,7 +310,8 @@ class _StartPageState extends State<StartPage>
                                                                       child:
                                                                       Container(
                                                                         margin: EdgeInsets.only(
-                                                                            top: 10),
+                                                                            bottom: 5
+                                                                        ),
 
                                                                         width: 70,
                                                                         height: 50,
@@ -337,9 +340,6 @@ class _StartPageState extends State<StartPage>
                                                                     child: Center(
                                                                       child:
                                                                       Container(
-                                                                        margin: EdgeInsets.only(
-                                                                            top: 15
-                                                                        ),
 
                                                                         color: Color(0x99778899),
                                                                         width: 40,
@@ -449,12 +449,9 @@ class _StartPageState extends State<StartPage>
                                                                             Container(
                                                                               child:
                                                                               Container(
-                                                                                color:
-                                                                                Color(0x99778899),
-                                                                                width:
-                                                                                50,
-                                                                                height:
-                                                                                40,
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
                                                                                 child:
                                                                                 InkWell(
                                                                                   onTap: () {
@@ -474,14 +471,10 @@ class _StartPageState extends State<StartPage>
                                                                             Container(
                                                                               child:
                                                                               Container(
-                                                                                margin:
-                                                                                EdgeInsets.only(left: 10),
-                                                                                color:
-                                                                                Color(0x99778899),
-                                                                                width:
-                                                                                50,
-                                                                                height:
-                                                                                40,
+                                                                                margin: EdgeInsets.only(left: 10),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
                                                                                 child:
                                                                                 InkWell(
                                                                                   onTap: () {
@@ -506,14 +499,10 @@ class _StartPageState extends State<StartPage>
                                                                             Container(
                                                                               child:
                                                                               Container(
-                                                                                margin:
-                                                                                EdgeInsets.only(top: 10, left: 0),
-                                                                                color:
-                                                                                Color(0x99778899),
-                                                                                width:
-                                                                                50,
-                                                                                height:
-                                                                                40,
+                                                                                margin: EdgeInsets.only(top: 10, left: 0),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
                                                                                 child:
                                                                                 InkWell(
                                                                                   onTap: () {
@@ -699,198 +688,70 @@ class _StartPageState extends State<StartPage>
                                 ),
                               ),
                               // 테마 2번
-                              Container(
-                                alignment: Alignment.topLeft,
-                                child: Stack(
-                                  children: [
-                                    // (테마 2번) 제목 Container
-                                    Container(
-                                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      width: 390,
-                                      height: 35,
-                                      //color: Colors.black,
-                                      child: Center(
-                                        child: Text(
-                                          "2",
-                                          textAlign: TextAlign.center,
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    children: [
+                                      // 테마 이름 Contaier
+                                      Center(
+                                        child:  Container(
+                                          margin:
+                                          const EdgeInsets.fromLTRB(0, 15, 0, 10),
+
+                                          child: Center(
+                                            child: Text( "2",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
 
-                                    // (테마 2번) 전체 코드
-                                    Container(
-                                      margin: EdgeInsets.only(top: 40),
-                                      width: 390,
-                                      height: 300,
-                                      color: Color(skyblue),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                // 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      left: 10, top: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 2번) 플레이 타임 Text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "기본 플레이 타임",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 2번) 플레이 타임 시간 Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 15),
-                                                              child: Text(
-                                                                "60:00",
-                                                                style: TextStyle(
-                                                                    fontSize: 35,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                // (테마 2번) 인원 수 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 2번) 인원 수 text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "플레이 인원 수",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                                textAlign: TextAlign
-                                                                    .center,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 2번) 인원 수 전체 container
-                                                        Container(
-                                                          child: Row(
+                                      // 테마 2번 전체 Container
+                                      Expanded(
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 10, bottom:10),
+                                          color: Color(skyblue),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    // 2번 테마 기본 시간 전체 Container
+                                                    Expanded(
+                                                      child: Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: 10,
+                                                            top: 0),
+                                                        color: Color(darkblue),
+                                                        child: Center(
+                                                          child: Column(
                                                             children: [
-                                                              // (테마 2번) 인원 수 증가 container
+                                                              // 2번 테마 기본 시간 text container
                                                               Container(
-                                                                width: 40,
-                                                                height: 40,
-                                                                margin:
-                                                                EdgeInsets.only(
-                                                                    top: 15,
-                                                                    left: 15),
-                                                                color: Color(
-                                                                    0x99778899),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _incrementCounter2();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons.add,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top: 10),
+                                                                    child: Text( "기본 플레이 타임",
+                                                                      style: TextStyle(
+                                                                          fontSize: 20,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
 
-                                                              // (테마 2번) 인원 수
+                                                              // 2번 테마 기본 시간 표시 container
                                                               Container(
+                                                                margin: EdgeInsets.only( bottom: 15),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        10),
-                                                                    width: 70,
-                                                                    height: 50,
-                                                                    child: Center(
-                                                                      child:
-                                                                      Container(
-                                                                        child: Text(
-                                                                          '$_counter2명',
-                                                                          style: TextStyle(
-                                                                              fontSize:
-                                                                              35,
-                                                                              fontWeight:
-                                                                              FontWeight.bold),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-
-                                                              // (테마 2번) 인원 수 감소
-                                                              Container(
-                                                                child: Center(
-                                                                  child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        15),
-                                                                    color: Color(
-                                                                        0x99778899),
-                                                                    width: 40,
-                                                                    height: 40,
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _decrementCounter2();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons
-                                                                            .remove,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top:15),
+                                                                    child: Text("60:00",
+                                                                      style: TextStyle(
+                                                                          fontSize: 38,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -898,212 +759,115 @@ class _StartPageState extends State<StartPage>
                                                             ],
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  width: 255,
-                                                  height: 150,
-                                                  color: Color(darkblue),
-                                                  child: Column(
-                                                    children: [
-                                                      //(테마 2번) 변동 시간 Text Container
-                                                      Center(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              top: 10),
-                                                          child: Text(
-                                                            "변동 시간",
-                                                            style: TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                            textAlign:
-                                                            TextAlign.center,
-                                                          ),
-                                                        ),
                                                       ),
-                                                      Center(
-                                                        child: Row(
+                                                    ),
+                                                    // 2번 테마 인원 수 전체 Container
+                                                    Container(
+                                                      //width: 180,
+                                                      //height: 120,
+                                                      margin: EdgeInsets.only(top: 0, left: 10, right: 10),
+                                                      color: Color(darkblue),
+                                                      child: Center(
+                                                        child: Column(
                                                           children: [
-                                                            // (테마 2번) 테마 시간 Container
+                                                            // 인원수 Text Container
                                                             Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  left: 10),
                                                               child: Center(
                                                                 child: Container(
-                                                                  width: 120,
-                                                                  height: 100,
-                                                                  child: Center(
-                                                                    child:
-                                                                    Container(
-                                                                      child: Text(
-                                                                        '${_TimeCount2.toString().padLeft(2, '0')} : 00',
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                            30,
-                                                                            fontWeight:
-                                                                            FontWeight.bold),
-                                                                      ),
-                                                                    ),
+                                                                  margin: EdgeInsets.only(top: 10),
+                                                                  child: Text(
+                                                                    "플레이 인원 수",
+                                                                    style: TextStyle(
+                                                                        fontSize: 20,
+                                                                        fontWeight: FontWeight.bold),
+                                                                    textAlign: TextAlign.center,
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
 
+                                                            // 인원 수 container
                                                             Container(
-                                                              child: Column(
+                                                              margin: EdgeInsets.only(bottom: 10, right: 15, top: 10),
+                                                              child: Row(
                                                                 children: [
-                                                                  // (테마 2번) 1분 Container
+                                                                  // 인원 수 증가 container
                                                                   Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top: 5),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 2번) 1분 증가 Container
-                                                                        Container(
+                                                                    width: 40,
+                                                                    height: 40,
+                                                                    margin: EdgeInsets.only(
+                                                                        left: 15
+                                                                    ),
+                                                                    color: Color(0x99778899),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        child:
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            _incrementCounter2();
+                                                                          },
                                                                           child:
-                                                                          Container(
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTime2();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
+                                                                          Icon(Icons.add,size:40),
                                                                         ),
-
-                                                                        // (테마 2번) 1분 감소 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTime2();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
-                                                                        )
-                                                                      ],
+                                                                      ),
                                                                     ),
                                                                   ),
 
-                                                                  // (테마 2번) 10분 Container
+                                                                  // 인원 수 container
                                                                   Container(
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 2번) 10분 증가 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                0),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTenTime2();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            bottom: 5
                                                                         ),
 
-                                                                        // (테마 2번) 10분 감소 Container
-                                                                        Container(
+                                                                        width: 70,
+                                                                        height: 50,
+
+                                                                        child:
+                                                                        Center(
                                                                           child:
                                                                           Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
                                                                             child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTenTime2();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
+                                                                            Text(
+                                                                              '$_counter2명',
+                                                                              style: TextStyle(
+                                                                                  fontSize: 35,
+                                                                                  fontWeight: FontWeight.bold),
+                                                                              textAlign:
+                                                                              TextAlign.center,
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // 인원 수 감소 container
+                                                                  Container(
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+
+                                                                        color: Color(0x99778899),
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        child:
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            _decrementCounter2();
+                                                                          },
+                                                                          child:
+                                                                          Icon(
+                                                                            Icons.remove,
+                                                                            size: 40,
+                                                                          ),
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   )
                                                                 ],
@@ -1111,330 +875,374 @@ class _StartPageState extends State<StartPage>
                                                             ),
                                                           ],
                                                         ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
-                                                Container(
-                                                  child: Column(
-                                                    children: [
-                                                      // 테마 2번 초기화 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 5),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () {
-                                                              _delall2();
-                                                            },
-                                                            child: Center(
+                                              ),
+
+                                              // 변동 시간 전체 container
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: 10,
+                                                          left: 10
+                                                      ),
+                                                      width: 255,
+                                                      height: 150,
+                                                      color: Color(darkblue),
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 1번 변동시간 Text container
+                                                          Center(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  top: 10),
                                                               child: Text(
-                                                                "초기화",
+                                                                "변동 시간",
                                                                 style: TextStyle(
-                                                                    fontSize: 25,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                    letterSpacing:
-                                                                    1.5),
+                                                                    fontSize: 20,
+                                                                    fontWeight: FontWeight.bold
+                                                                ),
+                                                                textAlign: TextAlign.center,
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
 
-                                                      // 테마 2번 튜토리얼 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 15),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () async {
-                                                              if (_counter2 == 0) {
-                                                                showDialog(
-                                                                  context: context,
-                                                                  builder:
-                                                                      (context) =>
-                                                                      AlertDialog(
-                                                                        title: Text(''),
-                                                                        content: Text(
+                                                          Center(
+                                                            child: Row(
+                                                              children: [
+                                                                // 2번 테마 변동 시간 표시
+                                                                Container(
+                                                                  margin: EdgeInsets.only(
+                                                                      left: 10
+                                                                  ),
+                                                                  child: Center(
+                                                                    child:
+                                                                    Container(
+                                                                      width: 120,
+                                                                      height: 100,
+                                                                      child: Center(
+                                                                        child:
+                                                                        Container(
+                                                                          child:
+                                                                          Text(
+                                                                            '${_TimeCount2.toString().padLeft(2, '0')} : 00',
+                                                                            style: TextStyle(
+                                                                                fontSize: 30,
+                                                                                fontWeight: FontWeight.bold
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+
+                                                                // 2번 테마 시간 증가 감소 container
+                                                                Container(
+                                                                  child: Column(
+                                                                    children: [
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            top: 5),
+                                                                        child: Row(
+                                                                          children: [
+                                                                            //1번 테마 1분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTime2();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            //1번 테마 1분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(left: 10),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTime2();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+                                                                        child: Row(
+                                                                          children: [
+                                                                            // 1번 테마 10분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(top: 10, left: 0),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTenTime2();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            // 1번 테마 10분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin:
+                                                                                EdgeInsets.only(top: 10, left: 10),
+                                                                                color:
+                                                                                Color(0x99778899),
+                                                                                width:
+                                                                                50,
+                                                                                height:
+                                                                                40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTenTime2();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 2번 초기화 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 5),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  _delall2();
+                                                                },
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    "초기화",
+                                                                    style: TextStyle(
+                                                                        fontSize: 25,
+                                                                        fontWeight: FontWeight.bold,
+                                                                        letterSpacing: 1.5),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+
+                                                          // 테마 2번 튜토리얼 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 15),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () async {
+                                                                  if (_counter2 == 0) {
+                                                                    showDialog(
+                                                                      context:
+                                                                      context,
+                                                                      builder:
+                                                                          (context) =>AlertDialog(
+                                                                        title: Text(
+                                                                            ''),
+                                                                        content:
+                                                                        Text(
                                                                           '인원수를 입력해주세요!',
                                                                           style: TextStyle(
-                                                                              fontSize:
-                                                                              20),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
+                                                                              fontSize: 20),
+                                                                          textAlign: TextAlign.center,
                                                                         ),
                                                                         actions: [
                                                                           TextButton(
                                                                               onPressed:
                                                                                   () {
-                                                                                Navigator.pop(
-                                                                                    context);
+                                                                                Navigator.pop(context);
                                                                               },
                                                                               child:
                                                                               Text(
                                                                                 '확인',
-                                                                                style: TextStyle(
-                                                                                    fontSize:
-                                                                                    18,
-                                                                                    fontWeight:
-                                                                                    FontWeight.bold),
+                                                                                style:
+                                                                                TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                                                               ))
                                                                         ],
                                                                       ),
-                                                                );
-                                                              } else {
-                                                                Navigator.push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) =>
-                                                                            ThemeTuto2(
-                                                                                PlayTime:
-                                                                                baseTime + _TimeCount2)));
-                                                              }
-                                                            },
-                                                            child: Center(
-                                                              child: Container(
-                                                                  child: Text(
-                                                                      "튜토리얼",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                          25,
-                                                                          fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                          letterSpacing:
-                                                                          1.5))),
+                                                                    );
+                                                                  } else {
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                            builder:
+                                                                                (context) =>
+                                                                                ThemeTuto2(PlayTime: baseTime + _TimeCount2)));
+                                                                  }
+                                                                },
+                                                                child: Center(
+                                                                  child: Container(
+                                                                      child: Text(
+                                                                          "튜토리얼",
+                                                                          style: TextStyle(
+                                                                              fontSize:25,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              letterSpacing:
+                                                                              1.5))),
+                                                                ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
 
                               // 테마 3번
-                              Container(
-                                alignment: Alignment.topLeft,
-                                child: Stack(
-                                  children: [
-                                    // (테마 3번) 제목 Container
-                                    Container(
-                                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      width: 390,
-                                      height: 35,
-                                      //color: Colors.black,
-                                      child: Center(
-                                        child: Text(
-                                          "3",
-                                          textAlign: TextAlign.center,
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    children: [
+                                      // 테마 이름 Contaier
+                                      Center(
+                                        child:  Container(
+                                          margin:
+                                          const EdgeInsets.fromLTRB(0, 15, 0, 10),
+                                          child: Center(
+                                            child: Text( "3",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
 
-                                    // (테마 3번) 전체 코드
-                                    Container(
-                                      margin: EdgeInsets.only(top: 40),
-                                      width: 390,
-                                      height: 300,
-                                      color: Color(skyblue),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                // 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      left: 10, top: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 3번) 플레이 타임 Text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "기본 플레이 타임",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 3번) 플레이 타임 시간 Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 15),
-                                                              child: Text(
-                                                                "60:00",
-                                                                style: TextStyle(
-                                                                    fontSize: 35,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                // (테마 3번) 인원 수 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 3번) 인원 수 text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "플레이 인원 수",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                                textAlign: TextAlign
-                                                                    .center,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 3번) 인원 수 전체 container
-                                                        Container(
-                                                          child: Row(
+                                      // 테마 3번 전체 Container
+                                      Expanded(
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 10, bottom:10),
+                                          color: Color(skyblue),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    // 3번 테마 기본 시간 전체 Container
+                                                    Expanded(
+                                                      child: Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: 10,
+                                                            top: 0),
+                                                        color: Color(darkblue),
+                                                        child: Center(
+                                                          child: Column(
                                                             children: [
-                                                              // (테마 3번) 인원 수 증가 container
+                                                              // 3번 테마 기본 시간 text container
                                                               Container(
-                                                                width: 40,
-                                                                height: 40,
-                                                                margin:
-                                                                EdgeInsets.only(
-                                                                    top: 15,
-                                                                    left: 15),
-                                                                color: Color(
-                                                                    0x99778899),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _incrementCounter3();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons.add,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top: 10),
+                                                                    child: Text( "기본 플레이 타임",
+                                                                      style: TextStyle(
+                                                                          fontSize: 20,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
 
-                                                              // (테마 3번) 인원 수
+                                                              // 3번 테마 기본 시간 표시 container
                                                               Container(
+                                                                margin: EdgeInsets.only( bottom: 15),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        10),
-                                                                    width: 70,
-                                                                    height: 50,
-                                                                    child: Center(
-                                                                      child:
-                                                                      Container(
-                                                                        child: Text(
-                                                                          '$_counter3명',
-                                                                          style: TextStyle(
-                                                                              fontSize:
-                                                                              35,
-                                                                              fontWeight:
-                                                                              FontWeight.bold),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-
-                                                              // (테마 3번) 인원 수 감소
-                                                              Container(
-                                                                child: Center(
-                                                                  child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        15),
-                                                                    color: Color(
-                                                                        0x99778899),
-                                                                    width: 40,
-                                                                    height: 40,
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _decrementCounter3();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons
-                                                                            .remove,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top:15),
+                                                                    child: Text("60:00",
+                                                                      style: TextStyle(
+                                                                          fontSize:38,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1442,212 +1250,112 @@ class _StartPageState extends State<StartPage>
                                                             ],
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  width: 255,
-                                                  height: 150,
-                                                  color: Color(darkblue),
-                                                  child: Column(
-                                                    children: [
-                                                      //(테마 3번) 변동 시간 Text Container
-                                                      Center(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              top: 10),
-                                                          child: Text(
-                                                            "변동 시간",
-                                                            style: TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                            textAlign:
-                                                            TextAlign.center,
-                                                          ),
-                                                        ),
                                                       ),
-                                                      Center(
-                                                        child: Row(
+                                                    ),
+                                                    // 1번 테마 인원 수 전체 Container
+                                                    Container(
+                                                      margin: EdgeInsets.only(top: 0, left: 10, right: 10),
+                                                      color: Color(darkblue),
+                                                      child: Center(
+                                                        child: Column(
                                                           children: [
-                                                            // (테마 3번) 테마 시간 Container
+                                                            // 인원수 Text Container
                                                             Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  left: 10),
                                                               child: Center(
                                                                 child: Container(
-                                                                  width: 120,
-                                                                  height: 100,
-                                                                  child: Center(
-                                                                    child:
-                                                                    Container(
-                                                                      child: Text(
-                                                                        '${_TimeCount3.toString().padLeft(2, '0')} : 00',
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                            30,
-                                                                            fontWeight:
-                                                                            FontWeight.bold),
-                                                                      ),
-                                                                    ),
+                                                                  margin: EdgeInsets.only(top: 10),
+                                                                  child: Text(
+                                                                    "플레이 인원 수",
+                                                                    style: TextStyle(
+                                                                        fontSize: 20,
+                                                                        fontWeight: FontWeight.bold),
+                                                                    textAlign: TextAlign.center,
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
 
+                                                            // 인원 수 container
                                                             Container(
-                                                              child: Column(
+                                                              margin: EdgeInsets.only(bottom: 10, right: 15, top: 10),
+                                                              child: Row(
                                                                 children: [
-                                                                  // (테마 3번) 1분 Container
+                                                                  // 인원 수 증가 container
                                                                   Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top: 5),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 3번) 1분 증가 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTime3();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                    width: 40,
+                                                                    height: 40,
 
-                                                                        // (테마 3번) 1분 감소 Container
-                                                                        Container(
+                                                                    margin: EdgeInsets.only(
+
+                                                                        left: 15
+                                                                    ),
+                                                                    color: Color(0x99778899),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        child:
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            _incrementCounter3();
+                                                                          },
                                                                           child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTime3();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
-                                                                        )
-                                                                      ],
+                                                                          Icon(Icons.add,size:40),
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   ),
 
-                                                                  // (테마 3번) 10분 Container
+                                                                  // 인원 수 container
                                                                   Container(
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 3번) 10분 증가 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                0),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTenTime3();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            bottom: 5
                                                                         ),
 
-                                                                        // (테마 3번) 10분 감소 Container
-                                                                        Container(
+                                                                        width: 70,
+                                                                        height: 50,
+
+                                                                        child:
+                                                                        Center(
                                                                           child:
                                                                           Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
                                                                             child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTenTime3();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
+                                                                            Text(
+                                                                              '$_counter3명',
+                                                                              style: TextStyle(
+                                                                                  fontSize: 35,
+                                                                                  fontWeight: FontWeight.bold),
+                                                                              textAlign:
+                                                                              TextAlign.center,
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // 인원 수 감소 container
+                                                                  Container(
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+
+                                                                        color: Color(0x99778899),
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        child:
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            _decrementCounter3();
+                                                                          },
+                                                                          child:
+                                                                          Icon(Icons.remove, size:40),
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   )
                                                                 ],
@@ -1655,330 +1363,380 @@ class _StartPageState extends State<StartPage>
                                                             ),
                                                           ],
                                                         ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
-                                                Container(
-                                                  child: Column(
-                                                    children: [
-                                                      // 테마 3번 초기화 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 5),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () {
-                                                              _delall3();
-                                                            },
-                                                            child: Center(
+                                              ),
+
+                                              // 변동 시간 전체 container
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: 10, left: 10),
+                                                      width: 255,
+                                                      height: 150,
+                                                      color: Color(darkblue),
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 3번 변동시간 Text container
+                                                          Center(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  top: 10),
                                                               child: Text(
-                                                                "초기화",
+                                                                "변동 시간",
                                                                 style: TextStyle(
-                                                                    fontSize: 25,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                    letterSpacing:
-                                                                    1.5),
+                                                                    fontSize: 20,
+                                                                    fontWeight: FontWeight.bold
+                                                                ),
+                                                                textAlign: TextAlign.center,
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
 
-                                                      // 테마 3번 튜토리얼 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 15),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () async {
-                                                              if (_counter3 == 0) {
-                                                                showDialog(
-                                                                  context: context,
-                                                                  builder:
-                                                                      (context) =>
-                                                                      AlertDialog(
-                                                                        title: Text(''),
-                                                                        content: Text(
-                                                                          '인원수를 입력해주세요!',
-                                                                          style: TextStyle(
-                                                                              fontSize:
-                                                                              20),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
+                                                          Center(
+                                                            child: Row(
+                                                              children: [
+                                                                // 3번 테마 변동 시간 표시
+                                                                Container(
+                                                                  margin: EdgeInsets.only(
+                                                                      left: 10
+                                                                  ),
+                                                                  child: Center(
+                                                                    child:
+                                                                    Container(
+                                                                      width: 120,
+                                                                      height: 100,
+                                                                      child: Center(
+                                                                        child:
+                                                                        Container(
+                                                                          child:
+                                                                          Text(
+                                                                            '${_TimeCount3.toString().padLeft(2, '0')} : 00',
+                                                                            style: TextStyle(
+                                                                                fontSize:
+                                                                                30,
+                                                                                fontWeight:
+                                                                                FontWeight.bold),
+                                                                          ),
                                                                         ),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                              onPressed:
-                                                                                  () {
-                                                                                Navigator.pop(
-                                                                                    context);
-                                                                              },
-                                                                              child:
-                                                                              Text(
-                                                                                '확인',
-                                                                                style: TextStyle(
-                                                                                    fontSize:
-                                                                                    18,
-                                                                                    fontWeight:
-                                                                                    FontWeight.bold),
-                                                                              ))
-                                                                        ],
                                                                       ),
-                                                                );
-                                                              } else {
-                                                                Navigator.push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) =>
-                                                                            ThemeTuto3(
-                                                                                PlayTime:
-                                                                                baseTime + _TimeCount3)));
-                                                              }
-                                                            },
-                                                            child: Center(
-                                                              child: Container(
+                                                                    ),
+                                                                  ),
+                                                                ),
+
+                                                                // 1번 테마 시간 증가 감소 container
+                                                                Container(
+                                                                  child: Column(
+                                                                    children: [
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            top: 5
+                                                                        ),
+                                                                        child: Row(
+                                                                          children: [
+                                                                            //3번 테마 1분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTime3();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            //1번 테마 1분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(left: 10),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTime3();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+                                                                        child: Row(
+                                                                          children: [
+                                                                            // 3번 테마 10분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(top: 10, left: 0),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTenTime3();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            // 1번 테마 10분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin:
+                                                                                EdgeInsets.only(top: 10, left: 10),
+                                                                                color:
+                                                                                Color(0x99778899),
+                                                                                width:
+                                                                                50,
+                                                                                height:
+                                                                                40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTenTime3();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 3번 초기화 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 5),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  _delall3();
+                                                                },
+                                                                child: Center(
                                                                   child: Text(
-                                                                      "튜토리얼",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                          25,
-                                                                          fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                          letterSpacing:
-                                                                          1.5))),
+                                                                    "초기화",
+                                                                    style: TextStyle(
+                                                                        fontSize: 25,
+                                                                        fontWeight: FontWeight.bold,
+                                                                        letterSpacing: 1.5),
+                                                                  ),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+
+                                                          // 테마 3번 튜토리얼 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 15),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () async {
+                                                                  if (_counter3 == 0) {
+                                                                    showDialog(
+                                                                      context:
+                                                                      context,
+                                                                      builder:
+                                                                          (context) =>
+                                                                          AlertDialog(
+                                                                            title: Text(
+                                                                                ''),
+                                                                            content:
+                                                                            Text(
+                                                                              '인원수를 입력해주세요!',
+                                                                              style: TextStyle(
+                                                                                  fontSize:
+                                                                                  20),
+                                                                              textAlign:
+                                                                              TextAlign
+                                                                                  .center,
+                                                                            ),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                  onPressed:
+                                                                                      () {
+                                                                                    Navigator.pop(context);
+                                                                                  },
+                                                                                  child:
+                                                                                  Text(
+                                                                                    '확인',
+                                                                                    style:
+                                                                                    TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                                                                  ))
+                                                                            ],
+                                                                          ),
+                                                                    );
+                                                                  } else {
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                            builder:
+                                                                                (context) =>
+                                                                                ThemeTuto3(PlayTime: baseTime + _TimeCount3)));
+                                                                  }
+                                                                },
+                                                                child: Center(
+                                                                  child: Container(
+                                                                      child: Text(
+                                                                          "튜토리얼",
+                                                                          style: TextStyle(
+                                                                              fontSize: 25,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              letterSpacing:1.5
+                                                                          )
+                                                                      )
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
 
                               // 테마 4번
-                              Container(
-                                alignment: Alignment.topLeft,
-                                child: Stack(
-                                  children: [
-                                    // (테마 4번) 제목 Container
-                                    Container(
-                                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      width: 390,
-                                      height: 35,
-                                      //color: Colors.black,
-                                      child: Center(
-                                        child: Text(
-                                          "4",
-                                          textAlign: TextAlign.center,
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    children: [
+                                      // 테마 이름 Contaier
+                                      Center(
+                                        child:  Container(
+                                          margin:
+                                          const EdgeInsets.fromLTRB(0, 15, 0, 10),
+                                          child: Center(
+                                            child: Text( "4",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
 
-                                    // (테마 4번) 전체 코드
-                                    Container(
-                                      margin: EdgeInsets.only(top: 40),
-                                      width: 390,
-                                      height: 300,
-                                      color: Color(skyblue),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                // 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      left: 10, top: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 4번) 플레이 타임 Text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "기본 플레이 타임",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 4번) 플레이 타임 시간 Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 15),
-                                                              child: Text(
-                                                                "60:00",
-                                                                style: TextStyle(
-                                                                    fontSize: 35,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                // (테마 4번) 인원 수 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 4번) 인원 수 text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "플레이 인원 수",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                                textAlign: TextAlign
-                                                                    .center,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 4번) 인원 수 전체 container
-                                                        Container(
-                                                          child: Row(
+                                      // 테마 4번 전체 Container
+                                      Expanded(
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 10, bottom:10),
+                                          color: Color(skyblue),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    // 4번 테마 기본 시간 전체 Container
+                                                    Expanded(
+                                                      child: Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: 10,
+                                                            top: 0),
+                                                        color: Color(darkblue),
+                                                        child: Center(
+                                                          child: Column(
                                                             children: [
-                                                              // (테마 4번) 인원 수 증가 container
+                                                              // 4번 테마 기본 시간 text container
                                                               Container(
-                                                                width: 40,
-                                                                height: 40,
-                                                                margin:
-                                                                EdgeInsets.only(
-                                                                    top: 15,
-                                                                    left: 15),
-                                                                color: Color(
-                                                                    0x99778899),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _incrementCounter4();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons.add,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top: 10),
+                                                                    child: Text( "기본 플레이 타임",
+                                                                      style: TextStyle(
+                                                                          fontSize: 20,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
 
-                                                              // (테마 4번) 인원 수
+                                                              // 4번 테마 기본 시간 표시 container
                                                               Container(
+                                                                margin: EdgeInsets.only( bottom: 15),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        10),
-                                                                    width: 70,
-                                                                    height: 50,
-                                                                    child: Center(
-                                                                      child:
-                                                                      Container(
-                                                                        child: Text(
-                                                                          '$_counter4명',
-                                                                          style: TextStyle(
-                                                                              fontSize:
-                                                                              35,
-                                                                              fontWeight:
-                                                                              FontWeight.bold),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-
-                                                              // (테마 4번) 인원 수 감소
-                                                              Container(
-                                                                child: Center(
-                                                                  child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        15),
-                                                                    color: Color(
-                                                                        0x99778899),
-                                                                    width: 40,
-                                                                    height: 40,
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _decrementCounter4();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons
-                                                                            .remove,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top:15),
+                                                                    child: Text("60:00",
+                                                                      style: TextStyle(
+                                                                          fontSize:38,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1986,212 +1744,112 @@ class _StartPageState extends State<StartPage>
                                                             ],
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  width: 255,
-                                                  height: 150,
-                                                  color: Color(darkblue),
-                                                  child: Column(
-                                                    children: [
-                                                      //(테마 4번) 변동 시간 Text Container
-                                                      Center(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              top: 10),
-                                                          child: Text(
-                                                            "변동 시간",
-                                                            style: TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                            textAlign:
-                                                            TextAlign.center,
-                                                          ),
-                                                        ),
                                                       ),
-                                                      Center(
-                                                        child: Row(
+                                                    ),
+                                                    // 4번 테마 인원 수 전체 Container
+                                                    Container(
+                                                      margin: EdgeInsets.only(top: 0, left: 10, right: 10),
+                                                      color: Color(darkblue),
+                                                      child: Center(
+                                                        child: Column(
                                                           children: [
-                                                            // (테마 4번) 테마 시간 Container
+                                                            // 인원수 Text Container
                                                             Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  left: 10),
                                                               child: Center(
                                                                 child: Container(
-                                                                  width: 120,
-                                                                  height: 100,
-                                                                  child: Center(
-                                                                    child:
-                                                                    Container(
-                                                                      child: Text(
-                                                                        '${_TimeCount4.toString().padLeft(2, '0')} : 00',
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                            30,
-                                                                            fontWeight:
-                                                                            FontWeight.bold),
-                                                                      ),
-                                                                    ),
+                                                                  margin: EdgeInsets.only(top: 10),
+                                                                  child: Text(
+                                                                    "플레이 인원 수",
+                                                                    style: TextStyle(
+                                                                        fontSize: 20,
+                                                                        fontWeight: FontWeight.bold),
+                                                                    textAlign: TextAlign.center,
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
 
+                                                            // 인원 수 container
                                                             Container(
-                                                              child: Column(
+                                                              margin: EdgeInsets.only(bottom: 10, right: 15, top: 10),
+                                                              child: Row(
                                                                 children: [
-                                                                  // (테마 4번) 1분 Container
+                                                                  // 인원 수 증가 container
                                                                   Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top: 5),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 4번) 1분 증가 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTime4();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                    width: 40,
+                                                                    height: 40,
 
-                                                                        // (테마 4번) 1분 감소 Container
-                                                                        Container(
+                                                                    margin: EdgeInsets.only(
+
+                                                                        left: 15
+                                                                    ),
+                                                                    color: Color(0x99778899),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        child:
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            _incrementCounter4();
+                                                                          },
                                                                           child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTime4();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
-                                                                        )
-                                                                      ],
+                                                                          Icon(Icons.add,size:40),
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   ),
 
-                                                                  // (테마 4번) 10분 Container
+                                                                  // 인원 수 container
                                                                   Container(
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 4번) 10분 증가 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                0),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTenTime4();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            bottom: 5
                                                                         ),
 
-                                                                        // (테마 4번) 10분 감소 Container
-                                                                        Container(
+                                                                        width: 70,
+                                                                        height: 50,
+
+                                                                        child:
+                                                                        Center(
                                                                           child:
                                                                           Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
                                                                             child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTenTime4();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
+                                                                            Text(
+                                                                              '$_counter4명',
+                                                                              style: TextStyle(
+                                                                                  fontSize: 35,
+                                                                                  fontWeight: FontWeight.bold),
+                                                                              textAlign:
+                                                                              TextAlign.center,
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // 인원 수 감소 container
+                                                                  Container(
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+
+                                                                        color: Color(0x99778899),
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        child:
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            _decrementCounter4();
+                                                                          },
+                                                                          child:
+                                                                          Icon(Icons.remove, size:40),
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   )
                                                                 ],
@@ -2199,330 +1857,369 @@ class _StartPageState extends State<StartPage>
                                                             ),
                                                           ],
                                                         ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
-                                                Container(
-                                                  child: Column(
-                                                    children: [
-                                                      // 테마 4번 초기화 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 5),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () {
-                                                              _delall4();
-                                                            },
-                                                            child: Center(
+                                              ),
+
+                                              // 변동 시간 전체 container
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: 10, left: 10),
+                                                      width: 255,
+                                                      height: 150,
+                                                      color: Color(darkblue),
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 4번 변동시간 Text container
+                                                          Center(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  top: 10),
                                                               child: Text(
-                                                                "초기화",
+                                                                "변동 시간",
                                                                 style: TextStyle(
-                                                                    fontSize: 25,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                    letterSpacing:
-                                                                    1.5),
+                                                                    fontSize: 20,
+                                                                    fontWeight: FontWeight.bold
+                                                                ),
+                                                                textAlign: TextAlign.center,
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
 
-                                                      // 테마 4번 튜토리얼 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 15),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () async {
-                                                              if (_counter4 == 0) {
-                                                                showDialog(
-                                                                  context: context,
-                                                                  builder:
-                                                                      (context) =>
-                                                                      AlertDialog(
-                                                                        title: Text(''),
-                                                                        content: Text(
+                                                          Center(
+                                                            child: Row(
+                                                              children: [
+                                                                // 4번 테마 변동 시간 표시
+                                                                Container(
+                                                                  margin: EdgeInsets.only(
+                                                                      left: 10
+                                                                  ),
+                                                                  child: Center(
+                                                                    child:
+                                                                    Container(
+                                                                      width: 120,
+                                                                      height: 100,
+                                                                      child: Center(
+                                                                        child:
+                                                                        Container(
+                                                                          child:
+                                                                          Text(
+                                                                            '${_TimeCount4.toString().padLeft(2, '0')} : 00',
+                                                                            style: TextStyle(
+                                                                                fontSize:
+                                                                                30,
+                                                                                fontWeight:
+                                                                                FontWeight.bold),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+
+                                                                // 4번 테마 시간 증가 감소 container
+                                                                Container(
+                                                                  child: Column(
+                                                                    children: [
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            top: 5
+                                                                        ),
+                                                                        child: Row(
+                                                                          children: [
+                                                                            //4번 테마 1분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTime4();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            //4번 테마 1분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(left: 10),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTime4();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+                                                                        child: Row(
+                                                                          children: [
+                                                                            // 4번 테마 10분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(top: 10, left: 0),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTenTime4();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            // 4번 테마 10분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin:
+                                                                                EdgeInsets.only(top: 10, left: 10),
+                                                                                color:
+                                                                                Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTenTime4();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 4번 초기화 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 5),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  _delall4();
+                                                                },
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    "초기화",
+                                                                    style: TextStyle(
+                                                                        fontSize: 25,
+                                                                        fontWeight: FontWeight.bold,
+                                                                        letterSpacing: 1.5),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+
+                                                          // 테마 4번 튜토리얼 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 15),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () async {
+                                                                  if (_counter4 == 0) {
+                                                                    showDialog(
+                                                                      context:
+                                                                      context,
+                                                                      builder:
+                                                                          (context) => AlertDialog( title: Text(''),
+                                                                        content:Text(
                                                                           '인원수를 입력해주세요!',
                                                                           style: TextStyle(
-                                                                              fontSize:
-                                                                              20),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
+                                                                              fontSize: 20),
+                                                                          textAlign: TextAlign.center,
                                                                         ),
                                                                         actions: [
                                                                           TextButton(
                                                                               onPressed:
                                                                                   () {
-                                                                                Navigator.pop(
-                                                                                    context);
+                                                                                Navigator.pop(context);
                                                                               },
                                                                               child:
                                                                               Text(
                                                                                 '확인',
-                                                                                style: TextStyle(
-                                                                                    fontSize:
-                                                                                    18,
-                                                                                    fontWeight:
-                                                                                    FontWeight.bold),
+                                                                                style:
+                                                                                TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                                                               ))
                                                                         ],
                                                                       ),
-                                                                );
-                                                              } else {
-                                                                Navigator.push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) =>
-                                                                            ThemeTuto4(
-                                                                                PlayTime:
-                                                                                baseTime + _TimeCount4)));
-                                                              }
-                                                            },
-                                                            child: Center(
-                                                              child: Container(
-                                                                  child: Text(
-                                                                      "튜토리얼",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                          25,
-                                                                          fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                          letterSpacing:
-                                                                          1.5))),
+                                                                    );
+                                                                  } else {
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                            builder: (context) => ThemeTuto4(PlayTime: baseTime + _TimeCount4)));
+                                                                  }
+                                                                },
+                                                                child: Center(
+                                                                  child: Container(
+                                                                      child: Text(
+                                                                          "튜토리얼",
+                                                                          style: TextStyle(
+                                                                              fontSize: 25,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              letterSpacing:1.5
+                                                                          )
+                                                                      )
+                                                                  ),
+                                                                ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
 
                               // 테마 5번
-                              Container(
-                                alignment: Alignment.topLeft,
-                                child: Stack(
-                                  children: [
-                                    // (테마 5번) 제목 Container
-                                    Container(
-                                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                      width: 390,
-                                      height: 35,
-                                      //color: Colors.black,
-                                      child: Center(
-                                        child: Text(
-                                          "5",
-                                          textAlign: TextAlign.center,
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    children: [
+                                      // 테마 이름 Contaier
+                                      Center(
+                                        child:  Container(
+                                          margin:
+                                          const EdgeInsets.fromLTRB(0, 15, 0, 10),
+                                          child: Center(
+                                            child: Text( "5",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
 
-                                    // (테마 5번) 전체 코드
-                                    Container(
-                                      margin: EdgeInsets.only(top: 40),
-                                      width: 390,
-                                      height: 300,
-                                      color: Color(skyblue),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                // 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      left: 10, top: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 5번) 플레이 타임 Text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "기본 플레이 타임",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 5번) 플레이 타임 시간 Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 15),
-                                                              child: Text(
-                                                                "60:00",
-                                                                style: TextStyle(
-                                                                    fontSize: 35,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                // (테마 5번) 인원 수 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 5번) 인원 수 text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "플레이 인원 수",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                                textAlign: TextAlign
-                                                                    .center,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 5번) 인원 수 전체 container
-                                                        Container(
-                                                          child: Row(
+                                      // 테마 5번 전체 Container
+                                      Expanded(
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 10, bottom:10),
+                                          color: Color(skyblue),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    // 5번 테마 기본 시간 전체 Container
+                                                    Expanded(
+                                                      child: Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: 10,
+                                                            top: 0),
+                                                        color: Color(darkblue),
+                                                        child: Center(
+                                                          child: Column(
                                                             children: [
-                                                              // (테마 5번) 인원 수 증가 container
+                                                              // 5번 테마 기본 시간 text container
                                                               Container(
-                                                                width: 40,
-                                                                height: 40,
-                                                                margin:
-                                                                EdgeInsets.only(
-                                                                    top: 15,
-                                                                    left: 15),
-                                                                color: Color(
-                                                                    0x99778899),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _incrementCounter5();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons.add,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top: 10),
+                                                                    child: Text( "기본 플레이 타임",
+                                                                      style: TextStyle(
+                                                                          fontSize: 20,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
 
-                                                              // (테마 5번) 인원 수
+                                                              // 5번 테마 기본 시간 표시 container
                                                               Container(
+                                                                margin: EdgeInsets.only( bottom: 15),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        10),
-                                                                    width: 70,
-                                                                    height: 50,
-                                                                    child: Center(
-                                                                      child:
-                                                                      Container(
-                                                                        child: Text(
-                                                                          '$_counter5명',
-                                                                          style: TextStyle(
-                                                                              fontSize:
-                                                                              35,
-                                                                              fontWeight:
-                                                                              FontWeight.bold),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-
-                                                              // (테마 5번) 인원 수 감소
-                                                              Container(
-                                                                child: Center(
-                                                                  child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        15),
-                                                                    color: Color(
-                                                                        0x99778899),
-                                                                    width: 40,
-                                                                    height: 40,
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _decrementCounter5();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons
-                                                                            .remove,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top:15),
+                                                                    child: Text("60:00",
+                                                                      style: TextStyle(
+                                                                          fontSize:38,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -2530,212 +2227,108 @@ class _StartPageState extends State<StartPage>
                                                             ],
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  width: 255,
-                                                  height: 150,
-                                                  color: Color(darkblue),
-                                                  child: Column(
-                                                    children: [
-                                                      //(테마 5번) 변동 시간 Text Container
-                                                      Center(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              top: 10),
-                                                          child: Text(
-                                                            "변동 시간",
-                                                            style: TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                            textAlign:
-                                                            TextAlign.center,
-                                                          ),
-                                                        ),
                                                       ),
-                                                      Center(
-                                                        child: Row(
+                                                    ),
+                                                    // 5번 테마 인원 수 전체 Container
+                                                    Container(
+                                                      margin: EdgeInsets.only(top: 0, left: 10, right: 10),
+                                                      color: Color(darkblue),
+                                                      child: Center(
+                                                        child: Column(
                                                           children: [
-                                                            // (테마 5번) 테마 시간 Container
+                                                            // 인원수 Text Container
                                                             Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  left: 10),
                                                               child: Center(
                                                                 child: Container(
-                                                                  width: 120,
-                                                                  height: 100,
-                                                                  child: Center(
-                                                                    child:
-                                                                    Container(
-                                                                      child: Text(
-                                                                        '${_TimeCount5.toString().padLeft(2, '0')} : 00',
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                            30,
-                                                                            fontWeight:
-                                                                            FontWeight.bold),
-                                                                      ),
-                                                                    ),
+                                                                  margin: EdgeInsets.only(top: 10),
+                                                                  child: Text(
+                                                                    "플레이 인원 수",
+                                                                    style: TextStyle(
+                                                                        fontSize: 20,
+                                                                        fontWeight: FontWeight.bold),
+                                                                    textAlign: TextAlign.center,
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
 
+                                                            // 인원 수 container
                                                             Container(
-                                                              child: Column(
+                                                              margin: EdgeInsets.only(bottom: 10, right: 15, top: 10),
+                                                              child: Row(
                                                                 children: [
-                                                                  // (테마 5번) 1분 Container
+                                                                  // 인원 수 증가 container
                                                                   Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top: 5),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 5번) 1분 증가 Container
-                                                                        Container(
+                                                                    width: 40,
+                                                                    height: 40,
+                                                                    margin: EdgeInsets.only(
+                                                                        left: 15
+                                                                    ),
+                                                                    color: Color(0x99778899),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        child:
+                                                                        InkWell( onTap:() {
+                                                                          _incrementCounter5();
+                                                                        },
                                                                           child:
-                                                                          Container(
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTime5();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
+                                                                          Icon(Icons.add,size:40),
                                                                         ),
-
-                                                                        // (테마 5번) 1분 감소 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTime5();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
-                                                                        )
-                                                                      ],
+                                                                      ),
                                                                     ),
                                                                   ),
 
-                                                                  // (테마 5번) 10분 Container
+                                                                  // 인원 수 container
                                                                   Container(
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 5번) 10분 증가 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                0),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTenTime5();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            bottom: 5
                                                                         ),
 
-                                                                        // (테마 5번) 10분 감소 Container
-                                                                        Container(
+                                                                        width: 70,
+                                                                        height: 50,
+
+                                                                        child:
+                                                                        Center(
                                                                           child:
                                                                           Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
                                                                             child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTenTime5();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
+                                                                            Text(
+                                                                              '$_counter5명',
+                                                                              style: TextStyle(
+                                                                                  fontSize: 35,
+                                                                                  fontWeight: FontWeight.bold),
+                                                                              textAlign:
+                                                                              TextAlign.center,
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // 인원 수 감소 container
+                                                                  Container(
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+
+                                                                        color: Color(0x99778899),
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        child:
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            _decrementCounter5();
+                                                                          },
+                                                                          child:
+                                                                          Icon(Icons.remove, size:40),
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   )
                                                                 ],
@@ -2743,330 +2336,369 @@ class _StartPageState extends State<StartPage>
                                                             ),
                                                           ],
                                                         ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
-                                                Container(
-                                                  child: Column(
-                                                    children: [
-                                                      // 테마 5번 초기화 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 5),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () {
-                                                              _delall5();
-                                                            },
-                                                            child: Center(
+                                              ),
+
+                                              // 변동 시간 전체 container
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: 10, left: 10),
+                                                      width: 255,
+                                                      height: 150,
+                                                      color: Color(darkblue),
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 5번 변동시간 Text container
+                                                          Center(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  top: 10),
                                                               child: Text(
-                                                                "초기화",
+                                                                "변동 시간",
                                                                 style: TextStyle(
-                                                                    fontSize: 25,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                    letterSpacing:
-                                                                    1.5),
+                                                                    fontSize: 20,
+                                                                    fontWeight: FontWeight.bold
+                                                                ),
+                                                                textAlign: TextAlign.center,
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
 
-                                                      // 테마 5번 튜토리얼 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 15),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () async {
-                                                              if (_counter5 == 0) {
-                                                                showDialog(
-                                                                  context: context,
-                                                                  builder:
-                                                                      (context) =>
-                                                                      AlertDialog(
-                                                                        title: Text(''),
-                                                                        content: Text(
+                                                          Center(
+                                                            child: Row(
+                                                              children: [
+                                                                // 5번 테마 변동 시간 표시
+                                                                Container(
+                                                                  margin: EdgeInsets.only(
+                                                                      left: 10
+                                                                  ),
+                                                                  child: Center(
+                                                                    child:
+                                                                    Container(
+                                                                      width: 120,
+                                                                      height: 100,
+                                                                      child: Center(
+                                                                        child:
+                                                                        Container(
+                                                                          child:
+                                                                          Text(
+                                                                            '${_TimeCount5.toString().padLeft(2, '0')} : 00',
+                                                                            style: TextStyle(
+                                                                                fontSize:
+                                                                                30,
+                                                                                fontWeight:
+                                                                                FontWeight.bold),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+
+                                                                // 5번 테마 시간 증가 감소 container
+                                                                Container(
+                                                                  child: Column(
+                                                                    children: [
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            top: 5
+                                                                        ),
+                                                                        child: Row(
+                                                                          children: [
+                                                                            //5번 테마 1분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTime5();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            //5번 테마 1분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(left: 10),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTime5();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+                                                                        child: Row(
+                                                                          children: [
+                                                                            // 5번 테마 10분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(top: 10, left: 0),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTenTime5();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            // 5번 테마 10분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin:
+                                                                                EdgeInsets.only(top: 10, left: 10),
+                                                                                color:
+                                                                                Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTenTime5();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 5번 초기화 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 5),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  _delall5();
+                                                                },
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    "초기화",
+                                                                    style: TextStyle(
+                                                                        fontSize: 25,
+                                                                        fontWeight: FontWeight.bold,
+                                                                        letterSpacing: 1.5),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+
+                                                          // 테마 5번 튜토리얼 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 15),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () async {
+                                                                  if (_counter5 == 0) {
+                                                                    showDialog(
+                                                                      context:
+                                                                      context,
+                                                                      builder:
+                                                                          (context) => AlertDialog( title: Text(''),
+                                                                        content:Text(
                                                                           '인원수를 입력해주세요!',
                                                                           style: TextStyle(
-                                                                              fontSize:
-                                                                              20),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
+                                                                              fontSize: 20),
+                                                                          textAlign: TextAlign.center,
                                                                         ),
                                                                         actions: [
                                                                           TextButton(
                                                                               onPressed:
                                                                                   () {
-                                                                                Navigator.pop(
-                                                                                    context);
+                                                                                Navigator.pop(context);
                                                                               },
                                                                               child:
                                                                               Text(
                                                                                 '확인',
-                                                                                style: TextStyle(
-                                                                                    fontSize:
-                                                                                    18,
-                                                                                    fontWeight:
-                                                                                    FontWeight.bold),
+                                                                                style:
+                                                                                TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                                                               ))
                                                                         ],
                                                                       ),
-                                                                );
-                                                              } else {
-                                                                Navigator.push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) =>
-                                                                            ThemeTuto5(
-                                                                                PlayTime:
-                                                                                baseTime + _TimeCount5)));
-                                                              }
-                                                            },
-                                                            child: Center(
-                                                              child: Container(
-                                                                  child: Text(
-                                                                      "튜토리얼",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                          25,
-                                                                          fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                          letterSpacing:
-                                                                          1.5))),
+                                                                    );
+                                                                  } else {
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                            builder: (context) => ThemeTuto5(PlayTime: baseTime + _TimeCount5)));
+                                                                  }
+                                                                },
+                                                                child: Center(
+                                                                  child: Container(
+                                                                      child: Text(
+                                                                          "튜토리얼",
+                                                                          style: TextStyle(
+                                                                              fontSize: 25,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              letterSpacing:1.5
+                                                                          )
+                                                                      )
+                                                                  ),
+                                                                ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
 
                               // 테마 6번
-                              Container(
-                                alignment: Alignment.topLeft,
-                                child: Stack(
-                                  children: [
-                                    // (테마 6번) 제목 Container
-                                    Container(
-                                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                      width: 390,
-                                      height: 35,
-                                      //color: Colors.black,
-                                      child: Center(
-                                        child: Text(
-                                          "6",
-                                          textAlign: TextAlign.center,
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    children: [
+                                      // 테마 이름 Contaier
+                                      Center(
+                                        child:  Container(
+                                          margin:
+                                          const EdgeInsets.fromLTRB(0, 15, 0, 10),
+                                          child: Center(
+                                            child: Text( "6",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
 
-                                    // (테마 6번) 전체 코드
-                                    Container(
-                                      margin: EdgeInsets.only(top: 40),
-                                      width: 390,
-                                      height: 300,
-                                      color: Color(skyblue),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                // 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      left: 10, top: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 6번) 플레이 타임 Text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "기본 플레이 타임",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 6번) 플레이 타임 시간 Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 15),
-                                                              child: Text(
-                                                                "60:00",
-                                                                style: TextStyle(
-                                                                    fontSize: 35,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                // (테마 6번) 인원 수 전체 Container
-                                                Container(
-                                                  width: 180,
-                                                  height: 120,
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  color: Color(darkblue),
-                                                  child: Center(
-                                                    child: Column(
-                                                      children: [
-                                                        // (테마 6번) 인원 수 text Container
-                                                        Container(
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  top: 10),
-                                                              child: Text(
-                                                                "플레이 인원 수",
-                                                                style: TextStyle(
-                                                                    fontSize: 20,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                                textAlign: TextAlign
-                                                                    .center,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        // (테마 6번) 인원 수 전체 container
-                                                        Container(
-                                                          child: Row(
+                                      // 테마 6번 전체 Container
+                                      Expanded(
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 10, bottom:10),
+                                          color: Color(skyblue),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    // 6번 테마 기본 시간 전체 Container
+                                                    Expanded(
+                                                      child: Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: 10,
+                                                            top: 0),
+                                                        color: Color(darkblue),
+                                                        child: Center(
+                                                          child: Column(
                                                             children: [
-                                                              // (테마 6번) 인원 수 증가 container
+                                                              // 6번 테마 기본 시간 text container
                                                               Container(
-                                                                width: 40,
-                                                                height: 40,
-                                                                margin:
-                                                                EdgeInsets.only(
-                                                                    top: 15,
-                                                                    left: 15),
-                                                                color: Color(
-                                                                    0x99778899),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _incrementCounter6();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons.add,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top: 10),
+                                                                    child: Text( "기본 플레이 타임",
+                                                                      style: TextStyle(
+                                                                          fontSize: 20,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
 
-                                                              // (테마 6번) 인원 수
+                                                              // 6번 테마 기본 시간 표시 container
                                                               Container(
+                                                                margin: EdgeInsets.only( bottom: 15),
                                                                 child: Center(
                                                                   child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        10),
-                                                                    width: 70,
-                                                                    height: 50,
-                                                                    child: Center(
-                                                                      child:
-                                                                      Container(
-                                                                        child: Text(
-                                                                          '$_counter6명',
-                                                                          style: TextStyle(
-                                                                              fontSize:
-                                                                              35,
-                                                                              fontWeight:
-                                                                              FontWeight.bold),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-
-                                                              // (테마 6번) 인원 수 감소
-                                                              Container(
-                                                                child: Center(
-                                                                  child: Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top:
-                                                                        15),
-                                                                    color: Color(
-                                                                        0x99778899),
-                                                                    width: 40,
-                                                                    height: 40,
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        _decrementCounter6();
-                                                                      },
-                                                                      child: Icon(
-                                                                        Icons
-                                                                            .remove,
-                                                                        size: 40,
-                                                                      ),
+                                                                    margin: EdgeInsets.only(top:15),
+                                                                    child: Text("60:00",
+                                                                      style: TextStyle(
+                                                                          fontSize:38,
+                                                                          fontWeight: FontWeight.bold),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -3074,212 +2706,108 @@ class _StartPageState extends State<StartPage>
                                                             ],
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: 10, left: 10),
-                                                  width: 255,
-                                                  height: 150,
-                                                  color: Color(darkblue),
-                                                  child: Column(
-                                                    children: [
-                                                      //(테마 6번) 변동 시간 Text Container
-                                                      Center(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              top: 10),
-                                                          child: Text(
-                                                            "변동 시간",
-                                                            style: TextStyle(
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                            textAlign:
-                                                            TextAlign.center,
-                                                          ),
-                                                        ),
                                                       ),
-                                                      Center(
-                                                        child: Row(
+                                                    ),
+                                                    // 6번 테마 인원 수 전체 Container
+                                                    Container(
+                                                      margin: EdgeInsets.only(top: 0, left: 10, right: 10),
+                                                      color: Color(darkblue),
+                                                      child: Center(
+                                                        child: Column(
                                                           children: [
-                                                            // (테마 6번) 테마 시간 Container
+                                                            // 인원수 Text Container
                                                             Container(
-                                                              margin:
-                                                              EdgeInsets.only(
-                                                                  left: 10),
                                                               child: Center(
                                                                 child: Container(
-                                                                  width: 120,
-                                                                  height: 100,
-                                                                  child: Center(
-                                                                    child:
-                                                                    Container(
-                                                                      child: Text(
-                                                                        '${_TimeCount6.toString().padLeft(2, '0')} : 00',
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                            30,
-                                                                            fontWeight:
-                                                                            FontWeight.bold),
-                                                                      ),
-                                                                    ),
+                                                                  margin: EdgeInsets.only(top: 10),
+                                                                  child: Text(
+                                                                    "플레이 인원 수",
+                                                                    style: TextStyle(
+                                                                        fontSize: 20,
+                                                                        fontWeight: FontWeight.bold),
+                                                                    textAlign: TextAlign.center,
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
 
+                                                            // 인원 수 container
                                                             Container(
-                                                              child: Column(
+                                                              margin: EdgeInsets.only(bottom: 10, right: 15, top: 10),
+                                                              child: Row(
                                                                 children: [
-                                                                  // (테마 6번) 1분 Container
+                                                                  // 인원 수 증가 container
                                                                   Container(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        top: 5),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 6번) 1분 증가 Container
-                                                                        Container(
+                                                                    width: 40,
+                                                                    height: 40,
+                                                                    margin: EdgeInsets.only(
+                                                                        left: 15
+                                                                    ),
+                                                                    color: Color(0x99778899),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        child:
+                                                                        InkWell( onTap:() {
+                                                                          _incrementCounter6();
+                                                                        },
                                                                           child:
-                                                                          Container(
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTime6();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
+                                                                          Icon(Icons.add,size:40),
                                                                         ),
-
-                                                                        // (테마 6번) 1분 감소 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTime6();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-1',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
-                                                                        )
-                                                                      ],
+                                                                      ),
                                                                     ),
                                                                   ),
 
-                                                                  // (테마 6번) 10분 Container
+                                                                  // 인원 수 container
                                                                   Container(
-                                                                    child: Row(
-                                                                      children: [
-                                                                        // (테마 6번) 10분 증가 Container
-                                                                        Container(
-                                                                          child:
-                                                                          Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                0),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
-                                                                            child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _incrementTenTime6();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '+10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
-                                                                            ),
-                                                                          ),
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            bottom: 5
                                                                         ),
 
-                                                                        // (테마 6번) 10분 감소 Container
-                                                                        Container(
+                                                                        width: 70,
+                                                                        height: 50,
+
+                                                                        child:
+                                                                        Center(
                                                                           child:
                                                                           Container(
-                                                                            margin: EdgeInsets.only(
-                                                                                top:
-                                                                                10,
-                                                                                left:
-                                                                                10),
-                                                                            color: Color(
-                                                                                0x99778899),
-                                                                            width:
-                                                                            50,
-                                                                            height:
-                                                                            40,
                                                                             child:
-                                                                            InkWell(
-                                                                              onTap:
-                                                                                  () {
-                                                                                _decrementTenTime6();
-                                                                              },
-                                                                              child: Center(
-                                                                                  child: Text(
-                                                                                    '-10',
-                                                                                    style:
-                                                                                    TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                                                                                    textAlign:
-                                                                                    TextAlign.center,
-                                                                                  )),
+                                                                            Text(
+                                                                              '$_counter6명',
+                                                                              style: TextStyle(
+                                                                                  fontSize: 35,
+                                                                                  fontWeight: FontWeight.bold),
+                                                                              textAlign:
+                                                                              TextAlign.center,
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+
+                                                                  // 인원 수 감소 container
+                                                                  Container(
+                                                                    child: Center(
+                                                                      child:
+                                                                      Container(
+
+                                                                        color: Color(0x99778899),
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        child:
+                                                                        InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            _decrementCounter6();
+                                                                          },
+                                                                          child:
+                                                                          Icon(Icons.remove, size:40),
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   )
                                                                 ],
@@ -3287,134 +2815,302 @@ class _StartPageState extends State<StartPage>
                                                             ),
                                                           ],
                                                         ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
-                                                Container(
-                                                  child: Column(
-                                                    children: [
-                                                      // 테마 6번 초기화 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 5),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () {
-                                                              _delall6();
-                                                            },
-                                                            child: Center(
+                                              ),
+
+                                              // 변동 시간 전체 container
+                                              Container(
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: 10, left: 10),
+                                                      width: 255,
+                                                      height: 150,
+                                                      color: Color(darkblue),
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 6번 변동시간 Text container
+                                                          Center(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  top: 10),
                                                               child: Text(
-                                                                "초기화",
+                                                                "변동 시간",
                                                                 style: TextStyle(
-                                                                    fontSize: 25,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                    letterSpacing:
-                                                                    1.5),
+                                                                    fontSize: 20,
+                                                                    fontWeight: FontWeight.bold
+                                                                ),
+                                                                textAlign: TextAlign.center,
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
 
-                                                      // 테마 6번 튜토리얼 버튼 Continer
-                                                      Container(
-                                                        child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 15, top: 15),
-                                                          height: 60,
-                                                          width: 100,
-                                                          decoration: BoxDecoration(
-                                                              color:
-                                                              Color(darkblue),
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  15)),
-                                                          child: InkWell(
-                                                            onTap: () async {
-                                                              if (_counter6 == 0) {
-                                                                showDialog(
-                                                                  context: context,
-                                                                  builder:
-                                                                      (context) =>
-                                                                      AlertDialog(
-                                                                        title: Text(''),
-                                                                        content: Text(
+                                                          Center(
+                                                            child: Row(
+                                                              children: [
+                                                                // 6번 테마 변동 시간 표시
+                                                                Container(
+                                                                  margin: EdgeInsets.only(
+                                                                      left: 10
+                                                                  ),
+                                                                  child: Center(
+                                                                    child:
+                                                                    Container(
+                                                                      width: 120,
+                                                                      height: 100,
+                                                                      child: Center(
+                                                                        child:
+                                                                        Container(
+                                                                          child:
+                                                                          Text(
+                                                                            '${_TimeCount6.toString().padLeft(2, '0')} : 00',
+                                                                            style: TextStyle(
+                                                                                fontSize:
+                                                                                30,
+                                                                                fontWeight:
+                                                                                FontWeight.bold),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+
+                                                                // 6번 테마 시간 증가 감소 container
+                                                                Container(
+                                                                  child: Column(
+                                                                    children: [
+                                                                      Container(
+                                                                        margin: EdgeInsets.only(
+                                                                            top: 5
+                                                                        ),
+                                                                        child: Row(
+                                                                          children: [
+                                                                            //6번 테마 1분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTime6();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            //6번 테마 1분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(left: 10),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTime6();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-1',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+                                                                        child: Row(
+                                                                          children: [
+                                                                            // 6번 테마 10분 증가
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin: EdgeInsets.only(top: 10, left: 0),
+                                                                                color: Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _incrementTenTime6();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '+10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+                                                                            // 6번 테마 10분 감소
+                                                                            Container(
+                                                                              child:
+                                                                              Container(
+                                                                                margin:
+                                                                                EdgeInsets.only(top: 10, left: 10),
+                                                                                color:
+                                                                                Color(0x99778899),
+                                                                                width: 50,
+                                                                                height: 40,
+                                                                                child:
+                                                                                InkWell(
+                                                                                  onTap: () {
+                                                                                    _decrementTenTime6();
+                                                                                  },
+                                                                                  child: Center(
+                                                                                      child: Text(
+                                                                                        '-10',
+                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                                        textAlign: TextAlign.center,
+                                                                                      )),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      child: Column(
+                                                        children: [
+                                                          // 테마 6번 초기화 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 5),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  _delall6();
+                                                                },
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    "초기화",
+                                                                    style: TextStyle(
+                                                                        fontSize: 25,
+                                                                        fontWeight: FontWeight.bold,
+                                                                        letterSpacing: 1.5),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+
+                                                          // 테마 6번 튜토리얼 버튼
+                                                          Container(
+                                                            child: Container(
+                                                              margin:
+                                                              EdgeInsets.only(
+                                                                  left: 15,
+                                                                  top: 15),
+                                                              height: 60,
+                                                              width: 100,
+                                                              decoration: BoxDecoration(
+                                                                  color: Color(
+                                                                      darkblue),
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(15)),
+                                                              child: InkWell(
+                                                                onTap: () async {
+                                                                  if (_counter6 == 0) {
+                                                                    showDialog(
+                                                                      context:
+                                                                      context,
+                                                                      builder:
+                                                                          (context) => AlertDialog( title: Text(''),
+                                                                        content:Text(
                                                                           '인원수를 입력해주세요!',
                                                                           style: TextStyle(
-                                                                              fontSize:
-                                                                              20),
-                                                                          textAlign:
-                                                                          TextAlign
-                                                                              .center,
+                                                                              fontSize: 20),
+                                                                          textAlign: TextAlign.center,
                                                                         ),
                                                                         actions: [
                                                                           TextButton(
                                                                               onPressed:
                                                                                   () {
-                                                                                Navigator.pop(
-                                                                                    context);
+                                                                                Navigator.pop(context);
                                                                               },
                                                                               child:
                                                                               Text(
                                                                                 '확인',
-                                                                                style: TextStyle(
-                                                                                    fontSize:
-                                                                                    18,
-                                                                                    fontWeight:
-                                                                                    FontWeight.bold),
+                                                                                style:
+                                                                                TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                                                               ))
                                                                         ],
                                                                       ),
-                                                                );
-                                                              } else {
-                                                                Navigator.push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) =>
-                                                                            ThemeTuto6(
-                                                                                PlayTime:
-                                                                                baseTime + _TimeCount6)));
-                                                              }
-                                                            },
-                                                            child: Center(
-                                                              child: Container(
-                                                                  child: Text(
-                                                                      "튜토리얼",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                          25,
-                                                                          fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                          letterSpacing:
-                                                                          1.5))),
+                                                                    );
+                                                                  } else {
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                            builder: (context) => ThemeTuto6(PlayTime: baseTime + _TimeCount6)));
+                                                                  }
+                                                                },
+                                                                child: Center(
+                                                                  child: Container(
+                                                                      child: Text(
+                                                                          "튜토리얼",
+                                                                          style: TextStyle(
+                                                                              fontSize: 25,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              letterSpacing:1.5
+                                                                          )
+                                                                      )
+                                                                  ),
+                                                                ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
