@@ -8,6 +8,9 @@ import 'package:percent_indicator/percent_indicator.dart';
 
 
 final skyblue = 0x99ADD8E6;
+final green1 = 0x998FBC8F;  // 다크 씨그린
+final green2 = 0x9990EE90;  // 팔레 그린
+final green3 = 0x99F0FFF0;  // 허니듀
 
 bool isSliderTouched = false;
 
@@ -240,15 +243,15 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []); // 하단 창 지우기
 
     // 힌트 코드 사용 시 배경 색 변경
-    Color hintbackcolor1 = _onHintCode1 ? Color(skyblue) : Colors.white;
-    Color hintbackcolor2 = _onHintCode2 ? Color(skyblue) : Colors.white;
-    Color hintbackcolor3 = _onHintCode3 ? Color(skyblue) : Colors.white;
-    Color hintbackcolor4 = _onHintCode4 ? Color(skyblue) : Colors.white;
-    Color hintbackcolor5 = _onHintCode5 ? Color(skyblue) : Colors.white;
-    Color hintbackcolor6 = _onHintCode6 ? Color(skyblue) : Colors.white;
-    Color hintbackcolor7 = _onHintCode7 ? Color(skyblue) : Colors.white;
-    Color hintbackcolor8 = _onHintCode8 ? Color(skyblue) : Colors.white;
-    Color hintbackcolor9 = _onHintCode9 ? Color(skyblue) : Colors.white;
+    Color hintbackcolor1 = _onHintCode1 ? Color(green2) : Colors.white;
+    Color hintbackcolor2 = _onHintCode2 ? Color(green2) : Colors.white;
+    Color hintbackcolor3 = _onHintCode3 ? Color(green2) : Colors.white;
+    Color hintbackcolor4 = _onHintCode4 ? Color(green2) : Colors.white;
+    Color hintbackcolor5 = _onHintCode5 ? Color(green2) : Colors.white;
+    Color hintbackcolor6 = _onHintCode6 ? Color(green2) : Colors.white;
+    Color hintbackcolor7 = _onHintCode7 ? Color(green2) : Colors.white;
+    Color hintbackcolor8 = _onHintCode8 ? Color(green2) : Colors.white;
+    Color hintbackcolor9 = _onHintCode9 ? Color(green2) : Colors.white;
 
 
 
@@ -261,7 +264,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
               child: AppBar(
                 //centerTitle: true,
                   automaticallyImplyLeading: false, // 좌측 탭에 뒤로가기 버튼 삭제
-                  backgroundColor: Color(skyblue),
+                  backgroundColor: Color(green2),
                   flexibleSpace: Container(
                     margin: const EdgeInsets.fromLTRB(80, 0, 0, 0),
                     child: Image.asset("images/logo.png"),
@@ -285,7 +288,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                     margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     width: 380,
                     height: 150,
-                    color: Color(skyblue),
+                    color: Color(green2),
                     child: Center(
                       child: Container(
                         width: 360,
@@ -328,7 +331,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                                         margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
                                         width: 120,
                                         height: 100,
-                                        color: Color(0x99ADD8E6),
+                                        color: Color(green2),
 
                                         child: Center(
                                           child: Text(
@@ -361,7 +364,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
 
                                         width: 120,
                                         height: 100,
-                                        color: Color(0x99ADD8E6),
+                                        color: Color(green2),
 
                                         child: Center(
                                           child: Text(
@@ -385,7 +388,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                           margin: const EdgeInsets.fromLTRB(276, 20, 0, 0),
                           width: 120,
                           height: 70,
-                          color: Color(skyblue),
+                          color: Color(green2),
                           child: Center(
                             child: Container(
                               child: InkWell(
@@ -429,7 +432,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                               margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
                               width: 390,
                               height: 440,
-                              color: Color(skyblue),
+                              color: Color(green2),
                             ),
                             Container(
                               margin: EdgeInsets.fromLTRB(30, 40, 0, 0),
@@ -471,7 +474,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                               width: 100,
                               height: 60,
                               decoration: BoxDecoration(
-                                  color: Colors.black54,
+                                  color: Color(green1),
                                   borderRadius: BorderRadius.circular(20)
                               ),
                               child: InkWell(
@@ -704,7 +707,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                                 margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
                                 width: 390,
                                 height: 450,
-                                color: Color(skyblue)
+                                color: Color(green2)
                             ),
                             Container(
                               margin: EdgeInsets.fromLTRB(30, 110, 0, 0),
@@ -746,7 +749,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                               width: 100,
                               height: 60,
                               decoration: BoxDecoration(
-                                  color: Colors.black54,
+                                  color: Color(green1),
                                   borderRadius: BorderRadius.circular(20)
                               ),
                               child: InkWell(
@@ -915,7 +918,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                                     child: LinearPercentIndicator(
                                       alignment: MainAxisAlignment.center,
                                       width: 370, // 바 넓이
-
+                                      backgroundColor: Color(green3),
                                       animation: true,
                                       animationDuration: 1200, // 애니메이션 지속 시간
                                       lineHeight: 40,
@@ -925,7 +928,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                                         style: TextStyle(fontSize: 20),
                                       ),
                                       barRadius: Radius.circular(13),
-                                      progressColor: Colors.black54,
+                                      progressColor: Color(green1),
                                     )),
                               ),
 

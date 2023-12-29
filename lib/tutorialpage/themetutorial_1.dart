@@ -5,6 +5,7 @@ import 'package:hint_app_7/startpage.dart';
 import 'package:hint_app_7/themepage/themepage_1.dart';
 
 final skyblue = 0x99add8e6;
+final red2 = 0x99FA8072;
 
 
 class ThemeTuto1 extends StatefulWidget{
@@ -36,7 +37,7 @@ class _MyWidgetState extends State<ThemeTuto1>{
         child: Center(
           child: Container(
             child: AppBar(
-              backgroundColor: Color(darkblue),
+              backgroundColor: Color(red2),
               flexibleSpace: Center(
                 child: Container(
                   child: Text('튜토리얼1',
@@ -198,7 +199,7 @@ class _MyWidgetState extends State<ThemeTuto1>{
                           height: 80,
                           width: 140,
                           decoration: BoxDecoration(
-                              color: Color(darkblue),  // 상자 크기
+                              color: Color(red2),  // 상자 크기
                               borderRadius: BorderRadius.circular(20) // 모서리 둥굴게
                           ),
                           child: InkWell(

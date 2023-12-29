@@ -35,7 +35,7 @@ class _MyWidgetState extends State<ThemeTuto4>{
         child: Center(
           child: Container(
             child: AppBar(
-              backgroundColor: Color(darkblue),
+              backgroundColor: Color(green2),
               flexibleSpace: Center(
                 child: Container(
                   child: Text('튜토리얼4',
@@ -197,7 +197,7 @@ class _MyWidgetState extends State<ThemeTuto4>{
                           height: 70,
                           width: 140,
                           decoration: BoxDecoration(
-                              color: Color(darkblue),  // 상자 크기
+                              color: Color(green2),  // 상자 크기
                               borderRadius: BorderRadius.circular(20) // 모서리 둥굴게
                           ),
                           child: InkWell(
