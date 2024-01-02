@@ -62,11 +62,6 @@ class _StartPageState extends State<StartPage>
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
-    var mediaQuery = MediaQuery.of(context);
-
-    double screenWidth = mediaQuery.size.width;
-    double screenHeignt = mediaQuery.size.height;
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: PreferredSize(
