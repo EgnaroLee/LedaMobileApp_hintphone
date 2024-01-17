@@ -31,141 +31,111 @@ class _HintPageState extends State<Theme1HintPage1> {
     double screenWidth = mediaQuery.size.width;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(110),
-          child: Center(
-            child: Container(
-              child: AppBar(
-                  backgroundColor: Color(skyblue),
-                  flexibleSpace: Center(
-                    child: Container(
-                        child: Text(
-                      "힌트 1번",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    )),
-                  ),
-                  automaticallyImplyLeading: false // 앱바 상단에 뒤로가기 버튼 삭제
-                  ),
-            ),
-          )),
-      body: WillPopScope(
-        onWillPop: () {
-          return Future(() => false);
-        },
-        child: Center(
-          child: Container(
-              color: Colors.white,
-              width: screenWidth,
-              child: Column(
-                children: [
-                  Flexible(
-                    child: Container(
-                      child: Expanded(
-                        child: Container(
-                          color: Color(skyblue),
-                          margin: EdgeInsets.all(10),
-                          child: Center(
-                              child: Container(
-                                  child: Text(
-                            "힌트 내용",
-                            style: TextStyle(
-                              fontSize: 28,
-                            ),
-                            textAlign: TextAlign.center,
-                          ))),
-                        ),
-                      ),
-                    ),
-                    flex: 8,
-                  ),
-                  Flexible(
-                    child: Container(
-                      child: Center(
-                          child: Container(
-                        color: Colors.white,
-                        child: Row(
-                          children: [
-                            Container(
-                              child: Expanded(
-                                child: Container(
-                                  child: Center(
-                                      child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Color(darkblue),
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
-                                    child: InkWell(
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Center(
-                                            child: Container(
-                                          child: AutoSizeText(
-                                            "뒤로가기",
-                                            style: TextStyle(
-                                                fontSize: 40,
-                                                fontWeight: FontWeight.bold),
-                                            textAlign: TextAlign.center,
-                                            maxLines: 1,
-                                          ),
-                                        ))),
-                                  )),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              child: Expanded(
-                                child: Container(
-                                  child: Center(
-                                      child: Container(
-                                    child: InkWell(
-                                        onTap: () {
-                                          showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return ShowAnswer1();
-                                              });
-                                        },
-                                        child: Center(
-                                            child: Container(
-                                                margin: EdgeInsets.fromLTRB(
-                                                    5, 10, 5, 10),
-                                                decoration: BoxDecoration(
-                                                  color: Color(darkblue),
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                ),
-                                                child: Center(
-                                                    child: Container(
-                                                  margin: EdgeInsets.all(10),
-                                                  child: AutoSizeText(
-                                                    "정답보기",
-                                                    style: TextStyle(
-                                                        fontSize: 40,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 1,
-                                                  ),
-                                                ))))),
-                                  )),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+        resizeToAvoidBottomInset: false,
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(110),
+            child: Center(
+              child: Container(
+                child: AppBar(
+                    backgroundColor: Color(skyblue),
+                    flexibleSpace: Center(
+                      child: Container(
+                          child: Text(
+                        "힌트 1번",
+                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
                       )),
                     ),
-                    flex: 1,
-                  )
-                ],
-              )),
-        ),
-      ),
-    );
+                    automaticallyImplyLeading: false // 앱바 상단에 뒤로가기 버튼 삭제
+                    ),
+              ),
+            )),
+        body: WillPopScope(
+          onWillPop: () {
+            return Future(() => false);
+          },
+          child: Center(
+              child: Expanded(
+                  child: Container(
+            color: Color(skyblue),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(
+                    child: Container(
+                      color: Colors.white,
+                      margin: EdgeInsets.all(10),
+                      child: Expanded(
+                        child: Container(),
+                      ),
+                    ),
+                    flex: 9),
+                Flexible(
+                  child: Container(
+                    margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                              child: Container(
+                                margin: EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(color: Color(darkblue), borderRadius: BorderRadius.circular(20)),
+                                child: Center(
+                                  child: Container(
+                                      child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Center(
+                                      child: Container(
+                                        child: AutoSizeText(
+                                          "뒤로가기",
+                                          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                                          maxLines: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  )),
+                                ),
+                              ),
+                              flex: 1),
+                          Flexible(
+                              child: Container(
+                            child: Center(
+                              child: Container(
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(color: Color(darkblue), borderRadius: BorderRadius.circular(20)),
+                                  child: InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return ShowAnswer1();
+                                          });
+                                    },
+                                    child: Center(
+                                      child: Container(
+                                        child: AutoSizeText(
+                                          "정답보기",
+                                          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                                          textAlign: TextAlign.center,
+                                          maxLines: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  )),
+                            ),
+                          ))
+                        ],
+                      ),
+                    ),
+                  ),
+                  flex: 1,
+                )
+              ],
+            ),
+          ))),
+        ));
   }
 }
 
@@ -222,9 +192,7 @@ class ShowAnswerState extends State<ShowAnswer1> {
                               child: Container(
                                 child: AutoSizeText(
                                   "닫기",
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.center,
                                   maxLines: 1,
                                 ),
