@@ -191,7 +191,7 @@ class ShowAnswerState extends State<ShowAnswer1> {
                             child: Center(
                               child: Container(
                                 child: AutoSizeText(
-                                  "닫기",
+                                  "닫기1",
                                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.center,
                                   maxLines: 1,

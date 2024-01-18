@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hint_app_7/startpage.dart';
 
-class Theme1HintPage5 extends StatefulWidget {
-  const Theme1HintPage5({super.key});
+class Theme1HintPage6 extends StatefulWidget {
+  const Theme1HintPage6({super.key});
 
   @override
-  State<Theme1HintPage5> createState() => _HintPageState();
+  State<Theme1HintPage6> createState() => _HintPageState();
 }
 
-class _HintPageState extends State<Theme1HintPage5> {
+class _HintPageState extends State<Theme1HintPage6> {
   @override
   void initState() {
     super.initState();
@@ -41,7 +41,7 @@ class _HintPageState extends State<Theme1HintPage5> {
                     flexibleSpace: Center(
                       child: Container(
                           child: Text(
-                            "5번 힌트 페이지",
+                            "6번 힌트 페이지",
                             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
                           )),
                     ),
@@ -165,7 +165,7 @@ class ShowAnswerState extends State<ShowAnswer> {
                     child: Container(
                         child: Center(
                           child: Container(
-                            child: Image.asset("images/4.png"),
+                            child: Image.asset("images/1.png"),
                           ),
                         )),
                   ),
@@ -191,7 +191,7 @@ class ShowAnswerState extends State<ShowAnswer> {
                             child: Center(
                               child: Container(
                                 child: AutoSizeText(
-                                  "닫기5",
+                                  "닫기6",
                                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.center,
                                   maxLines: 1,
