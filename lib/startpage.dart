@@ -16,6 +16,27 @@ import 'package:hint_app_7/tutorialpage/themetutorial_6.dart';
 final skyblue = 0x99add8e6;
 final darkblue = 0x99778899;
 
+final red1 = 0x99CD5C5C;
+final red2 = 0x99FA8072;
+final red3 = 0x99FFE4E1;
+
+final orange1 = 0x99D2691E;
+final orange2 = 0x99FF8C00;
+final orange3 = 0x99FFEBCD;
+
+final yellow1 = 0x99DAA520;
+final yellow2 = 0x99FFD700;
+final yellow3 = 0x99FFFFE0;
+
+final green1 = 0x998FBC8F;  // 다크 씨그린
+final green2 = 0x9990EE90;  // 팔레 그린
+final green3 = 0x99F0FFF0;  // 허니듀
+
+final purple1 = 0x998C83CC;
+final purple2 = 0x99C0B2DB;
+final purple3 = 0x99F0F0FA;
+
+
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
 

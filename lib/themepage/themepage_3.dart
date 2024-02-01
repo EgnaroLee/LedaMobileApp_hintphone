@@ -10,7 +10,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 final skyblue = 0x99ADD8E6;
 final yellow1 = 0x99DAA520;
 final yellow2 = 0x99FFD700;
-final yellow3 = 0x99FFFFE0	;
+final yellow3 = 0x99FFFFE0;
 
 bool isSliderTouched = false;
 

@@ -157,16 +157,6 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
   var _homecode = "#0000";
   var _hintclear = "#0987";
 
-  // 힌트 사용 시 힌트 사용 목록에 추가
-  var _useHint1 = "";
-  var _useHint2 = "";
-  var _useHint3 = "";
-  var _useHint4 = "";
-  var _useHint5 = "";
-  var _useHint6 = "";
-  var _useHint7 = "";
-  var _useHint8 = "";
-  var _useHint9 = "";
 
   // 힌트 사용 시 하단에 해당 페이지로 이동하는 버튼 추가
   bool _ShowHintBtn1 = false;
