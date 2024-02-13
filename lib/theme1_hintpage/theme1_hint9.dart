@@ -41,12 +41,12 @@ class _HintPageState extends State<Theme1HintPage9> {
                     flexibleSpace: Center(
                       child: Container(
                           child: Text(
-                            "9번 힌트 페이지",
-                            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
-                          )),
+                        "9번 힌트 페이지",
+                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                      )),
                     ),
                     automaticallyImplyLeading: false // 앱바 상단에 뒤로가기 버튼 삭제
-                ),
+                    ),
               ),
             )),
         body: WillPopScope(
@@ -56,85 +56,85 @@ class _HintPageState extends State<Theme1HintPage9> {
           child: Center(
               child: Expanded(
                   child: Container(
-                    color: Color(skyblue),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Flexible(
-                            child: Container(
-                              color: Colors.white,
-                              margin: EdgeInsets.all(10),
-                              child: Expanded(
-                                child: Container(),
-                              ),
-                            ),
-                            flex: 9),
-                        Flexible(
-                          child: Container(
-                            margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Flexible(
+            color: Color(skyblue),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(
+                    child: Container(
+                      color: Colors.white,
+                      margin: EdgeInsets.all(10),
+                      child: Expanded(
+                        child: Container(),
+                      ),
+                    ),
+                    flex: 9),
+                Flexible(
+                  child: Container(
+                    margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                              child: Container(
+                                margin: EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(color: Color(darkblue), borderRadius: BorderRadius.circular(20)),
+                                child: Center(
+                                  child: Container(
+                                      child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Center(
                                       child: Container(
-                                        margin: EdgeInsets.only(right: 10),
-                                        decoration: BoxDecoration(color: Color(darkblue), borderRadius: BorderRadius.circular(20)),
-                                        child: Center(
-                                          child: Container(
-                                              child: InkWell(
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Center(
-                                                  child: Container(
-                                                    child: AutoSizeText(
-                                                      "뒤로가기",
-                                                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
-                                                      maxLines: 1,
-                                                    ),
-                                                  ),
-                                                ),
-                                              )),
+                                        child: AutoSizeText(
+                                          "뒤로가기",
+                                          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                                          maxLines: 1,
                                         ),
                                       ),
-                                      flex: 1),
-                                  Flexible(
-                                      child: Container(
-                                        child: Center(
-                                          child: Container(
-                                              margin: EdgeInsets.only(left: 10),
-                                              decoration: BoxDecoration(color: Color(darkblue), borderRadius: BorderRadius.circular(20)),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext context) {
-                                                        return ShowAnswer();
-                                                      });
-                                                },
-                                                child: Center(
-                                                  child: Container(
-                                                    child: AutoSizeText(
-                                                      "정답보기",
-                                                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
-                                                      textAlign: TextAlign.center,
-                                                      maxLines: 1,
-                                                    ),
-                                                  ),
-                                                ),
-                                              )),
-                                        ),
-                                      ))
-                                ],
+                                    ),
+                                  )),
+                                ),
                               ),
+                              flex: 1),
+                          Flexible(
+                              child: Container(
+                            child: Center(
+                              child: Container(
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(color: Color(darkblue), borderRadius: BorderRadius.circular(20)),
+                                  child: InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return ShowAnswer();
+                                          });
+                                    },
+                                    child: Center(
+                                      child: Container(
+                                        child: AutoSizeText(
+                                          "정답보기",
+                                          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                                          textAlign: TextAlign.center,
+                                          maxLines: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  )),
                             ),
-                          ),
-                          flex: 1,
-                        )
-                      ],
+                          ))
+                        ],
+                      ),
                     ),
-                  ))),
+                  ),
+                  flex: 1,
+                )
+              ],
+            ),
+          ))),
         ));
   }
 }
@@ -164,10 +164,10 @@ class ShowAnswerState extends State<ShowAnswer> {
                   child: Expanded(
                     child: Container(
                         child: Center(
-                          child: Container(
-                            child: Image.asset("images/2.png"),
-                          ),
-                        )),
+                      child: Container(
+                        child: Image.asset("images/2.png"),
+                      ),
+                    )),
                   ),
                 ),
                 flex: 8),
@@ -191,7 +191,7 @@ class ShowAnswerState extends State<ShowAnswer> {
                             child: Center(
                               child: Container(
                                 child: AutoSizeText(
-                                  "닫기9",
+                                  "닫기",
                                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.center,
                                   maxLines: 1,

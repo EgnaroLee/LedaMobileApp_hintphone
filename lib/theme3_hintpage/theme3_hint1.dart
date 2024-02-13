@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hint_app_7/startpage.dart';
 
-class Theme2HintPage9 extends StatefulWidget {
-  const Theme2HintPage9({super.key});
+class Theme3HintPage1 extends StatefulWidget {
+  const Theme3HintPage1({super.key});
 
   @override
-  State<Theme2HintPage9> createState() => _HintPageState();
+  State<Theme3HintPage1> createState() => _HintPageState();
 }
 
-class _HintPageState extends State<Theme2HintPage9> {
+class _HintPageState extends State<Theme3HintPage1> {
   @override
   void initState() {
     super.initState();
@@ -41,7 +41,7 @@ class _HintPageState extends State<Theme2HintPage9> {
                     flexibleSpace: Center(
                       child: Container(
                           child: Text(
-                            "힌트 9번",
+                            "힌트 1번",
                             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
                           )),
                     ),

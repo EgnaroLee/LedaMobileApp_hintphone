@@ -15,6 +15,7 @@ import 'package:hint_app_7/tutorialpage/themetutorial_6.dart';
 
 final skyblue = 0x99add8e6;
 final darkblue = 0x99778899;
+final blue1 = 0x99F0FFFF;
 
 final red1 = 0x99CD5C5C;
 final red2 = 0x99FA8072;

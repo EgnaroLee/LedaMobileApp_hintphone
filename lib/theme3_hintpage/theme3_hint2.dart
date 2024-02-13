@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hint_app_7/startpage.dart';
 
-class Theme1HintPage2 extends StatefulWidget {
-  const Theme1HintPage2({super.key});
+class Theme3HintPage2 extends StatefulWidget {
+  const Theme3HintPage2({super.key});
 
   @override
-  State<Theme1HintPage2> createState() => _HintPageState();
+  State<Theme3HintPage2> createState() => _HintPageState();
 }
 
-class _HintPageState extends State<Theme1HintPage2> {
+class _HintPageState extends State<Theme3HintPage2> {
   @override
   void initState() {
     super.initState();
@@ -110,7 +110,7 @@ class _HintPageState extends State<Theme1HintPage2> {
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
-                                            return ShowAnswer();
+                                            return ShowAnswer1();
                                           });
                                     },
                                     child: Center(
@@ -139,14 +139,14 @@ class _HintPageState extends State<Theme1HintPage2> {
   }
 }
 
-class ShowAnswer extends StatefulWidget {
-  const ShowAnswer({super.key});
+class ShowAnswer1 extends StatefulWidget {
+  const ShowAnswer1({super.key});
 
   @override
   ShowAnswerState createState() => ShowAnswerState();
 }
 
-class ShowAnswerState extends State<ShowAnswer> {
+class ShowAnswerState extends State<ShowAnswer1> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);

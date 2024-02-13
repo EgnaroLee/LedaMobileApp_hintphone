@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hint_app_7/startpage.dart';
 
-class Theme1HintPage2 extends StatefulWidget {
-  const Theme1HintPage2({super.key});
+class Theme6HintPage9 extends StatefulWidget {
+  const Theme6HintPage9({super.key});
 
   @override
-  State<Theme1HintPage2> createState() => _HintPageState();
+  State<Theme6HintPage9> createState() => _HintPageState();
 }
 
-class _HintPageState extends State<Theme1HintPage2> {
+class _HintPageState extends State<Theme6HintPage9> {
   @override
   void initState() {
     super.initState();
@@ -41,7 +41,7 @@ class _HintPageState extends State<Theme1HintPage2> {
                     flexibleSpace: Center(
                       child: Container(
                           child: Text(
-                        "힌트 2번",
+                        "힌트 9번",
                         style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
                       )),
                     ),
@@ -110,7 +110,7 @@ class _HintPageState extends State<Theme1HintPage2> {
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
-                                            return ShowAnswer();
+                                            return ShowAnswer1();
                                           });
                                     },
                                     child: Center(
@@ -139,14 +139,14 @@ class _HintPageState extends State<Theme1HintPage2> {
   }
 }
 
-class ShowAnswer extends StatefulWidget {
-  const ShowAnswer({super.key});
+class ShowAnswer1 extends StatefulWidget {
+  const ShowAnswer1({super.key});
 
   @override
   ShowAnswerState createState() => ShowAnswerState();
 }
 
-class ShowAnswerState extends State<ShowAnswer> {
+class ShowAnswerState extends State<ShowAnswer1> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);

@@ -1,16 +1,23 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:hint_app_7/startpage.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-
-final skyblue = 0x99ADD8E6;
-final purple1 = 0x998C83CC;
-final purple2 = 0x99C0B2DB;
-final purple3 = 0x99F0F0FA;
+import 'package:hint_app_7/startpage.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint1.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint2.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint3.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint4.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint5.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint6.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint7.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint8.dart';
+import 'package:hint_app_7/theme6_hintpage/theme6_hint9.dart';
 
 bool isSliderTouched = false;
 
@@ -21,12 +28,13 @@ class DotInfo {
   final Color color;
 }
 
-class DrawingP with ChangeNotifier{  //provider
+class DrawingP with ChangeNotifier {
+  //provider
   final lines = <List<DotInfo>>[];
   double _size = 3;
   double get size => _size;
 
-  set changeSize(double size){
+  set changeSize(double size) {
     _size = size;
     notifyListeners();
   }
@@ -41,7 +49,7 @@ class DrawingP with ChangeNotifier{  //provider
   bool _earsemode = false;
   bool get erasemode => _earsemode;
 
-  void changeEraseMode(){
+  void changeEraseMode() {
     _earsemode = !_earsemode;
     notifyListeners();
   }
@@ -62,9 +70,7 @@ class DrawingP with ChangeNotifier{  //provider
     final _eraseRound = 15;
     for (var oneLine in List<List<DotInfo>>.from(lines)) {
       for (var oneDot in oneLine) {
-        if (sqrt(pow(offset.dx - oneDot.offset.dx, 2) +
-            pow(offset.dy - oneDot.offset.dy, 2)) <
-            _eraseRound) {
+        if (sqrt(pow(offset.dx - oneDot.offset.dx, 2) + pow(offset.dy - oneDot.offset.dy, 2)) < _eraseRound) {
           lines.remove(oneLine);
           break;
         }
@@ -74,42 +80,39 @@ class DrawingP with ChangeNotifier{  //provider
   }
 }
 
-
-class DrawingPainter extends CustomPainter{
+class DrawingPainter extends CustomPainter {
   DrawingPainter(this.lines);
   final List<List<DotInfo>> lines;
   @override
-  void paint(Canvas canvas, Size size){
-    for (var oneLine in lines){
+  void paint(Canvas canvas, Size size) {
+    for (var oneLine in lines) {
       Color? color;
       double? size;
       var l = <Offset>[];
       var p = Path();
-      for(var oneDot in oneLine){
+      for (var oneDot in oneLine) {
         color ??= oneDot.color;
         size ??= oneDot.size;
         l.add(oneDot.offset);
       }
       p.addPolygon(l, false);
-      canvas.drawPath(p, Paint()
-        ..color = color!
-        ..strokeWidth = size!
-        ..strokeCap = StrokeCap.round
-        ..style = PaintingStyle.stroke
-      );
+      canvas.drawPath(
+          p,
+          Paint()
+            ..color = color!
+            ..strokeWidth = size!
+            ..strokeCap = StrokeCap.round
+            ..style = PaintingStyle.stroke);
     }
-
   }
+
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate){
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
-
 }
 
-
-class ThemeScreen6 extends StatefulWidget{
-
+class ThemeScreen6 extends StatefulWidget {
   final int PlayTime;
   ThemeScreen6({required this.PlayTime});
 
@@ -117,8 +120,7 @@ class ThemeScreen6 extends StatefulWidget{
   State<ThemeScreen6> createState() => _ThemeScreenState();
 }
 
-class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderStateMixin{
-
+class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderStateMixin {
   // 타이머
   late Timer _timer;
   int _currentMinutes = 0;
@@ -127,34 +129,28 @@ class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderSta
   // provider
   var p = DrawingP();
 
-
   // 중간 탭
   late TabController _tabController;
-  final List<String> _tablabels = [
-    '힌트', '진행률'
-  ];
+  final List<String> _tablabels = ['힌트', '진행률'];
 
   //textfeild 내용
   TextEditingController _hintText = TextEditingController();
   TextEditingController _percentText = TextEditingController();
 
-
-
   // 힌트 코드
   var _word = "";
 
-
   // 힌트 내용
-  var _showhintcode1 = "1번 힌트";
-  var _showhintcode2 = "2번 힌트";
-  var _showhintcode3 = "3번 힌트";
-  var _showhintcode4 = "4번 힌트";
-  var _showhintcode5 = "5번 힌트";
-  var _showhintcode6 = "6번 힌트";
-  var _showhintcode7 = "7번 힌트";
-  var _showhintcode8 = "8번 힌트";
-  var _showhintcode9 = "9번 힌트";
-
+  // 힌트 사용 시 하단에 해당 페이지로 이동하는 버튼 추가
+  bool _ShowHintBtn1 = false;
+  bool _ShowHintBtn2 = false;
+  bool _ShowHintBtn3 = false;
+  bool _ShowHintBtn4 = false;
+  bool _ShowHintBtn5 = false;
+  bool _ShowHintBtn6 = false;
+  bool _ShowHintBtn7 = false;
+  bool _ShowHintBtn8 = false;
+  bool _ShowHintBtn9 = false;
 
   // 코드
   var _hintcode1 = "#01";
@@ -168,18 +164,6 @@ class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderSta
   var _hintcode9 = "#09";
   var _homecode = "#0000";
   var _hintclear = "#0987";
-
-
-  // 힌트 사용 시 힌트 사용 목록에 추가
-  var _useHint1 = "";
-  var _useHint2 = "";
-  var _useHint3 = "";
-  var _useHint4 = "";
-  var _useHint5 = "";
-  var _useHint6 = "";
-  var _useHint7 = "";
-  var _useHint8 = "";
-  var _useHint9 = "";
 
   bool _onHintCode1 = false;
   bool _onHintCode2 = false;
@@ -196,29 +180,25 @@ class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderSta
   double _percent = 0;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _tabController = TabController(length: _tablabels.length, vsync: this);
     _initializeTimer();
-
   }
 
-  void _initializeTimer(){
+  void _initializeTimer() {
     _currentMinutes = widget.PlayTime;
     _currentSeconds = 0;
 
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
-        if(_currentSeconds > 0) {
+        if (_currentSeconds > 0) {
           _currentSeconds--;
-        }
-
-        else{
-          if(_currentMinutes >0){
+        } else {
+          if (_currentMinutes > 0) {
             _currentMinutes--;
             _currentSeconds = 59;
-          }
-          else{
+          } else {
             _timer.cancel();
           }
         }
@@ -226,8 +206,8 @@ class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderSta
     });
   }
 
-
-  @override void dispose(){
+  @override
+  void dispose() {
     _tabController.dispose();
     super.dispose();
     _hintText.dispose();
@@ -237,9 +217,8 @@ class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderSta
 
   bool isButtonVisible = false;
 
-
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []); // 하단 창 지우기
 
     // 힌트 코드 사용 시 배경 색 변경
@@ -253,842 +232,971 @@ class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderSta
     Color hintbackcolor8 = _onHintCode8 ? Color(purple2) : Colors.white;
     Color hintbackcolor9 = _onHintCode9 ? Color(purple2) : Colors.white;
 
-
-
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(150),
-          child:  Center(
-            child:Container(
-              child: AppBar(
-                //centerTitle: true,
-                  automaticallyImplyLeading: false, // 좌측 탭에 뒤로가기 버튼 삭제
-                  backgroundColor: Color(purple2),
-                  flexibleSpace: Container(
-                    margin: const EdgeInsets.fromLTRB(80, 0, 0, 0),
-                    child: Image.asset("images/logo.png"),
-                  )
-
+        resizeToAvoidBottomInset: false,
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(150),
+            child: Center(
+              child: Container(
+                child: AppBar(
+                    //centerTitle: true,
+                    automaticallyImplyLeading: false, // 좌측 탭에 뒤로가기 버튼 삭제
+                    backgroundColor: Color(purple2),
+                    flexibleSpace: Container(
+                      margin: const EdgeInsets.fromLTRB(80, 0, 0, 0),
+                      child: Image.asset("images/logo.png"),
+                    )),
               ),
-            ),
-          )
-      ),
-      body: WillPopScope(
-        onWillPop: () {
-          return Future(() => false);
-        },
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    width: 380,
-                    height: 150,
-                    color: Color(purple2),
-                    child: Center(
+            )),
+        body: WillPopScope(
+            // 뒤로 가기 금지
+            onWillPop: () {
+              return Future(() => false);
+            },
+            child: Center(
+              child: Container(
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      // ignore: sort_child_properties_last
                       child: Container(
-                        width: 360,
-                        height: 70,
-                        child: Text(
-                          '${_currentMinutes.toString().padLeft(2, '0')} : ${_currentSeconds.toString().padLeft(2, '0')}',
-                          style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    child: Stack(
-                      children: [
-                        GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                childAspectRatio: 1.5,
-                                mainAxisSpacing: 0,
-                                crossAxisSpacing: 0),
-                            itemCount: 3,
-                            itemBuilder: (context, index) {
-                              if (index == 0) {
-                                return GestureDetector(
-                                    onTap: () {
-                                      _tabController.animateTo(index);
-                                    },
-                                    child: Center(
-                                      child: Container(
-                                        margin: const EdgeInsets.fromLTRB( 10, 20, 0, 0),
-                                        width: 120,
-                                        height: 100,
-                                        color: Color(purple2),
-                                        child: Center(
-                                          child: Text(
-                                            "힌트",
-                                            style: TextStyle(
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                    ));
-                              }
-                              if (index == 1) {
-                                return GestureDetector(
-                                    onTap: () {
-                                      FocusScope.of(context).unfocus();
-                                      _tabController.animateTo(index);
-                                    },
-                                    child: Center(
-                                      child: Container(
-                                        margin: const EdgeInsets.fromLTRB( 0, 20, 0, 0),
-                                        width: 120,
-                                        height: 100,
-                                        color: Color(purple2),
-                                        child: Center(
-                                          child: Text(
-                                            "진행률",
-                                            style: TextStyle(
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                    ));
-                              }
-                            }),
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(276, 20, 0, 0),
-                          width: 120,
-                          height: 70,
-                          color: Color(purple2),
-                          child: Center(
+                          margin: EdgeInsets.fromLTRB(10, 10, 10, 5),
+                          child: Expanded(
                             child: Container(
-                              child: InkWell(
-                                onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return _showPaint(p: p);
-                                      });
-                                },
-                                child: Center(
-                                  child: Text(
-                                    "메모",
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold),
+                              color: Color(purple2),
+                              child: Center(
+                                child: Container(
+                                  child: AutoSizeText(
+                                    '${_currentMinutes.toString().padLeft(2, '0')} : ${_currentSeconds.toString().padLeft(2, '0')}',
+                                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white),
                                     textAlign: TextAlign.center,
+                                    maxLines: 1,
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                      ],
+                          )),
+                      flex: 2,
                     ),
-                  )
-                ],
-              ),
-              Expanded(
-                  child: TabBarView(
-                    controller: _tabController,
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        child: Stack(
-                          children: [
-                            Expanded(
-                                child: Container(
-                                  margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                                  color: Color(purple2),
-                                  child: Column(
+                    Flexible(
+                      // ignore: sort_child_properties_last
+                      child: Container(
+                          margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                          child: Center(
+                            child: Container(
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                      child: Container(
+                                          child: Row(
                                     children: [
-                                      // Hint Text Container
-                                      Center(
-                                        child: Container(
-                                          alignment: Alignment.topLeft,
-                                          margin: const EdgeInsets.fromLTRB(10, 20, 0, 0),
-                                          child: Text(
-                                            "Hint",
-                                            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                      Center(
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              child: SingleChildScrollView(
-                                                child: Container(
-                                                    width: 280,
-                                                    height: 80,
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.all(10),
-                                                      child: Container(
-                                                        color: Colors.white,
-                                                        child: Container(
-                                                          margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                                          child: TextField(
-                                                            controller: _hintText,
-                                                            decoration: InputDecoration(
-                                                              border: InputBorder.none,
-                                                              hintText: '입력',
-
+                                      Flexible(
+                                          // ignore: sort_child_properties_last
+                                          child: Container(
+                                            color: Colors.white,
+                                            child: Container(
+                                                child: Expanded(
+                                              child: GridView.builder(
+                                                  shrinkWrap: true,
+                                                  physics: const NeverScrollableScrollPhysics(),
+                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount: 2, // 칸 개수
+                                                      childAspectRatio: 1.5 // 가로세로 비율
+                                                      ),
+                                                  itemCount: 2,
+                                                  itemBuilder: (context, index) {
+                                                    if (index == 0) {
+                                                      return GestureDetector(
+                                                        onTap: () {
+                                                          _tabController.animateTo(index);
+                                                        },
+                                                        child: Expanded(
+                                                          child: Container(
+                                                            margin: EdgeInsets.fromLTRB(0, 5, 5, 20),
+                                                            color: Color(purple2),
+                                                            child: Center(
+                                                              child: Container(
+                                                                child: AutoSizeText(
+                                                                  "힌트",
+                                                                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                  textAlign: TextAlign.center,
+                                                                  maxLines: 1,
+                                                                ),
+                                                              ),
                                                             ),
-                                                            style: TextStyle(fontSize: 25),
-                                                            onChanged: (text) {
-                                                              setState(() {});
-                                                            },
                                                           ),
-                                                        ),
-                                                      ),
-                                                    )),
-
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 100,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                  color: Color(purple1),
-                                                  borderRadius: BorderRadius.circular(20)),
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  FocusScope.of(context).unfocus();
-
-                                                  // 힌트 코드 입력
-                                                  if (_hintText.text == _hintcode1) {
-                                                    setState(() {
-                                                      _word = _showhintcode1; // 힌트 코드 사용시 힌트 보여주기
-                                                      _hintText.text = ''; // 입력 칸 초기화
-                                                      _useHint1 = _hintcode1; // 힌트 코드 사용 목록 내용
-                                                      _onHintCode1 = true; // 힌트 코드 사용 목록에 나타내기
-                                                    });
-                                                  }
-
-                                                  // 힌트 1번 코드
-                                                  else if (_hintText.text == _hintcode2) {
-                                                    setState(() {
-                                                      _word = _showhintcode2; // 힌트 코드 사용시 힌트 보여주기
-                                                      _hintText.text = ''; // 입력 칸 초기화
-                                                      _useHint2 = _hintcode2; // 힌트 코드 사용 목록 내용
-                                                      _onHintCode2 = true; // 힌트 코드 사용 목록에 나타내기
-                                                    });
-                                                  }
-
-                                                  // 힌트 3번 코드
-                                                  else if (_hintText.text == _hintcode3) {
-                                                    setState(() {
-                                                      _word = _showhintcode3; // 힌트 코드 사용시 힌트 보여주기
-                                                      _hintText.text = ''; // 입력 칸 초기화
-                                                      _useHint3 = _hintcode3; // 힌트 코드 사용 목록 내용
-                                                      _onHintCode3 = true; // 힌트 코드 사용 목록에 나타내기
-                                                    });
-                                                  } else if (_hintText.text == _hintcode4) {
-                                                    setState(() {
-                                                      _word = _showhintcode4;
-                                                      _hintText.text = '';
-                                                      _useHint4 = _hintcode4;
-                                                      _onHintCode4 = true;
-                                                    });
-                                                  } else if (_hintText.text == _hintcode5) {
-                                                    setState(() {
-                                                      _word = _showhintcode5;
-                                                      _hintText.text = '';
-                                                      _useHint5 = _hintcode5;
-                                                      _onHintCode5 = true;
-                                                    });
-                                                  } else if (_hintText.text == _hintcode6) {
-                                                    setState(() {
-                                                      _word = _showhintcode6;
-                                                      _hintText.text = '';
-                                                      _useHint6 = _hintcode6;
-                                                      _onHintCode6 = true;
-                                                    });
-                                                  } else if (_hintText.text == _hintcode7) {
-                                                    setState(() {
-                                                      _word = _showhintcode7;
-                                                      _hintText.text = '';
-                                                      _useHint7 = _hintcode7;
-                                                      _onHintCode7 = true;
-                                                    });
-                                                  } else if (_hintText.text == _hintcode8) {
-                                                    setState(() {
-                                                      _word = _showhintcode8;
-                                                      _hintText.text = '';
-                                                      _useHint8 = _hintcode8;
-                                                      _onHintCode8 = true;
-                                                    });
-                                                  } else if (_hintText.text == _hintcode9) {
-                                                    setState(() {
-                                                      _word = _showhintcode9;
-                                                      _hintText.text = '';
-                                                      _useHint9 = _hintcode9;
-                                                      _onHintCode9 = true;
-                                                    });
-                                                  } else if (_hintText.text == _hintclear) {
-                                                    setState(() {
-                                                      _useHint1 = "";
-                                                      _onHintCode1 = false;
-
-                                                      _useHint2 = "";
-                                                      _onHintCode2 = false;
-
-                                                      _useHint3 = "";
-                                                      _onHintCode3 = false;
-
-                                                      _useHint4 = "";
-                                                      _onHintCode4 = false;
-
-                                                      _useHint5 = "";
-                                                      _onHintCode5 = false;
-
-                                                      _useHint6 = "";
-                                                      _onHintCode6 = false;
-
-                                                      _useHint7 = "";
-                                                      _onHintCode7 = false;
-
-                                                      _useHint8 = "";
-                                                      _onHintCode8 = false;
-
-                                                      _useHint9 = "";
-                                                      _onHintCode9 = false;
-
-                                                      _hintText.text = ''; // 힌트 입력 칸 초기화
-                                                      _word = ''; // 힌트 보여주는 칸 초기화
-                                                    });
-                                                  } else if (_hintText.text == '') {
-                                                    setState(() {
-                                                      _word = '';
-                                                      showDialog(
-                                                        context: context,
-                                                        builder: (context) => AlertDialog(
-                                                          title: const Text(''),
-                                                          content: Text(
-                                                            "암호를 입력해주세요!",
-                                                            style: TextStyle(fontSize: 20),
-                                                            textAlign: TextAlign.center,
-                                                          ),
-                                                          actions: [
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                  Navigator.pop(context);
-                                                                },
-                                                                child: const Text('확인'))
-                                                          ],
                                                         ),
                                                       );
-                                                    });
-                                                  }
-
-                                                  // 특정 코드 입력시 테마 선택 창으로 이동
-                                                  else if (_hintText.text == _homecode) {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) => StartPage()));
-                                                    _timer.cancel();
-                                                  } else {
-                                                    setState(() {
-                                                      _hintText.text = '';
-                                                      _word = '';
-                                                      showDialog(
-                                                        context: context,
-                                                        builder: (context) => AlertDialog(
-                                                          title: const Text(''),
-                                                          content: Text(
-                                                            "옳바른 암호를 입력해주세요!",
-                                                            style: TextStyle(fontSize: 20),
-                                                            textAlign: TextAlign.center,
+                                                    }
+                                                    if (index == 1) {
+                                                      return GestureDetector(
+                                                        onTap: () {
+                                                          _tabController.animateTo(index);
+                                                        },
+                                                        child: Expanded(
+                                                          child: Container(
+                                                            margin: EdgeInsets.fromLTRB(5, 5, 5, 20),
+                                                            color: Color(purple2),
+                                                            child: Center(
+                                                              child: Container(
+                                                                child: AutoSizeText(
+                                                                  "진행률",
+                                                                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                  textAlign: TextAlign.center,
+                                                                  maxLines: 1,
+                                                                ),
+                                                              ),
+                                                            ),
                                                           ),
-                                                          actions: [
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                  Navigator.pop(context);
-                                                                },
-                                                                child: const Text('확인'))
-                                                          ],
                                                         ),
                                                       );
-                                                    });
-                                                  }
-                                                },
-                                                child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Center(
-                                                      child: Text(
-                                                        "확인",
-                                                        style: TextStyle(
-                                                            fontSize: 25,
-                                                            fontWeight: FontWeight.bold),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                )),
-
-                            // 힌트 보여주는 Container
-                            Expanded(
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(20, 160, 20, 20),
-                                  color: Colors.white,
-                                  child: Center(
-                                    child: Text(
-                                      _word,
-                                      style: TextStyle(fontSize: 40),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                )
-                            )
-                          ],
-                        ),
-                      ),
-
-                      // 진행률 탭 전체 Container
-                      Container(
-                        alignment: Alignment.topLeft,
-                        child: Stack(
-                          children: [
-                            Expanded(
-                                child: Container(
-                                  margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                                  color: Color(purple2),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Center(
-                                            child: SingleChildScrollView(
+                                                    }
+                                                  }),
+                                            )),
+                                          ),
+                                          flex: 2),
+                                      Flexible(
+                                          // ignore: sort_child_properties_last
+                                          child: Container(
+                                              color: Colors.white,
                                               child: Container(
-                                                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                                  width: 280,
-                                                  height: 80,
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.all(10),
+                                                color: Color(purple2),
+                                                margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
+                                                child: InkWell(
+                                                  // 메모 버튼
+                                                  onTap: () {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext context) {
+                                                          return _showPaint(p: p);
+                                                        });
+                                                  },
+                                                  child: Center(
                                                     child: Container(
-                                                      color: Colors.white,
-                                                      child: Container(
-                                                        margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                                        child: TextField(
-                                                          controller: _percentText,
-                                                          decoration: InputDecoration(
-                                                            border: InputBorder.none,
-                                                            hintText: '입력',
-                                                          ),
-                                                          style: TextStyle(fontSize: 23),
-                                                          onChanged: (text) {
-                                                            setState(() {});
-                                                          },
-                                                        ),
+                                                      child: AutoSizeText(
+                                                        "메모",
+                                                        style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+                                                        textAlign: TextAlign.center,
+                                                        maxLines: 1,
                                                       ),
                                                     ),
-                                                  )),
-                                            ),
+                                                  ),
+                                                ),
+                                              )),
+                                          flex: 1)
+                                    ],
+                                  ))),
+                                ],
+                              ),
+                            ),
+                          )),
+                      flex: 1,
+                    ),
+                    Flexible(
+                      // ignore: sort_child_properties_last
+                      child: Container(
+                          color: Colors.white,
+                          child: Expanded(
+                              child: TabBarView(
+                            controller: _tabController,
+                            physics: NeverScrollableScrollPhysics(),
+                            children: [
+                              Container(
+                                alignment: Alignment.topLeft,
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                        child: Container(
+                                      margin: const EdgeInsets.all(10),
+                                      color: Color(purple2),
+                                      child: Column(
+                                        children: [
+                                          // Hint Text Container
+                                          Flexible(
+                                              // ignore: sort_child_properties_last
+                                              child: Center(
+                                                child: Container(
+                                                  alignment: Alignment.topLeft,
+                                                  margin: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                                                  // ignore: prefer_const_constructors
+                                                  child: AutoSizeText(
+                                                    "Hint",
+                                                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 1,
+                                                  ),
+                                                ),
+                                              ),
+                                              flex: 1),
+                                          Flexible(
+                                              child: Container(
+                                                child: Center(
+                                                  child: Row(
+                                                    children: [
+                                                      Flexible(
+                                                          child: Container(
+                                                            margin: EdgeInsets.fromLTRB(10, 0, 5, 10),
+                                                            child: Center(
+                                                              child: Container(
+                                                                  color: Colors.white,
+                                                                  child: Center(
+                                                                      child: Container(
+                                                                    margin: EdgeInsets.only(left: 10, top: 15),
+                                                                    child: TextField(
+                                                                      controller: _hintText,
+                                                                      //onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+                                                                      decoration: InputDecoration(
+                                                                        border: InputBorder.none,
+                                                                        hintText: '입력',
+                                                                      ),
+                                                                      style: TextStyle(fontSize: 25),
+                                                                      onChanged: (text) {
+                                                                        setState(() {});
+                                                                      },
+                                                                    ),
+                                                                  ))),
+                                                            ),
+                                                          ),
+                                                          flex: 7),
+                                                      Flexible(
+                                                        child: Container(
+                                                          margin: EdgeInsets.fromLTRB(5, 0, 10, 5),
+                                                          decoration: BoxDecoration(color: Color(purple1), borderRadius: BorderRadius.circular(20)),
+                                                          child: InkWell(
+                                                            onTap: () async {
+                                                              FocusScope.of(context).unfocus();
 
+                                                              // 힌트 코드 입력
+
+                                                              // 1번 코드 입력
+                                                              if (_hintText.text == _hintcode1) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn1 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage1()));
+                                                                });
+                                                              }
+
+                                                              // 힌트 2번 코드
+                                                              else if (_hintText.text == _hintcode2) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn2 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage2()));
+                                                                });
+                                                              }
+
+                                                              // 힌트 3번 코드
+                                                              else if (_hintText.text == _hintcode3) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn3 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage3()));
+                                                                });
+                                                              }
+
+                                                              // 4번 코드
+                                                              else if (_hintText.text == _hintcode4) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn4 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage4()));
+                                                                });
+                                                              }
+
+                                                              // 5번 코드
+                                                              else if (_hintText.text == _hintcode5) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn5 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage5()));
+                                                                });
+                                                              }
+
+                                                              // 6번 코드
+                                                              else if (_hintText.text == _hintcode6) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn6 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage6()));
+                                                                });
+                                                              }
+
+                                                              // 7번 코드
+                                                              else if (_hintText.text == _hintcode7) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn7 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage7()));
+                                                                });
+                                                              }
+
+                                                              // 8번 코드
+                                                              else if (_hintText.text == _hintcode8) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn8 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage8()));
+                                                                });
+                                                              }
+
+                                                              // 9번 코드
+                                                              else if (_hintText.text == _hintcode9) {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _ShowHintBtn9 = true;
+                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme6HintPage9()));
+                                                                });
+                                                              } else if (_hintText.text == _hintclear) {
+                                                                setState(() {
+                                                                  _ShowHintBtn1 = false;
+                                                                  _ShowHintBtn2 = false;
+                                                                  _ShowHintBtn3 = false;
+                                                                  _ShowHintBtn4 = false;
+                                                                  _ShowHintBtn5 = false;
+                                                                  _ShowHintBtn6 = false;
+                                                                  _ShowHintBtn7 = false;
+                                                                  _ShowHintBtn8 = false;
+                                                                  _ShowHintBtn9 = false;
+
+                                                                  _hintText.text = ''; // 힌트 입력 칸 초기화
+
+                                                                  _word = ''; // 힌트 보여주는 칸 초기화
+                                                                });
+                                                              }
+
+                                                              // 힌트 입력 칸 빈칸으로 확인 누른 경우
+                                                              else if (_hintText.text == '') {
+                                                                setState(() {
+                                                                  _word = '';
+                                                                  showDialog(
+                                                                    context: context,
+                                                                    builder: (context) => AlertDialog(
+                                                                      title: const Text(''),
+                                                                      content: Text(
+                                                                        "암호를 입력해주세요!",
+                                                                        style: TextStyle(fontSize: 20),
+                                                                        textAlign: TextAlign.center,
+                                                                      ),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child: const Text('확인'),
+                                                                        )
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                });
+                                                              }
+
+                                                              // 특정 코드 입력시 테마 선택 창으로 이동
+                                                              else if (_hintText.text == _homecode) {
+                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => StartPage()));
+                                                                _timer.cancel();
+                                                              } else {
+                                                                setState(() {
+                                                                  _hintText.text = '';
+                                                                  _word = '';
+                                                                  showDialog(
+                                                                    context: context,
+                                                                    builder: (context) => AlertDialog(
+                                                                      title: const Text(''),
+                                                                      content: Text(
+                                                                        "옳바른 암호를 입력해주세요!",
+                                                                        style: TextStyle(fontSize: 20),
+                                                                        textAlign: TextAlign.center,
+                                                                      ),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                            onPressed: () {
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                            child: const Text('확인'))
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                });
+                                                              }
+                                                            },
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                              children: [
+                                                                Center(
+                                                                  child: AutoSizeText(
+                                                                    "확인",
+                                                                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                    maxLines: 1,
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        flex: 3,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              flex: 1),
+                                          Flexible(
+                                            child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              margin: EdgeInsets.only(left: 10),
+                                              child: AutoSizeText(
+                                                "힌트 사용 목록",
+                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+                                                textAlign: TextAlign.center,
+                                                maxLines: 1,
+                                              ),
+                                            ),
+                                            flex: 1,
+                                          ),
+                                          Flexible(
+                                              child: Container(
+                                                margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                                color: Colors.white,
+                                                child: Center(
+                                                  child: Column(
+                                                    children: [
+                                                      Flexible(
+                                                          child: Container(
+                                                            color: Colors.white,
+                                                            child: Center(
+                                                              child: Row(
+                                                                children: [
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      //color: Colors.grey,
+                                                                      margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
+                                                                      child: _ShowHintBtn1
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage1()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 1번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      //color: Colors.blueGrey,
+                                                                      margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                                                                      child: _ShowHintBtn2
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage2()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 2번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      color: Colors.white,
+                                                                      margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                                                      child: _ShowHintBtn3
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage3()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 3번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          flex: 1),
+                                                      Flexible(
+                                                          child: Container(
+                                                            color: Colors.white,
+                                                            child: Center(
+                                                              child: Row(
+                                                                children: [
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      //color: Colors.grey,
+                                                                      margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
+                                                                      child: _ShowHintBtn4
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage4()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 4번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      // color: Colors.blueGrey,
+                                                                      margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                                                                      child: _ShowHintBtn5
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage5()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 5번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      //color: Colors.white,
+                                                                      margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                                                      child: _ShowHintBtn6
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage6()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 6번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          flex: 1),
+                                                      Flexible(
+                                                          child: Container(
+                                                            color: Colors.white,
+                                                            child: Center(
+                                                              child: Row(
+                                                                children: [
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      //color: Colors.grey,
+                                                                      margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
+                                                                      child: _ShowHintBtn7
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage7()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 7번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      //color: Colors.blueGrey,
+                                                                      margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                                                                      child: _ShowHintBtn8
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage8()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 8번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                  Flexible(
+                                                                    child: Container(
+                                                                      //color: Colors.white,
+                                                                      margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                                                      child: _ShowHintBtn9
+                                                                          ? InkWell(
+                                                                              onTap: () {
+                                                                                Navigator.push(context,
+                                                                                    MaterialPageRoute(builder: (context) => Theme6HintPage9()));
+                                                                              },
+                                                                              child: Expanded(
+                                                                                  child: Container(
+                                                                                      color: Color(purple2),
+                                                                                      child: Center(
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                          child: AutoSizeText(
+                                                                                            "힌트 9번",
+                                                                                            style: TextStyle(
+                                                                                                fontSize: 28,
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                color: Colors.white),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ))))
+                                                                          : Container(),
+                                                                    ),
+                                                                    flex: 1,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          flex: 1)
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              flex: 5)
+                                        ],
+                                      ),
+                                    )),
+
+                                    // 힌트 보여주는 Container
+                                  ],
+                                ),
+                              ),
+
+                              // 진행률 탭 전체 Container
+                              Container(
+                                alignment: Alignment.topLeft,
+                                child: Stack(
+                                  children: [
+                                    Expanded(
+                                        child: Container(
+                                      margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                                      color: Color(purple2),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Center(
+                                                child: SingleChildScrollView(
+                                                  child: Container(
+                                                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                                      width: 280,
+                                                      height: 80,
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(10),
+                                                        child: Container(
+                                                          color: Colors.white,
+                                                          child: Container(
+                                                            margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                                            child: TextField(
+                                                              controller: _percentText,
+                                                              onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+                                                              decoration: InputDecoration(
+                                                                border: InputBorder.none,
+                                                                hintText: '입력',
+                                                              ),
+                                                              style: TextStyle(fontSize: 23),
+                                                              onChanged: (text) {
+                                                                setState(() {});
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      )),
+                                                ),
+                                              ),
+                                              Center(
+                                                child: Container(
+                                                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                                  width: 100,
+                                                  height: 60,
+                                                  decoration: BoxDecoration(color: Color(purple1), borderRadius: BorderRadius.circular(20)),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      FocusScope.of(context).unfocus();
+                                                      if (_percentText.text == _hintcode1) {
+                                                        setState(() {
+                                                          _percent = 0.1;
+                                                          _percentwords = '10';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == _hintcode2) {
+                                                        setState(() {
+                                                          _percent = 0.2;
+                                                          _percentwords = '20';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == _hintcode3) {
+                                                        setState(() {
+                                                          _percent = 0.3;
+                                                          _percentwords = '30';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == _hintcode4) {
+                                                        setState(() {
+                                                          _percent = 0.4;
+                                                          _percentwords = '40';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == _hintcode5) {
+                                                        setState(() {
+                                                          _percent = 0.5;
+                                                          _percentwords = '50';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == _hintcode6) {
+                                                        setState(() {
+                                                          _percent = 0.6;
+                                                          _percentwords = '60';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == _hintcode7) {
+                                                        setState(() {
+                                                          _percent = 0.7;
+                                                          _percentwords = '70';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == _hintcode8) {
+                                                        setState(() {
+                                                          _percent = 0.8;
+                                                          _percentwords = '80';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == _hintcode9) {
+                                                        setState(() {
+                                                          _percent = 0.9;
+                                                          _percentwords = '90';
+                                                          _percentText.text = '';
+                                                        });
+                                                      } else if (_percentText.text == "") {
+                                                        setState(() {
+                                                          _percent = 0;
+                                                          _percentwords = "0";
+
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (context) => AlertDialog(
+                                                              title: const Text(''),
+                                                              content: Text(
+                                                                "암호를 입력해주세요!",
+                                                                style: TextStyle(fontSize: 20),
+                                                                textAlign: TextAlign.center,
+                                                              ),
+                                                              actions: [
+                                                                TextButton(
+                                                                    onPressed: () {
+                                                                      Navigator.pop(context);
+                                                                    },
+                                                                    child: const Text('확인'))
+                                                              ],
+                                                            ),
+                                                          );
+                                                        });
+                                                      } else {
+                                                        setState(() {
+                                                          _percentText.text = '';
+                                                          _percent = 0;
+                                                          _percentwords = "0";
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (context) => AlertDialog(
+                                                              title: const Text(''),
+                                                              content: Text(
+                                                                "옳바른 암호를 입력해주세요!",
+                                                                style: TextStyle(fontSize: 20),
+                                                                textAlign: TextAlign.center,
+                                                              ),
+                                                              actions: [
+                                                                TextButton(
+                                                                    onPressed: () {
+                                                                      Navigator.pop(context);
+                                                                    },
+                                                                    child: const Text('확인'))
+                                                              ],
+                                                            ),
+                                                          );
+                                                        });
+                                                      }
+                                                    },
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Center(
+                                                          child: AutoSizeText(
+                                                            "확인",
+                                                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                                                            maxLines: 1,
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
                                           ),
                                           Center(
                                             child: Container(
-                                              margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                              width: 100,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                  color: Color(purple1),
-                                                  borderRadius: BorderRadius.circular(20)),
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  FocusScope.of(context).unfocus();
-                                                  if (_percentText.text == _hintcode1) {
-                                                    setState(() {
-                                                      _percent = 0.1;
-                                                      _percentwords = '10';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == _hintcode2) {
-                                                    setState(() {
-                                                      _percent = 0.2;
-                                                      _percentwords = '20';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == _hintcode3) {
-                                                    setState(() {
-                                                      _percent = 0.3;
-                                                      _percentwords = '30';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == _hintcode4) {
-                                                    setState(() {
-                                                      _percent = 0.4;
-                                                      _percentwords = '40';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == _hintcode5) {
-                                                    setState(() {
-                                                      _percent = 0.5;
-                                                      _percentwords = '50';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == _hintcode6) {
-                                                    setState(() {
-                                                      _percent = 0.6;
-                                                      _percentwords = '60';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == _hintcode7) {
-                                                    setState(() {
-                                                      _percent = 0.7;
-                                                      _percentwords = '70';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == _hintcode8) {
-                                                    setState(() {
-                                                      _percent = 0.8;
-                                                      _percentwords = '80';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == _hintcode9) {
-                                                    setState(() {
-                                                      _percent = 0.9;
-                                                      _percentwords = '90';
-                                                      _percentText.text = '';
-                                                    });
-                                                  } else if (_percentText.text == "") {
-                                                    setState(() {
-                                                      _percent = 0;
-                                                      _percentwords = "0";
-
-                                                      showDialog(
-                                                        context: context,
-                                                        builder: (context) => AlertDialog(
-                                                          title: const Text(''),
-                                                          content: Text(
-                                                            "암호를 입력해주세요!",
-                                                            style: TextStyle(fontSize: 20),
-                                                            textAlign: TextAlign.center,
-                                                          ),
-                                                          actions: [
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                  Navigator.pop(context);
-                                                                },
-                                                                child: const Text('확인'))
-                                                          ],
-                                                        ),
-                                                      );
-                                                    });
-                                                  } else {
-                                                    setState(() {
-                                                      _percentText.text = '';
-                                                      _percent = 0;
-                                                      _percentwords = "0";
-                                                      showDialog(
-                                                        context: context,
-                                                        builder: (context) => AlertDialog(
-                                                          title: const Text(''),
-                                                          content: Text(
-                                                            "옳바른 암호를 입력해주세요!",
-                                                            style: TextStyle(fontSize: 20),
-                                                            textAlign: TextAlign.center,
-                                                          ),
-                                                          actions: [
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                  Navigator.pop(context);
-                                                                },
-                                                                child: const Text('확인'))
-                                                          ],
-                                                        ),
-                                                      );
-                                                    });
-                                                  }
-                                                },
-                                                child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Center(
-                                                      child: Text(
-                                                        "확인",
-                                                        style: TextStyle(
-                                                            fontSize: 25,
-                                                            fontWeight: FontWeight.bold),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
+                                              margin: EdgeInsets.only(left: 20, top: 5),
+                                              alignment: Alignment.centerLeft,
+                                              child: AutoSizeText(
+                                                "진행률",
+                                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                                                maxLines: 1,
                                               ),
                                             ),
-                                          )
-                                        ],
-                                      ),
-                                      Center(
-                                        child: Container(
-                                          margin: EdgeInsets.only(left: 20, top: 5),
-                                          alignment: Alignment.centerLeft,
-                                          child: Text("진행률",
-                                            style: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.bold
-                                            ),),
-                                        ),
-                                      ),
-                                      Center(
-                                          child: Expanded(
+                                          ),
+                                          Center(
+                                              child: Expanded(
                                             child: Container(
                                               margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                                               // color: Colors.white,
                                               child: Center(
                                                 child: Container(
                                                     child: LinearPercentIndicator(
-                                                      alignment: MainAxisAlignment.center,
-                                                      width: 390, // 바 넓이
-                                                      backgroundColor: Color(purple3),
-                                                      animation: true,
-                                                      animationDuration: 1200, // 애니메이션 지속 시간
-                                                      lineHeight: 40,
-                                                      percent: _percent,
-                                                      center: Text(
-                                                        '$_percentwords%',
-                                                        style: TextStyle(fontSize: 20),
-                                                      ),
-                                                      barRadius: Radius.circular(13),
-                                                      progressColor: Color(purple1),
-                                                    )),
+                                                  alignment: MainAxisAlignment.center,
+                                                  width: 390, // 바 넓이
+                                                  backgroundColor: Color(purple3),
+                                                  animation: true,
+                                                  animationDuration: 1200, // 애니메이션 지속 시간
+                                                  lineHeight: 40,
+                                                  percent: _percent,
+                                                  center: Text(
+                                                    '$_percentwords%',
+                                                    style: TextStyle(fontSize: 23, color: Colors.white, fontWeight: FontWeight.bold),
+                                                  ),
+                                                  barRadius: Radius.circular(13),
+                                                  progressColor: Color(purple1),
+                                                )),
                                               ),
                                             ),
-                                          )
+                                          )),
+                                        ],
                                       ),
-                                      Center(
-                                        child: Container(
-                                          margin: EdgeInsets.fromLTRB(10, 15, 0, 0),
-                                          width: 350,
-                                          height: 40,
-                                          // color: Colors.white,
-                                          child: Center(
-                                            child: Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                "힌트 사용 목록",
-                                                style: TextStyle(fontSize: 22,
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                          child: Container(
-                                            margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                                            color: Colors.white,
-                                            child: Column(
-                                              children: [
-                                                Row(// 첫번째 줄
-                                                  children: [
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin:
-                                                          EdgeInsets.fromLTRB(10, 10, 10, 0),
-
-                                                          color: hintbackcolor1,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint1',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin:
-                                                          EdgeInsets.fromLTRB(0, 10, 10, 0),
-                                                          color: hintbackcolor2,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint2',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin:
-                                                          EdgeInsets.fromLTRB(0, 10, 10, 0),
-                                                          color: hintbackcolor3,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint3',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )),
-                                                    )
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin:
-                                                          EdgeInsets.fromLTRB(10, 10, 10, 0),
-                                                          color: hintbackcolor4,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint4',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin:
-                                                          EdgeInsets.fromLTRB(0, 10, 10, 0),
-                                                          color: hintbackcolor5,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint5',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin:
-                                                          EdgeInsets.fromLTRB(0, 10, 10, 0),
-                                                          color: hintbackcolor6,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint6',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                                                          color: hintbackcolor7,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint7',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
-
-                                                          color: hintbackcolor8,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint8',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                          margin:
-                                                          EdgeInsets.fromLTRB(0, 10, 10, 0),
-                                                          color: hintbackcolor9,
-                                                          child: Center(
-                                                            child: Container(
-                                                              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                                              child: Text(
-                                                                '$_useHint9',
-                                                                style: TextStyle(fontSize: 28),
-                                                                textAlign: TextAlign.center,
-                                                              ),
-                                                            ),
-                                                          )),
-                                                    ),
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                      )
-
-                                    ],
-                                  ),
-                                )
-                            ),
-
-
-                          ],
-                        ),
-                      )
-                    ],
-                  ))
-            ],
-          ),
-        ),
-      ),
-
-    );
+                                    )),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ))),
+                      flex: 6,
+                    )
+                  ],
+                ),
+              ),
+            )));
   }
-
-
 }
 
-class _showPaint extends StatefulWidget{
+class _showPaint extends StatefulWidget {
   final DrawingP p;
 
   _showPaint({required this.p});
@@ -1097,203 +1205,178 @@ class _showPaint extends StatefulWidget{
   _showPaintState createState() => _showPaintState();
 }
 
-class _showPaintState extends State<_showPaint>{
+class _showPaintState extends State<_showPaint> {
 // var p = DrawingP();
   bool isSliderTouched = false;
 
   @override
-  Widget build(BuildContext context){
-
-
+  Widget build(BuildContext context) {
     return Dialog(
         child: Container(
-          width: 400,
-          height: 800,
-          child: Column(
+      width: 400,
+      height: 800,
+      child: Column(
+        children: [
+          Expanded(
+              child: Stack(
             children: [
-              Expanded(
-                  child: Stack(
-                    children: [
-                      Positioned.fill(
-                          child: CustomPaint(
-                              painter: DrawingPainter(widget.p.lines)
-                          )
-                      ),
-                      GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onPanStart: (s){
-                          if(widget.p.erasemode){
-                            setState(() {
-                              widget.p.erase(s.localPosition);
-                            });
-                          }
-
-                          else{
-                            setState(() {
-                              widget.p.drawStart(s.localPosition);
-                            });
-                          }
-                        },
-                        onPanUpdate: (s){
-                          if(widget.p.erasemode){
-                            setState(() {
-                              widget.p.erase(s.localPosition);
-                            });
-                          }
-
-                          else{
-                            setState(() {
-                              widget.p.drawing(s.localPosition);
-                            });
-                          }
-                        },
-                        child: Container(),
-                      )
-                    ],
-                  )),
-              Container(
-                color: Colors.grey[800],
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).padding.bottom
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(top: 20, bottom: 20),
-                      child: Center(
-                        child: Row(
-                          children: [
-                            _colorWidget(Colors.black),
-                            _colorWidget(Colors.red),
-                            _colorWidget(Colors.yellow),
-                            _colorWidget(Colors.green),
-                            _colorWidget(Colors.blue)
-                          ],
-                        ),
-                      ),
-                    ),
-                    Row(
+              Positioned.fill(child: CustomPaint(painter: DrawingPainter(widget.p.lines))),
+              GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onPanStart: (s) {
+                  if (widget.p.erasemode) {
+                    setState(() {
+                      widget.p.erase(s.localPosition);
+                    });
+                  } else {
+                    setState(() {
+                      widget.p.drawStart(s.localPosition);
+                    });
+                  }
+                },
+                onPanUpdate: (s) {
+                  if (widget.p.erasemode) {
+                    setState(() {
+                      widget.p.erase(s.localPosition);
+                    });
+                  } else {
+                    setState(() {
+                      widget.p.drawing(s.localPosition);
+                    });
+                  }
+                },
+                child: Container(),
+              )
+            ],
+          )),
+          Container(
+            color: Colors.grey[800],
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 20, bottom: 20),
+                  child: Center(
+                    child: Row(
                       children: [
-                        Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 20, right: 5),
-                              child: Slider(
-                                activeColor: Colors.white,
-                                inactiveColor: Colors.white,
-                                value: widget.p.size,
-                                onChanged: (size){
-                                  if(!isSliderTouched){
-                                    setState(() {
-                                      widget.p.changeSize = size;
-                                    });
-                                  }
-                                },
-                                onChangeStart: (value){
-                                  setState(() {
-                                    isSliderTouched = true;
-                                  });
-                                },
-                                onChangeEnd: (value){
-                                  setState(() {
-                                    isSliderTouched = false;
-                                  });
-                                },
-                                min:3,
-                                max:15,
-                              ),
-                            ))
+                        _colorWidget(Colors.black),
+                        _colorWidget(Colors.red),
+                        _colorWidget(Colors.yellow),
+                        _colorWidget(Colors.green),
+                        _colorWidget(Colors.blue)
                       ],
                     ),
-                    Column(
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Padding(
+                      padding: EdgeInsets.only(left: 20, right: 5),
+                      child: Slider(
+                        activeColor: Colors.white,
+                        inactiveColor: Colors.white,
+                        value: widget.p.size,
+                        onChanged: (size) {
+                          if (!isSliderTouched) {
+                            setState(() {
+                              widget.p.changeSize = size;
+                            });
+                          }
+                        },
+                        onChangeStart: (value) {
+                          setState(() {
+                            isSliderTouched = true;
+                          });
+                        },
+                        onChangeEnd: (value) {
+                          setState(() {
+                            isSliderTouched = false;
+                          });
+                        },
+                        min: 3,
+                        max: 15,
+                      ),
+                    ))
+                  ],
+                ),
+                Column(
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            GestureDetector(
-                              behavior: HitTestBehavior.translucent,
-                              onTap: (){
-                                setState(() {
-                                  widget.p.changeEraseMode();
-                                });
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.fromLTRB(50, 0, 0, 15),
-                                width: 110,
-                                height: 50,
+                        GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () {
+                            setState(() {
+                              widget.p.changeEraseMode();
+                            });
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.fromLTRB(50, 0, 0, 15),
+                            width: 110,
+                            height: 50,
+                            child: Container(
+                              child: Center(
                                 child: Container(
+                                  width: 110,
+                                  height: 50,
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20), color: widget.p.erasemode ? Colors.yellow : Colors.white),
                                   child: Center(
-                                    child: Container(
-                                      width: 110,
-                                      height: 50,
-                                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(20),
-                                          color: widget.p.erasemode
-                                              ? Colors.yellow
-                                              :Colors.white
-                                      ),
-                                      child: Center(
-                                        child: Text('지우개',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold
-                                          ),
-                                        ),
-                                      ),
+                                    child: Text(
+                                      '지우개',
+                                      style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                            Container(
-                              child: Container(
-                                  height: 70,
-                                  margin: const EdgeInsets.fromLTRB(30, 0, 0, 15),
-                                  child: InkWell(
-                                    onTap: (){
-                                      Navigator.of(context).pop();
-                                    },
+                          ),
+                        ),
+                        Container(
+                          child: Container(
+                              height: 70,
+                              margin: const EdgeInsets.fromLTRB(30, 0, 0, 15),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Center(
+                                  child: Container(
+                                    width: 110,
+                                    height: 50,
+                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
                                     child: Center(
                                       child: Container(
-                                        width: 110,
-                                        height: 50,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(20),
-                                            color: Colors.white
-                                        ),
-                                        child: Center(
-                                          child: Container(
-                                            child: Text("닫기",
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold
-                                              ), textAlign: TextAlign.center,
-                                            ),
-                                          ),
+                                        child: Text(
+                                          "닫기",
+                                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,
                                         ),
                                       ),
                                     ),
-                                  )
-                              ),
-                            )
-                          ],
+                                  ),
+                                ),
+                              )),
                         )
                       ],
                     )
                   ],
-                ),
-              )
-            ],
-          ),
-        )
-    );
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    ));
   }
 
-  Widget _colorWidget(Color color){
+  Widget _colorWidget(Color color) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: (){
+      onTap: () {
         setState(() {
           widget.p.changecolor = color;
         });
@@ -1303,16 +1386,10 @@ class _showPaintState extends State<_showPaint>{
           margin: EdgeInsets.only(left: 9),
           width: 55,
           height: 55,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: widget.p.color == color
-                  ? Border.all(color: Colors.white, width: 4)
-                  :null,
-              color: color
-          ),
+          decoration:
+              BoxDecoration(shape: BoxShape.circle, border: widget.p.color == color ? Border.all(color: Colors.white, width: 4) : null, color: color),
         ),
       ),
     );
   }
-
 }

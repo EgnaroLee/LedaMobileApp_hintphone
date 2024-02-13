@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+
 import 'package:hint_app_7/startpage.dart';
 import 'package:hint_app_7/theme2_hintpage/theme2_hint1.dart';
 import 'package:hint_app_7/theme2_hintpage/theme2_hint2.dart';
@@ -17,10 +18,6 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 
-final skyblue = 0x99ADD8E6;
-final orange1 = 0x99D2691E;
-final orange2 = 0x99FF8C00;
-final orange3 = 0x99FFEBCD;
 
 bool isSliderTouched = false;
 

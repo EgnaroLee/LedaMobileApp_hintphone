@@ -37,7 +37,7 @@ class _HintPageState extends State<Theme1HintPage1> {
             child: Center(
               child: Container(
                 child: AppBar(
-                    backgroundColor: Color(skyblue),
+                    backgroundColor: Color(red2),
                     flexibleSpace: Center(
                       child: Container(
                           child: Text(
@@ -56,7 +56,7 @@ class _HintPageState extends State<Theme1HintPage1> {
           child: Center(
               child: Expanded(
                   child: Container(
-            color: Color(skyblue),
+            color: Color(red2),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -79,7 +79,7 @@ class _HintPageState extends State<Theme1HintPage1> {
                           Flexible(
                               child: Container(
                                 margin: EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(color: Color(darkblue), borderRadius: BorderRadius.circular(20)),
+                                decoration: BoxDecoration(color: Color(red1), borderRadius: BorderRadius.circular(20)),
                                 child: Center(
                                   child: Container(
                                       child: InkWell(
@@ -104,7 +104,7 @@ class _HintPageState extends State<Theme1HintPage1> {
                             child: Center(
                               child: Container(
                                   margin: EdgeInsets.only(left: 10),
-                                  decoration: BoxDecoration(color: Color(darkblue), borderRadius: BorderRadius.circular(20)),
+                                  decoration: BoxDecoration(color: Color(red1), borderRadius: BorderRadius.circular(20)),
                                   child: InkWell(
                                     onTap: () {
                                       showDialog(
@@ -186,12 +186,12 @@ class ShowAnswerState extends State<ShowAnswer1> {
                             width: screenWidth * 0.3,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
-                              color: Color(darkblue),
+                              color: Color(red1),
                             ),
                             child: Center(
                               child: Container(
                                 child: AutoSizeText(
-                                  "닫기1",
+                                  "닫기",
                                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                                   textAlign: TextAlign.center,
                                   maxLines: 1,

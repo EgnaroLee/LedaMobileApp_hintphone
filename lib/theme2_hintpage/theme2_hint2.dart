@@ -41,7 +41,7 @@ class _HintPageState extends State<Theme2HintPage2> {
                     flexibleSpace: Center(
                       child: Container(
                           child: Text(
-                            "힌트 1번",
+                            "힌트 2번",
                             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
                           )),
                     ),
