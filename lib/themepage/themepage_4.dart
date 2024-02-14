@@ -1133,19 +1133,19 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                                               // color: Colors.white,
                                               child: Center(
                                                 child: Container(
-                                                    child: LinearPercentIndicator(
-                                                  alignment: MainAxisAlignment.center,
-                                                  width: 390, // 바 넓이
+                                                    child: CircularPercentIndicator(
+                                                  radius: 120,
+                                                  lineWidth: 15,
                                                   backgroundColor: Color(green3),
                                                   animation: true,
                                                   animationDuration: 1200, // 애니메이션 지속 시간
-                                                  lineHeight: 40,
+
                                                   percent: _percent,
                                                   center: Text(
                                                     '$_percentwords%',
-                                                    style: TextStyle(fontSize: 20),
+                                                    style: TextStyle(fontSize: 30),
                                                   ),
-                                                  barRadius: Radius.circular(13),
+
                                                   progressColor: Color(green1),
                                                 )),
                                               ),
@@ -1164,9 +1164,7 @@ class _ThemeScreenState extends State<ThemeScreen4> with SingleTickerProviderSta
                   ],
                 ),
               ),
-            )
-)
-);
+            )));
   }
 }
 

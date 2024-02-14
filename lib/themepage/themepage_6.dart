@@ -1161,19 +1161,19 @@ class _ThemeScreenState extends State<ThemeScreen6> with SingleTickerProviderSta
                                               // color: Colors.white,
                                               child: Center(
                                                 child: Container(
-                                                    child: LinearPercentIndicator(
-                                                  alignment: MainAxisAlignment.center,
-                                                  width: 390, // 바 넓이
+                                                    child: CircularPercentIndicator(
+                                                  radius: 120,
+                                                  lineWidth: 15,
                                                   backgroundColor: Color(purple3),
                                                   animation: true,
                                                   animationDuration: 1200, // 애니메이션 지속 시간
-                                                  lineHeight: 40,
+
                                                   percent: _percent,
                                                   center: Text(
                                                     '$_percentwords%',
-                                                    style: TextStyle(fontSize: 23, color: Colors.white, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(fontSize: 30),
                                                   ),
-                                                  barRadius: Radius.circular(13),
+
                                                   progressColor: Color(purple1),
                                                 )),
                                               ),
