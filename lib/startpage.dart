@@ -29,14 +29,13 @@ final yellow1 = 0x99DAA520;
 final yellow2 = 0x99FFD700;
 final yellow3 = 0x99FFFFE0;
 
-final green1 = 0x998FBC8F;  // 다크 씨그린
-final green2 = 0x9990EE90;  // 팔레 그린
-final green3 = 0x99F0FFF0;  // 허니듀
+final green1 = 0x998FBC8F; // 다크 씨그린
+final green2 = 0x9990EE90; // 팔레 그린
+final green3 = 0x99F0FFF0; // 허니듀
 
 final purple1 = 0x998C83CC;
 final purple2 = 0x99C0B2DB;
 final purple3 = 0x99F0F0FA;
-
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});

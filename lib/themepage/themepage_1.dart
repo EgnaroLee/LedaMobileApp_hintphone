@@ -70,7 +70,9 @@ class DrawingP with ChangeNotifier {
     final _eraseRound = 15;
     for (var oneLine in List<List<DotInfo>>.from(lines)) {
       for (var oneDot in oneLine) {
-        if (sqrt(pow(offset.dx - oneDot.offset.dx, 2) + pow(offset.dy - oneDot.offset.dy, 2)) < _eraseRound) {
+        if (sqrt(pow(offset.dx - oneDot.offset.dx, 2) +
+                pow(offset.dy - oneDot.offset.dy, 2)) <
+            _eraseRound) {
           lines.remove(oneLine);
           break;
         }
@@ -120,7 +122,8 @@ class ThemeScreen1 extends StatefulWidget {
   State<ThemeScreen1> createState() => _ThemeScreen1State();
 }
 
-class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderStateMixin {
+class _ThemeScreen1State extends State<ThemeScreen1>
+    with SingleTickerProviderStateMixin {
   // 타이머
   late Timer _timer;
   int _currentMinutes = 0;
@@ -141,15 +144,45 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
   var _word = "";
 
   // 힌트 코드
-  var _hintcode1 = "#01";
-  var _hintcode2 = "#02";
-  var _hintcode3 = "#03";
-  var _hintcode4 = "#04";
-  var _hintcode5 = "#05";
-  var _hintcode6 = "#06";
-  var _hintcode7 = "#07";
-  var _hintcode8 = "#08";
-  var _hintcode9 = "#09";
+  Map<String, String> hintCodes = {
+    'hintcode1': '#01',
+    'hintcode2': '#02',
+    'hintcode3': '#03',
+    'hintcode4': '#04',
+    'hintcode5': '#05',
+    'hintcode6': '#06',
+    'hintcode7': '#07',
+    'hintcode8': '#08',
+    'hintcode9': '#09',
+  };
+
+//힌트 입력 시 해당 힌트 페이지 출력을 위한 리스트 배열
+  List<Widget Function()> hintlist = [
+    () => Theme1HintPage1(),
+    () => Theme1HintPage2(),
+    () => Theme1HintPage3(),
+    () => Theme1HintPage4(),
+    () => Theme1HintPage5(),
+    () => Theme1HintPage6(),
+    () => Theme1HintPage7(),
+    () => Theme1HintPage8(),
+    () => Theme1HintPage9(),
+  ];
+
+  List<double> hintPercentage = [];
+  List<bool> showHintBtn = [];
+
+  void calculateHintPercentages() {
+    // 힌트 코드와 해당하는 퍼센트 값을 맵에 추가합니다.
+    for (int i = 0; i < hintCodes.length; i++) {
+      // 각 힌트 코드에 대응하는 퍼센트 값을 계산합니다.
+      double percentage = (i + 1) / hintCodes.length;
+      // 힌트 코드와 해당하는 퍼센트 값을 맵에 추가합니다.
+      hintPercentage[i] = percentage;
+      showHintBtn[i] = false;
+    }
+  }
+
   var _homecode = "#0000";
   var _hintclear = "#0987";
 
@@ -211,7 +244,8 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []); // 하단 창 지우기
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: []); // 하단 창 지우기
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -250,7 +284,9 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                 child: Container(
                                   child: AutoSizeText(
                                     '${_currentMinutes.toString().padLeft(2, '0')} : ${_currentSeconds.toString().padLeft(2, '0')}',
-                                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                                    style: TextStyle(
+                                        fontSize: 50,
+                                        fontWeight: FontWeight.bold),
                                     textAlign: TextAlign.center,
                                     maxLines: 1,
                                   ),
@@ -278,28 +314,44 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                 child: Expanded(
                                               child: GridView.builder(
                                                   shrinkWrap: true,
-                                                  physics: const NeverScrollableScrollPhysics(),
-                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                      crossAxisCount: 2, // 칸 개수
-                                                      childAspectRatio: 1.5 // 가로세로 비율
-                                                      ),
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  gridDelegate:
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                                          crossAxisCount:
+                                                              2, // 칸 개수
+                                                          childAspectRatio:
+                                                              1.5 // 가로세로 비율
+                                                          ),
                                                   itemCount: 2,
-                                                  itemBuilder: (context, index) {
+                                                  itemBuilder:
+                                                      (context, index) {
                                                     if (index == 0) {
                                                       return GestureDetector(
                                                         onTap: () {
-                                                          _tabController.animateTo(index);
+                                                          _tabController
+                                                              .animateTo(index);
                                                         },
                                                         child: Expanded(
                                                           child: Container(
-                                                            margin: EdgeInsets.fromLTRB(0, 5, 5, 20),
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(0, 5,
+                                                                    5, 20),
                                                             color: Color(red2),
                                                             child: Center(
                                                               child: Container(
-                                                                child: AutoSizeText(
+                                                                child:
+                                                                    AutoSizeText(
                                                                   "힌트",
-                                                                  style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-                                                                  textAlign: TextAlign.center,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          36,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
                                                                   maxLines: 1,
                                                                 ),
                                                               ),
@@ -311,18 +363,29 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                     if (index == 1) {
                                                       return GestureDetector(
                                                         onTap: () {
-                                                          _tabController.animateTo(index);
+                                                          _tabController
+                                                              .animateTo(index);
                                                         },
                                                         child: Expanded(
                                                           child: Container(
-                                                            margin: EdgeInsets.fromLTRB(5, 5, 5, 20),
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(5, 5,
+                                                                    5, 20),
                                                             color: Color(red2),
                                                             child: Center(
                                                               child: Container(
-                                                                child: AutoSizeText(
+                                                                child:
+                                                                    AutoSizeText(
                                                                   "진행률",
-                                                                  style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),
-                                                                  textAlign: TextAlign.center,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          38,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
                                                                   maxLines: 1,
                                                                 ),
                                                               ),
@@ -340,22 +403,30 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                               color: Colors.white,
                                               child: Container(
                                                 color: Color(red2),
-                                                margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
+                                                margin: EdgeInsets.fromLTRB(
+                                                    5, 5, 0, 0),
                                                 child: InkWell(
                                                   // 메모 버튼
                                                   onTap: () {
                                                     showDialog(
                                                         context: context,
-                                                        builder: (BuildContext context) {
-                                                          return _showPaint(p: p);
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return _showPaint(
+                                                              p: p);
                                                         });
                                                   },
                                                   child: Center(
                                                     child: Container(
                                                       child: AutoSizeText(
                                                         "메모",
-                                                        style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                                                        textAlign: TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: 40,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         maxLines: 1,
                                                       ),
                                                     ),
@@ -394,10 +465,15 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                               child: Center(
                                                 child: Container(
                                                   alignment: Alignment.topLeft,
-                                                  margin: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                                                  margin:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 10, 0, 0),
                                                   child: AutoSizeText(
                                                     "Hint",
-                                                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(
+                                                        fontSize: 28,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                     textAlign: TextAlign.center,
                                                     maxLines: 1,
                                                   ),
@@ -411,23 +487,40 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                     children: [
                                                       Flexible(
                                                           child: Container(
-                                                            margin: EdgeInsets.fromLTRB(10, 0, 5, 10),
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(10, 0,
+                                                                    5, 10),
                                                             child: Center(
                                                               child: Container(
-                                                                  color: Colors.white,
+                                                                  color: Colors
+                                                                      .white,
                                                                   child: Center(
-                                                                      child: Container(
-                                                                    margin: EdgeInsets.only(left: 10, top: 15),
-                                                                    child: TextField(
-                                                                      controller: _hintText,
+                                                                      child:
+                                                                          Container(
+                                                                    margin: EdgeInsets.only(
+                                                                        left:
+                                                                            10,
+                                                                        top:
+                                                                            15),
+                                                                    child:
+                                                                        TextField(
+                                                                      controller:
+                                                                          _hintText,
                                                                       //onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-                                                                      decoration: InputDecoration(
-                                                                        border: InputBorder.none,
-                                                                        hintText: '입력',
+                                                                      decoration:
+                                                                          InputDecoration(
+                                                                        border:
+                                                                            InputBorder.none,
+                                                                        hintText:
+                                                                            '입력',
                                                                       ),
-                                                                      style: TextStyle(fontSize: 25),
-                                                                      onChanged: (text) {
-                                                                        setState(() {});
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              25),
+                                                                      onChanged:
+                                                                          (text) {
+                                                                        setState(
+                                                                            () {});
                                                                       },
                                                                     ),
                                                                   ))),
@@ -436,172 +529,180 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                           flex: 7),
                                                       Flexible(
                                                         child: Container(
-                                                          margin: EdgeInsets.fromLTRB(5, 0, 10, 5),
-                                                          decoration: BoxDecoration(color: Color(red1), borderRadius: BorderRadius.circular(20)),
+                                                          margin: EdgeInsets
+                                                              .fromLTRB(
+                                                                  5, 0, 10, 5),
+                                                          decoration: BoxDecoration(
+                                                              color:
+                                                                  Color(red1),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20)),
                                                           child: InkWell(
                                                             onTap: () async {
-                                                              FocusScope.of(context).unfocus();
+                                                              FocusScope.of(
+                                                                      context)
+                                                                  .unfocus();
 
                                                               // 힌트 코드 입력
 
-                                                              // 1번 코드 입력
-                                                              if (_hintText.text == _hintcode1) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn1 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage1()));
-                                                                });
-                                                              }
+                                                              for (int i = 1;
+                                                                  i <=
+                                                                      hintlist
+                                                                          .length;
+                                                                  i++) {
+                                                                String
+                                                                    hintcode =
+                                                                    'hintcode$i';
+                                                                if (_hintText
+                                                                        .text ==
+                                                                    hintCodes[
+                                                                        hintcode]) {
+                                                                  setState(() {
+                                                                    _hintText
+                                                                        .text = '';
+                                                                    _ShowHintBtn1 =
+                                                                        true;
+                                                                    showHintBtn[i -
+                                                                            1] =
+                                                                        true;
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                            builder: (context) =>
+                                                                                Theme1HintPage1()));
+                                                                  });
+                                                                  break;
+                                                                } else if (_hintText
+                                                                        .text ==
+                                                                    _hintclear) {
+                                                                  setState(() {
+                                                                    _ShowHintBtn1 =
+                                                                        false;
+                                                                    _ShowHintBtn2 =
+                                                                        false;
+                                                                    _ShowHintBtn3 =
+                                                                        false;
+                                                                    _ShowHintBtn4 =
+                                                                        false;
+                                                                    _ShowHintBtn5 =
+                                                                        false;
+                                                                    _ShowHintBtn6 =
+                                                                        false;
+                                                                    _ShowHintBtn7 =
+                                                                        false;
+                                                                    _ShowHintBtn8 =
+                                                                        false;
+                                                                    _ShowHintBtn9 =
+                                                                        false;
 
-                                                              // 힌트 2번 코드
-                                                              else if (_hintText.text == _hintcode2) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn2 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage2()));
-                                                                });
-                                                              }
+                                                                    _hintText
+                                                                            .text =
+                                                                        ''; // 힌트 입력 칸 초기화
 
-                                                              // 힌트 3번 코드
-                                                              else if (_hintText.text == _hintcode3) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn3 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage3()));
-                                                                });
-                                                              }
-
-                                                              // 4번 코드
-                                                              else if (_hintText.text == _hintcode4) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn4 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage4()));
-                                                                });
-                                                              }
-
-                                                              // 5번 코드
-                                                              else if (_hintText.text == _hintcode5) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn5 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage5()));
-                                                                });
-                                                              }
-
-                                                              // 6번 코드
-                                                              else if (_hintText.text == _hintcode6) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn6 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage6()));
-                                                                });
-                                                              }
-
-                                                              // 7번 코드
-                                                              else if (_hintText.text == _hintcode7) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn7 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage7()));
-                                                                });
-                                                              }
-
-                                                              // 8번 코드
-                                                              else if (_hintText.text == _hintcode8) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn8 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage8()));
-                                                                });
-                                                              }
-
-                                                              // 9번 코드
-                                                              else if (_hintText.text == _hintcode9) {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _ShowHintBtn9 = true;
-                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage9()));
-                                                                });
-                                                              } else if (_hintText.text == _hintclear) {
-                                                                setState(() {
-                                                                  _ShowHintBtn1 = false;
-                                                                  _ShowHintBtn2 = false;
-                                                                  _ShowHintBtn3 = false;
-                                                                  _ShowHintBtn4 = false;
-                                                                  _ShowHintBtn5 = false;
-                                                                  _ShowHintBtn6 = false;
-                                                                  _ShowHintBtn7 = false;
-                                                                  _ShowHintBtn8 = false;
-                                                                  _ShowHintBtn9 = false;
-
-                                                                  _hintText.text = ''; // 힌트 입력 칸 초기화
-
-                                                                  _word = ''; // 힌트 보여주는 칸 초기화
-                                                                });
-                                                              }
-
-                                                              // 힌트 입력 칸 빈칸으로 확인 누른 경우ㅇ
-                                                              else if (_hintText.text == '') {
-                                                                setState(() {
-                                                                  _word = '';
-                                                                  showDialog(
-                                                                    context: context,
-                                                                    builder: (context) => AlertDialog(
-                                                                      title: const Text(''),
-                                                                      content: Text(
-                                                                        "암호를 입력해주세요!",
-                                                                        style: TextStyle(fontSize: 20),
-                                                                        textAlign: TextAlign.center,
+                                                                    _word =
+                                                                        ''; // 힌트 보여주는 칸 초기화
+                                                                  });
+                                                                  break;
+                                                                } // 힌트 입력 칸 빈칸으로 확인 누른 경우
+                                                                else if (_hintText
+                                                                        .text ==
+                                                                    '') {
+                                                                  setState(() {
+                                                                    _word = '';
+                                                                    showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) =>
+                                                                              AlertDialog(
+                                                                        title: const Text(
+                                                                            ''),
+                                                                        content:
+                                                                            Text(
+                                                                          "암호를 입력해주세요!",
+                                                                          style:
+                                                                              TextStyle(fontSize: 20),
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                              onPressed: () {
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                              child: const Text('확인'))
+                                                                        ],
                                                                       ),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                            onPressed: () {
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                            child: const Text('확인'))
-                                                                      ],
-                                                                    ),
-                                                                  );
-                                                                });
-                                                              }
+                                                                    );
+                                                                  });
+                                                                  break;
+                                                                }
 
-                                                              // 특정 코드 입력시 테마 선택 창으로 이동
-                                                              else if (_hintText.text == _homecode) {
-                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => StartPage()));
-                                                                _timer.cancel();
-                                                              } else {
-                                                                setState(() {
-                                                                  _hintText.text = '';
-                                                                  _word = '';
-                                                                  showDialog(
-                                                                    context: context,
-                                                                    builder: (context) => AlertDialog(
-                                                                      title: const Text(''),
-                                                                      content: Text(
-                                                                        "옳바른 암호를 입력해주세요!",
-                                                                        style: TextStyle(fontSize: 20),
-                                                                        textAlign: TextAlign.center,
-                                                                      ),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                            onPressed: () {
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                            child: const Text('확인'))
-                                                                      ],
-                                                                    ),
-                                                                  );
-                                                                });
+                                                                // 특정 코드 입력시 테마 선택 창으로 이동
+                                                                else if (_hintText
+                                                                        .text ==
+                                                                    _homecode) {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                              StartPage()));
+                                                                  _timer
+                                                                      .cancel();
+                                                                } else {
+                                                                  setState(() {
+                                                                    if (i ==
+                                                                        hintlist
+                                                                            .length) {
+                                                                      _hintText
+                                                                          .text = '';
+                                                                      _word =
+                                                                          '';
+                                                                      showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (context) =>
+                                                                                AlertDialog(
+                                                                          title:
+                                                                              const Text(''),
+                                                                          content:
+                                                                              Text(
+                                                                            "옳바른 암호를 입력해주세요!",
+                                                                            style:
+                                                                                TextStyle(fontSize: 20),
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                          ),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                                onPressed: () {
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                child: const Text('확인'))
+                                                                          ],
+                                                                        ),
+                                                                      );
+                                                                    }
+                                                                  });
+                                                                }
                                                               }
                                                             },
                                                             child: Column(
-                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
                                                               children: [
                                                                 Center(
                                                                   child: Text(
                                                                     "확인",
-                                                                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            25,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
                                                                   ),
                                                                 )
                                                               ],
@@ -621,7 +722,10 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                               margin: EdgeInsets.only(left: 10),
                                               child: AutoSizeText(
                                                 "힌트 사용 목록",
-                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                style: TextStyle(
+                                                    fontSize: 28,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                                 textAlign: TextAlign.center,
                                                 maxLines: 1,
                                               ),
@@ -630,7 +734,8 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                           ),
                                           Flexible(
                                               child: Container(
-                                                margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                                margin: EdgeInsets.fromLTRB(
+                                                    10, 0, 10, 10),
                                                 color: Colors.white,
                                                 child: Center(
                                                   child: Column(
@@ -642,14 +747,19 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                               child: Row(
                                                                 children: [
                                                                   Flexible(
-                                                                    child: Container(
+                                                                    child:
+                                                                        Container(
                                                                       //color: Colors.grey,
-                                                                      margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              10,
+                                                                              10,
+                                                                              5,
+                                                                              10),
                                                                       child: _ShowHintBtn1
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage1()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage1()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -659,8 +769,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 1번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -669,14 +778,19 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                     flex: 1,
                                                                   ),
                                                                   Flexible(
-                                                                    child: Container(
+                                                                    child:
+                                                                        Container(
                                                                       //color: Colors.blueGrey,
-                                                                      margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              5,
+                                                                              10,
+                                                                              5,
+                                                                              10),
                                                                       child: _ShowHintBtn2
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage2()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage2()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -686,8 +800,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 2번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -696,14 +809,20 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                     flex: 1,
                                                                   ),
                                                                   Flexible(
-                                                                    child: Container(
-                                                                      color: Colors.white,
-                                                                      margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                                                    child:
+                                                                        Container(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              5,
+                                                                              10,
+                                                                              10,
+                                                                              10),
                                                                       child: _ShowHintBtn3
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage3()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage3()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -713,8 +832,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 3번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -734,14 +852,19 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                               child: Row(
                                                                 children: [
                                                                   Flexible(
-                                                                    child: Container(
+                                                                    child:
+                                                                        Container(
                                                                       //color: Colors.grey,
-                                                                      margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              10,
+                                                                              10,
+                                                                              5,
+                                                                              10),
                                                                       child: _ShowHintBtn4
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage4()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage4()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -751,8 +874,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 4번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -761,14 +883,19 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                     flex: 1,
                                                                   ),
                                                                   Flexible(
-                                                                    child: Container(
+                                                                    child:
+                                                                        Container(
                                                                       // color: Colors.blueGrey,
-                                                                      margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              5,
+                                                                              10,
+                                                                              5,
+                                                                              10),
                                                                       child: _ShowHintBtn5
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage5()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage5()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -778,8 +905,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 5번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -788,14 +914,19 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                     flex: 1,
                                                                   ),
                                                                   Flexible(
-                                                                    child: Container(
+                                                                    child:
+                                                                        Container(
                                                                       //color: Colors.white,
-                                                                      margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              5,
+                                                                              10,
+                                                                              10,
+                                                                              10),
                                                                       child: _ShowHintBtn6
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage6()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage6()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -805,8 +936,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 6번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -826,14 +956,19 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                               child: Row(
                                                                 children: [
                                                                   Flexible(
-                                                                    child: Container(
+                                                                    child:
+                                                                        Container(
                                                                       //color: Colors.grey,
-                                                                      margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              10,
+                                                                              10,
+                                                                              5,
+                                                                              10),
                                                                       child: _ShowHintBtn7
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage7()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage7()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -843,8 +978,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 7번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -853,14 +987,19 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                     flex: 1,
                                                                   ),
                                                                   Flexible(
-                                                                    child: Container(
+                                                                    child:
+                                                                        Container(
                                                                       //color: Colors.blueGrey,
-                                                                      margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              5,
+                                                                              10,
+                                                                              5,
+                                                                              10),
                                                                       child: _ShowHintBtn8
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage8()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage8()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -870,8 +1009,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 8번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -880,14 +1018,19 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                     flex: 1,
                                                                   ),
                                                                   Flexible(
-                                                                    child: Container(
+                                                                    child:
+                                                                        Container(
                                                                       //color: Colors.white,
-                                                                      margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                              5,
+                                                                              10,
+                                                                              10,
+                                                                              10),
                                                                       child: _ShowHintBtn9
                                                                           ? InkWell(
                                                                               onTap: () {
-                                                                                Navigator.push(context,
-                                                                                    MaterialPageRoute(builder: (context) => Theme1HintPage9()));
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage9()));
                                                                               },
                                                                               child: Expanded(
                                                                                   child: Container(
@@ -897,8 +1040,7 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                                                                           margin: EdgeInsets.only(top: 10, bottom: 10),
                                                                                           child: AutoSizeText(
                                                                                             "힌트 9번",
-                                                                                            style:
-                                                                                                TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                                                                                           ),
                                                                                         ),
                                                                                       ))))
@@ -933,7 +1075,8 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                   children: [
                                     Expanded(
                                         child: Container(
-                                      margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                                      margin: const EdgeInsets.fromLTRB(
+                                          10, 20, 10, 10),
                                       color: Color(red2),
                                       child: Column(
                                         children: [
@@ -942,24 +1085,40 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                               Center(
                                                 child: SingleChildScrollView(
                                                   child: Container(
-                                                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0, 10, 0, 0),
                                                       width: 280,
                                                       height: 80,
                                                       child: Padding(
-                                                        padding: const EdgeInsets.all(10),
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(10),
                                                         child: Container(
                                                           color: Colors.white,
                                                           child: Container(
-                                                            margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(10, 0,
+                                                                    0, 0),
                                                             child: TextField(
-                                                              controller: _percentText,
-                                                              onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-                                                              decoration: InputDecoration(
-                                                                border: InputBorder.none,
+                                                              controller:
+                                                                  _percentText,
+                                                              onTapOutside: (event) =>
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus(),
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
                                                                 hintText: '입력',
                                                               ),
-                                                              style: TextStyle(fontSize: 23),
-                                                              onChanged: (text) {
+                                                              style: TextStyle(
+                                                                  fontSize: 23),
+                                                              onChanged:
+                                                                  (text) {
                                                                 setState(() {});
                                                               },
                                                             ),
@@ -970,124 +1129,125 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                               ),
                                               Center(
                                                 child: Container(
-                                                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0, 10, 0, 0),
                                                   width: 100,
                                                   height: 60,
-                                                  decoration: BoxDecoration(color: Color(red1), borderRadius: BorderRadius.circular(20)),
+                                                  decoration: BoxDecoration(
+                                                      color: Color(red1),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20)),
                                                   child: InkWell(
                                                     onTap: () async {
-                                                      FocusScope.of(context).unfocus();
-                                                      if (_percentText.text == _hintcode1) {
-                                                        setState(() {
-                                                          _percent = 0.1;
-                                                          _percentwords = '10';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == _hintcode2) {
-                                                        setState(() {
-                                                          _percent = 0.2;
-                                                          _percentwords = '20';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == _hintcode3) {
-                                                        setState(() {
-                                                          _percent = 0.3;
-                                                          _percentwords = '30';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == _hintcode4) {
-                                                        setState(() {
-                                                          _percent = 0.4;
-                                                          _percentwords = '40';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == _hintcode5) {
-                                                        setState(() {
-                                                          _percent = 0.5;
-                                                          _percentwords = '50';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == _hintcode6) {
-                                                        setState(() {
-                                                          _percent = 0.6;
-                                                          _percentwords = '60';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == _hintcode7) {
-                                                        setState(() {
-                                                          _percent = 0.7;
-                                                          _percentwords = '70';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == _hintcode8) {
-                                                        setState(() {
-                                                          _percent = 0.8;
-                                                          _percentwords = '80';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == _hintcode9) {
-                                                        setState(() {
-                                                          _percent = 0.9;
-                                                          _percentwords = '90';
-                                                          _percentText.text = '';
-                                                        });
-                                                      } else if (_percentText.text == "") {
-                                                        setState(() {
-                                                          _percent = 0;
-                                                          _percentwords = "0";
+                                                      FocusScope.of(context)
+                                                          .unfocus();
+                                                      for (int i = 1;
+                                                          i < hintCodes.length;
+                                                          i++) {
+                                                        String hintcode =
+                                                            'hintcode$i';
 
-                                                          showDialog(
-                                                            context: context,
-                                                            builder: (context) => AlertDialog(
-                                                              title: const Text(''),
-                                                              content: Text(
-                                                                "암호를 입력해주세요!",
-                                                                style: TextStyle(fontSize: 20),
-                                                                textAlign: TextAlign.center,
+                                                        if (_percentText.text ==
+                                                            hintcode) {
+                                                          setState(() {
+                                                            _percent =
+                                                                hintPercentage[
+                                                                    i];
+                                                            _percentwords =
+                                                                '${(hintPercentage[i] * 100).toInt()}';
+                                                            _percentText.text =
+                                                                '';
+                                                          });
+                                                        } else if (_percentText
+                                                                .text ==
+                                                            "") {
+                                                          setState(() {
+                                                            _percent = 0;
+                                                            _percentwords = "0";
+
+                                                            showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (context) =>
+                                                                      AlertDialog(
+                                                                title:
+                                                                    const Text(
+                                                                        ''),
+                                                                content: Text(
+                                                                  "암호를 입력해주세요!",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          20),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                ),
+                                                                actions: [
+                                                                  TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      child: const Text(
+                                                                          '확인'))
+                                                                ],
                                                               ),
-                                                              actions: [
-                                                                TextButton(
-                                                                    onPressed: () {
-                                                                      Navigator.pop(context);
-                                                                    },
-                                                                    child: const Text('확인'))
-                                                              ],
-                                                            ),
-                                                          );
-                                                        });
-                                                      } else {
-                                                        setState(() {
-                                                          _percentText.text = '';
-                                                          _percent = 0;
-                                                          _percentwords = "0";
-                                                          showDialog(
-                                                            context: context,
-                                                            builder: (context) => AlertDialog(
-                                                              title: const Text(''),
-                                                              content: Text(
-                                                                "옳바른 암호를 입력해주세요!",
-                                                                style: TextStyle(fontSize: 20),
-                                                                textAlign: TextAlign.center,
+                                                            );
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            _percentText.text =
+                                                                '';
+                                                            _percent = 0;
+                                                            _percentwords = "0";
+                                                            showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (context) =>
+                                                                      AlertDialog(
+                                                                title:
+                                                                    const Text(
+                                                                        ''),
+                                                                content: Text(
+                                                                  "올바른 암호를 입력해주세요!",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          20),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                ),
+                                                                actions: [
+                                                                  TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      child: const Text(
+                                                                          '확인'))
+                                                                ],
                                                               ),
-                                                              actions: [
-                                                                TextButton(
-                                                                    onPressed: () {
-                                                                      Navigator.pop(context);
-                                                                    },
-                                                                    child: const Text('확인'))
-                                                              ],
-                                                            ),
-                                                          );
-                                                        });
+                                                            );
+                                                          });
+                                                        }
                                                       }
                                                     },
                                                     child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       children: [
                                                         Center(
                                                           child: Text(
                                                             "확인",
-                                                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                                            style: TextStyle(
+                                                                fontSize: 25,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
                                                           ),
                                                         )
                                                       ],
@@ -1099,32 +1259,40 @@ class _ThemeScreen1State extends State<ThemeScreen1> with SingleTickerProviderSt
                                           ),
                                           Center(
                                             child: Container(
-                                              margin: EdgeInsets.only(left: 20, top: 5),
+                                              margin: EdgeInsets.only(
+                                                  left: 20, top: 5),
                                               alignment: Alignment.centerLeft,
                                               child: Text(
                                                 "진행률",
-                                                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                             ),
                                           ),
                                           Center(
                                               child: Expanded(
                                             child: Container(
-                                              margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 10, 0, 0),
                                               // color: Colors.white,
                                               child: Center(
                                                 child: Container(
-                                                    child: CircularPercentIndicator(
+                                                    child:
+                                                        CircularPercentIndicator(
                                                   radius: 120,
                                                   lineWidth: 15,
                                                   backgroundColor: Color(red3),
                                                   animation: true,
-                                                  animationDuration: 1200, // 애니메이션 지속 시간
+                                                  animationDuration:
+                                                      1200, // 애니메이션 지속 시간
 
                                                   percent: _percent,
                                                   center: Text(
                                                     '$_percentwords%',
-                                                    style: TextStyle(fontSize: 30),
+                                                    style:
+                                                        TextStyle(fontSize: 30),
                                                   ),
 
                                                   progressColor: Color(red1),
@@ -1173,7 +1341,8 @@ class _showPaintState extends State<_showPaint> {
           Expanded(
               child: Stack(
             children: [
-              Positioned.fill(child: CustomPaint(painter: DrawingPainter(widget.p.lines))),
+              Positioned.fill(
+                  child: CustomPaint(painter: DrawingPainter(widget.p.lines))),
               GestureDetector(
                 behavior: HitTestBehavior.translucent,
                 onPanStart: (s) {
@@ -1204,7 +1373,8 @@ class _showPaintState extends State<_showPaint> {
           )),
           Container(
             color: Colors.grey[800],
-            padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+            padding:
+                EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -1276,11 +1446,17 @@ class _showPaintState extends State<_showPaint> {
                                   height: 50,
                                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20), color: widget.p.erasemode ? Colors.yellow : Colors.white),
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: widget.p.erasemode
+                                          ? Colors.yellow
+                                          : Colors.white),
                                   child: Center(
                                     child: Text(
                                       '지우개',
-                                      style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ),
@@ -1300,12 +1476,16 @@ class _showPaintState extends State<_showPaint> {
                                   child: Container(
                                     width: 110,
                                     height: 50,
-                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Colors.white),
                                     child: Center(
                                       child: Container(
                                         child: Text(
                                           "닫기",
-                                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
@@ -1340,8 +1520,12 @@ class _showPaintState extends State<_showPaint> {
           margin: EdgeInsets.only(left: 9),
           width: 55,
           height: 55,
-          decoration:
-              BoxDecoration(shape: BoxShape.circle, border: widget.p.color == color ? Border.all(color: Colors.white, width: 4) : null, color: color),
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: widget.p.color == color
+                  ? Border.all(color: Colors.white, width: 4)
+                  : null,
+              color: color),
         ),
       ),
     );
