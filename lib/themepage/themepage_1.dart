@@ -154,6 +154,9 @@ class _ThemeScreen1State extends State<ThemeScreen1>
     'hintcode7': '#07',
     'hintcode8': '#08',
     'hintcode9': '#09',
+    'hintcode10': '#10',
+    'hintcode11': '#11',
+    'hintcode12': '#12',
   };
 
   var _homecode = "#0000";
@@ -170,6 +173,9 @@ class _ThemeScreen1State extends State<ThemeScreen1>
     () => Theme1HintPage7(),
     () => Theme1HintPage8(),
     () => Theme1HintPage9(),
+    () => Theme1HintPage9(), //10
+    () => Theme1HintPage9(),
+    () => Theme1HintPage9(),
   ];
 
   // 힌트 사용 시 하단에 해당 페이지로 이동하는 버튼 추가
@@ -178,11 +184,14 @@ class _ThemeScreen1State extends State<ThemeScreen1>
     false,
     false,
     false,
+    false, //5
     false,
     false,
     false,
     false,
-    false
+    false, //10
+    false,
+    false,
   ];
 
   List<double> hintPercentage = [];
@@ -536,12 +545,10 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                               FocusScope.of(
                                                                       context)
                                                                   .unfocus();
-
                                                               // 힌트 코드 입력
-
                                                               for (int i = 1;
-                                                                  i <=
-                                                                      hintlist
+                                                                  i <
+                                                                      hintCodes
                                                                           .length;
                                                                   i++) {
                                                                 String
@@ -557,11 +564,11 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                     showHintBtn[i -
                                                                             1] =
                                                                         true;
-                                                                    Navigator.push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                            builder: (context) =>
-                                                                                hintlist[i - 1]()));
+                                                                    if (i < 9)
+                                                                      Navigator.push(
+                                                                          context,
+                                                                          MaterialPageRoute(
+                                                                              builder: (context) => hintlist[i - 1]()));
                                                                   });
                                                                   break;
                                                                 } else if (_hintText
@@ -717,331 +724,427 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                     10, 0, 10, 10),
                                                 color: Colors.white,
                                                 child: Center(
-                                                  child: Column(
-                                                    children: [
-                                                      Flexible(
-                                                          child: Container(
-                                                            color: Colors.white,
-                                                            child: Center(
-                                                              child: Row(
-                                                                children: [
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      //color: Colors.grey,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                  child: SingleChildScrollView(
+                                                    child: Container(
+                                                      height: 1000,
+                                                      child: Column(
+                                                        children: [
+                                                          Flexible(
+                                                              child: Container(
+                                                                height: 70,
+                                                                color: Colors
+                                                                    .white,
+                                                                child: Center(
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color:Colors.grey,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               10,
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              0]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage1()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 1번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
-                                                                  ),
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      //color: Colors.blueGrey,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                                          child: showHintBtn[0]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage1()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 1번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.blueGrey,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               5,
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              1]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage2()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 2번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
-                                                                  ),
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                                          child: showHintBtn[1]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage2()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 2번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          color:
+                                                                              Colors.white,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               5,
                                                                               10,
                                                                               10,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              2]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage3()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 3번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
+                                                                          child: showHintBtn[2]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage3()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 3번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                          flex: 1),
-                                                      Flexible(
-                                                          child: Container(
-                                                            color: Colors.white,
-                                                            child: Center(
-                                                              child: Row(
-                                                                children: [
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      //color: Colors.grey,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                              flex: 1),
+                                                          Flexible(
+                                                              child: Container(
+                                                                height: 70,
+                                                                color: Colors
+                                                                    .white,
+                                                                child: Center(
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.grey,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               10,
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              3]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage4()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 4번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
-                                                                  ),
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      // color: Colors.blueGrey,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                                          child: showHintBtn[3]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage4()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 4번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          // color: Colors.blueGrey,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               5,
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              4]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage5()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 5번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
-                                                                  ),
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      //color: Colors.white,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                                          child: showHintBtn[4]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage5()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 5번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.white,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               5,
                                                                               10,
                                                                               10,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              5]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage6()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 6번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
+                                                                          child: showHintBtn[5]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage6()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 6번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                          flex: 1),
-                                                      Flexible(
-                                                          child: Container(
-                                                            color: Colors.white,
-                                                            child: Center(
-                                                              child: Row(
-                                                                children: [
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      //color: Colors.grey,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                              flex: 1),
+                                                          Flexible(
+                                                              child: Container(
+                                                                height: 70,
+                                                                color: Colors
+                                                                    .white,
+                                                                child: Center(
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.grey,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               10,
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              6]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage7()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 7번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
-                                                                  ),
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      //color: Colors.blueGrey,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                                          child: showHintBtn[6]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage7()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 7번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.blueGrey,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               5,
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              7]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage8()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 8번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
-                                                                  ),
-                                                                  Flexible(
-                                                                    child:
-                                                                        Container(
-                                                                      //color: Colors.white,
-                                                                      margin: EdgeInsets
-                                                                          .fromLTRB(
+                                                                          child: showHintBtn[7]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage8()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 8번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.white,
+                                                                          margin: EdgeInsets.fromLTRB(
                                                                               5,
                                                                               10,
                                                                               10,
                                                                               10),
-                                                                      child: showHintBtn[
-                                                                              8]
-                                                                          ? InkWell(
-                                                                              onTap: () {
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage9()));
-                                                                              },
-                                                                              child: Expanded(
-                                                                                  child: Container(
-                                                                                      color: Color(red2),
-                                                                                      child: Center(
-                                                                                        child: Container(
-                                                                                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                                                                                          child: AutoSizeText(
-                                                                                            "힌트 9번",
-                                                                                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ))))
-                                                                          : Container(),
-                                                                    ),
-                                                                    flex: 1,
+                                                                          child: showHintBtn[8]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage9()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 9번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                          flex: 1)
-                                                    ],
+                                                              flex: 1),
+                                                          Flexible(
+                                                              child: Container(
+                                                                height: 70,
+                                                                color: Colors
+                                                                    .white,
+                                                                child: Center(
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.grey,
+                                                                          margin: EdgeInsets.fromLTRB(
+                                                                              10,
+                                                                              10,
+                                                                              5,
+                                                                              10),
+                                                                          child: showHintBtn[9]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage7()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 10번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.blueGrey,
+                                                                          margin: EdgeInsets.fromLTRB(
+                                                                              5,
+                                                                              10,
+                                                                              5,
+                                                                              10),
+                                                                          child: showHintBtn[10]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage8()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 11번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            Container(
+                                                                          //color: Colors.white,
+                                                                          margin: EdgeInsets.fromLTRB(
+                                                                              5,
+                                                                              10,
+                                                                              10,
+                                                                              10),
+                                                                          child: showHintBtn[11]
+                                                                              ? InkWell(
+                                                                                  onTap: () {
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage9()));
+                                                                                  },
+                                                                                  child: Expanded(
+                                                                                      child: Container(
+                                                                                          color: Color(red2),
+                                                                                          child: Center(
+                                                                                            child: Container(
+                                                                                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                                                                                              child: AutoSizeText(
+                                                                                                "힌트 12번",
+                                                                                                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ))))
+                                                                              : Container(),
+                                                                        ),
+                                                                        flex: 1,
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              flex: 1)
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -1137,89 +1240,103 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                             'hintcode$i';
 
                                                         if (_percentText.text ==
-                                                            hintcode) {
+                                                            hintCodes[
+                                                                hintcode]) {
                                                           setState(() {
-                                                            _percent =
-                                                                hintPercentage[
-                                                                    i];
+                                                            _percent = (i /
+                                                                hintCodes
+                                                                    .length);
                                                             _percentwords =
-                                                                '${(hintPercentage[i] * 100).toInt()}';
+                                                                '${(_percent * 100).toInt()}';
                                                             _percentText.text =
                                                                 '';
                                                           });
+                                                          break;
                                                         } else if (_percentText
                                                                 .text ==
                                                             "") {
-                                                          setState(() {
-                                                            _percent = 0;
-                                                            _percentwords = "0";
+                                                          if (i ==
+                                                              hintCodes.length -
+                                                                  1) {
+                                                            setState(() {
+                                                              _percent = 0;
+                                                              _percentwords =
+                                                                  "0";
 
-                                                            showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (context) =>
-                                                                      AlertDialog(
-                                                                title:
-                                                                    const Text(
-                                                                        ''),
-                                                                content: Text(
-                                                                  "암호를 입력해주세요!",
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          20),
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
+                                                              showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) =>
+                                                                        AlertDialog(
+                                                                  title:
+                                                                      const Text(
+                                                                          ''),
+                                                                  content: Text(
+                                                                    "암호를 입력해주세요!",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            20),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                  ),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                        },
+                                                                        child: const Text(
+                                                                            '확인'))
+                                                                  ],
                                                                 ),
-                                                                actions: [
-                                                                  TextButton(
-                                                                      onPressed:
-                                                                          () {
-                                                                        Navigator.pop(
-                                                                            context);
-                                                                      },
-                                                                      child: const Text(
-                                                                          '확인'))
-                                                                ],
-                                                              ),
-                                                            );
-                                                          });
+                                                              );
+                                                            });
+                                                          }
                                                         } else {
-                                                          setState(() {
-                                                            _percentText.text =
-                                                                '';
-                                                            _percent = 0;
-                                                            _percentwords = "0";
-                                                            showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (context) =>
-                                                                      AlertDialog(
-                                                                title:
-                                                                    const Text(
-                                                                        ''),
-                                                                content: Text(
-                                                                  "올바른 암호를 입력해주세요!",
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          20),
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
+                                                          if (i ==
+                                                              hintCodes.length -
+                                                                  1) {
+                                                            setState(() {
+                                                              _percentText
+                                                                  .text = '';
+                                                              _percent = 0;
+                                                              _percentwords =
+                                                                  "0";
+                                                              showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) =>
+                                                                        AlertDialog(
+                                                                  title:
+                                                                      const Text(
+                                                                          ''),
+                                                                  content: Text(
+                                                                    "올바른 암호를 입력해주세요!",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            20),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                  ),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                        },
+                                                                        child: const Text(
+                                                                            '확인'))
+                                                                  ],
                                                                 ),
-                                                                actions: [
-                                                                  TextButton(
-                                                                      onPressed:
-                                                                          () {
-                                                                        Navigator.pop(
-                                                                            context);
-                                                                      },
-                                                                      child: const Text(
-                                                                          '확인'))
-                                                                ],
-                                                              ),
-                                                            );
-                                                          });
+                                                              );
+                                                            });
+                                                          }
                                                         }
                                                       }
                                                     },
