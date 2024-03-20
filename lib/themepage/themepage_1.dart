@@ -156,6 +156,9 @@ class _ThemeScreen1State extends State<ThemeScreen1>
     'hintcode9': '#09',
   };
 
+  var _homecode = "#0000";
+  var _hintclear = "#0987";
+
 //힌트 입력 시 해당 힌트 페이지 출력을 위한 리스트 배열
   List<Widget Function()> hintlist = [
     () => Theme1HintPage1(),
@@ -169,33 +172,22 @@ class _ThemeScreen1State extends State<ThemeScreen1>
     () => Theme1HintPage9(),
   ];
 
+  // 힌트 사용 시 하단에 해당 페이지로 이동하는 버튼 추가
+  List<bool> showHintBtn = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
+
   List<double> hintPercentage = [];
-  List<bool> showHintBtn = [];
-
-  void calculateHintPercentages() {
-    // 힌트 코드와 해당하는 퍼센트 값을 맵에 추가합니다.
-    for (int i = 0; i < hintCodes.length; i++) {
-      // 각 힌트 코드에 대응하는 퍼센트 값을 계산합니다.
-      double percentage = (i + 1) / hintCodes.length;
-      // 힌트 코드와 해당하는 퍼센트 값을 맵에 추가합니다.
-      hintPercentage[i] = percentage;
-      showHintBtn[i] = false;
-    }
-  }
-
-  var _homecode = "#0000";
-  var _hintclear = "#0987";
 
   // 힌트 사용 시 하단에 해당 페이지로 이동하는 버튼 추가
-  bool _ShowHintBtn1 = false;
-  bool _ShowHintBtn2 = false;
-  bool _ShowHintBtn3 = false;
-  bool _ShowHintBtn4 = false;
-  bool _ShowHintBtn5 = false;
-  bool _ShowHintBtn6 = false;
-  bool _ShowHintBtn7 = false;
-  bool _ShowHintBtn8 = false;
-  bool _ShowHintBtn9 = false;
 
   //퍼센트
   var _percentwords = "0";
@@ -562,8 +554,6 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                   setState(() {
                                                                     _hintText
                                                                         .text = '';
-                                                                    _ShowHintBtn1 =
-                                                                        true;
                                                                     showHintBtn[i -
                                                                             1] =
                                                                         true;
@@ -571,32 +561,21 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                         context,
                                                                         MaterialPageRoute(
                                                                             builder: (context) =>
-                                                                                Theme1HintPage1()));
+                                                                                hintlist[i - 1]()));
                                                                   });
                                                                   break;
                                                                 } else if (_hintText
                                                                         .text ==
                                                                     _hintclear) {
                                                                   setState(() {
-                                                                    _ShowHintBtn1 =
-                                                                        false;
-                                                                    _ShowHintBtn2 =
-                                                                        false;
-                                                                    _ShowHintBtn3 =
-                                                                        false;
-                                                                    _ShowHintBtn4 =
-                                                                        false;
-                                                                    _ShowHintBtn5 =
-                                                                        false;
-                                                                    _ShowHintBtn6 =
-                                                                        false;
-                                                                    _ShowHintBtn7 =
-                                                                        false;
-                                                                    _ShowHintBtn8 =
-                                                                        false;
-                                                                    _ShowHintBtn9 =
-                                                                        false;
-
+                                                                    for (int i =
+                                                                            0;
+                                                                        i < showHintBtn.length;
+                                                                        i++) {
+                                                                      showHintBtn[
+                                                                              i] =
+                                                                          false;
+                                                                    }
                                                                     _hintText
                                                                             .text =
                                                                         ''; // 힌트 입력 칸 초기화
@@ -756,7 +735,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: _ShowHintBtn1
+                                                                      child: showHintBtn[
+                                                                              0]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage1()));
@@ -787,7 +767,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: _ShowHintBtn2
+                                                                      child: showHintBtn[
+                                                                              1]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage2()));
@@ -819,7 +800,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               10,
                                                                               10),
-                                                                      child: _ShowHintBtn3
+                                                                      child: showHintBtn[
+                                                                              2]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage3()));
@@ -861,7 +843,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: _ShowHintBtn4
+                                                                      child: showHintBtn[
+                                                                              3]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage4()));
@@ -892,7 +875,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: _ShowHintBtn5
+                                                                      child: showHintBtn[
+                                                                              4]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage5()));
@@ -923,7 +907,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               10,
                                                                               10),
-                                                                      child: _ShowHintBtn6
+                                                                      child: showHintBtn[
+                                                                              5]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage6()));
@@ -965,7 +950,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: _ShowHintBtn7
+                                                                      child: showHintBtn[
+                                                                              6]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage7()));
@@ -996,7 +982,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               5,
                                                                               10),
-                                                                      child: _ShowHintBtn8
+                                                                      child: showHintBtn[
+                                                                              7]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage8()));
@@ -1027,7 +1014,8 @@ class _ThemeScreen1State extends State<ThemeScreen1>
                                                                               10,
                                                                               10,
                                                                               10),
-                                                                      child: _ShowHintBtn9
+                                                                      child: showHintBtn[
+                                                                              8]
                                                                           ? InkWell(
                                                                               onTap: () {
                                                                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Theme1HintPage9()));

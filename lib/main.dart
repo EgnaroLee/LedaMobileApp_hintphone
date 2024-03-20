@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hint_app_7/startpage.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
